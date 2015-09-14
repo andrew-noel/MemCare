@@ -47,4 +47,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return true;
     }
+
+    public boolean check_if_user_exists(String username){
+        SQLiteDatabase db = this.getWritableDatabase();
+        return true;
+    }
 }
