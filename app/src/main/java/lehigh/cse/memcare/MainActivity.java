@@ -7,23 +7,59 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    //DatabaseHelper myDb;
 
+
+    DatabaseHelper myDb;
+
+    private static Button button_register;
     private static Button button_login;
+
+    private static EditText username;
+    private static EditText password;
+
+    private static String username_text;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //myDb = new DatabaseHelper(this);
+
+        myDb = new DatabaseHelper(this);
+
+        //register init
+        Registration_OnClickButtonListener();
+
+        //login init
+        username = (EditText)findViewById(R.id.editText_username);
         Login_OnClickButtonListener();
     }
 
+
     public void Login_OnClickButtonListener(){
-        button_login = (Button)findViewById(R.id.button_register);
+        button_login = (Button)findViewById(R.id.button_login);
         button_login.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        username_text = username.getText().toString();
+                        if (myDb.check_if_user_exists(username_text)){
+                            Toast.makeText(MainActivity.this, "Login Succesful", Toast.LENGTH_LONG).show();
+                        }else{
+                            Toast.makeText(MainActivity.this, "Login Failure", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+        );
+
+    }
+    public void Registration_OnClickButtonListener(){
+        button_register = (Button)findViewById(R.id.button_register);
+        button_register.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

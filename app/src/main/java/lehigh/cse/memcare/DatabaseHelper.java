@@ -2,6 +2,7 @@ package lehigh.cse.memcare;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -25,7 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, USERNAME TEXT, PASSWORD TEXT )");
+        db.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, USER_NAME TEXT, PASSWORD TEXT )");
     }
 
     @Override
@@ -50,6 +51,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public boolean check_if_user_exists(String username){
         SQLiteDatabase db = this.getWritableDatabase();
-        return true;
+        Cursor res = db.rawQuery("select * from " + TABLE_NAME + " where USER_NAME = '" + username + "'", null);
+        if (res.getCount() == 0){
+            return false;
+        } else{
+            return true;
+        }
     }
+
 }
