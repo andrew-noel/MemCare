@@ -3,6 +3,7 @@ package lehigh.cse.memcare;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private static EditText password;
 
     private static String username_text;
+    private static String password_text;
 
 
     @Override
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         //login init
         username = (EditText)findViewById(R.id.editText_username);
+        password = (EditText)findViewById(R.id.editText_password);
         Login_OnClickButtonListener();
     }
 
@@ -47,10 +50,16 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         username_text = username.getText().toString();
+                        password_text = password.getText().toString();
                         if (myDb.check_if_user_exists(username_text)){
-                            Toast.makeText(MainActivity.this, "Login Succesful", Toast.LENGTH_LONG).show();
+                            Log.d("PASSWORD", "user PASSWORD = " + password_text);
+                            if (myDb.checkPassword(username_text, password_text)) {
+                                Toast.makeText(MainActivity.this, "Login Success", Toast.LENGTH_LONG).show();
+                            }else{
+                                Toast.makeText(MainActivity.this, "Login Failure. Invalid Password", Toast.LENGTH_LONG).show();
+                            }
                         }else{
-                            Toast.makeText(MainActivity.this, "Login Failure", Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this, "Username does no exists", Toast.LENGTH_LONG).show();
                         }
                     }
                 }
