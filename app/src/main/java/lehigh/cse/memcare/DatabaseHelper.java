@@ -53,13 +53,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result != -1;
     }
 
-    public boolean check_if_user_exists(String username){
+    public boolean check_if_username_exists(String username){
         res = db.rawQuery("select * from " + TABLE_NAME + " where USER_NAME = '" + username + "'", null);
         return res.getCount() != 0;
     }
 
     public boolean checkPassword(String username, String password){
-        if (!check_if_user_exists(username)){
+        if (!check_if_username_exists(username)){
             return false;
         }
 
@@ -91,7 +91,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void clear_database(){
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-
+        onCreate(db);
 
     }
 

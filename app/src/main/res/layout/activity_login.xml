@@ -40,38 +40,25 @@
         android:singleLine="true"
         android:maxLines="1" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText_password"
-        android:layout_below="@+id/editText_username"
-        android:layout_alignLeft="@+id/editText_username"
-        android:layout_alignStart="@+id/editText_username"
-        android:layout_alignRight="@+id/editText_username"
-        android:layout_alignEnd="@+id/editText_username"
-        android:singleLine="true"
-        android:maxLines="1"
-        android:maxHeight="40dp" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
         android:id="@+id/button_login"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="54dp"
+        android:width="400dp"
         android:layout_below="@+id/editText_password"
-        android:layout_centerHorizontal="true"
-        android:width="400dp" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Register"
         android:id="@+id/button_register"
-        android:layout_alignLeft="@+id/button_login"
-        android:layout_alignStart="@+id/button_login"
+        android:width="400dp"
         android:layout_below="@+id/button_login"
-        android:width="400dp" />
+        android:layout_alignLeft="@+id/button_login"
+        android:layout_alignStart="@+id/button_login" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -91,5 +78,17 @@
         android:id="@+id/button_cleardb"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/editText_password"
+        android:layout_below="@+id/editText_username"
+        android:layout_alignLeft="@+id/editText_username"
+        android:layout_alignStart="@+id/editText_username"
+        android:layout_alignRight="@+id/editText_username"
+        android:layout_alignEnd="@+id/editText_username" />
 
 </RelativeLayout>

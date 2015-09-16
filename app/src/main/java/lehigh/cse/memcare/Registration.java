@@ -1,5 +1,6 @@
 package lehigh.cse.memcare;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -27,23 +28,31 @@ public class Registration extends AppCompatActivity {
         editText_username = (EditText)findViewById(R.id.editText_username);
         editText_password = (EditText)findViewById(R.id.editText_password);
         btnRegister = (Button)findViewById(R.id.button_register);
-        AddData();
+        Register_OnClickButtonListener();
 
     }
 
-    public void AddData() {
+    public void Register_OnClickButtonListener() {
         btnRegister.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                           boolean isInserted = myDb.insertData_registerCaregiver(editText_firstName.getText().toString(),
-                                                                                  editText_lastName.getText().toString(),
-                                                                                  editText_username.getText().toString(),
-                                                                                  editText_password.getText().toString());
-                        if (isInserted) {
-                            Toast.makeText(Registration.this, "Data Inserted", Toast.LENGTH_LONG).show();
-                        }else{
-                            Toast.makeText(Registration.this, "Data not Inserted", Toast.LENGTH_LONG).show();
+                        if (myDb.check_if_username_exists(editText_username.getText().toString().trim())) {
+                            Toast.makeText(Registration.this, "Username already exists. Please try again.", Toast.LENGTH_LONG).show();
+
+                        } else {
+                            boolean isInserted = myDb.insertData_registerCaregiver(editText_firstName.getText().toString().trim(),
+                                    editText_lastName.getText().toString().trim(),
+                                    editText_username.getText().toString().trim(),
+                                    editText_password.getText().toString().trim());
+                            if (isInserted) {
+                                Toast.makeText(Registration.this, "Registration Successful", Toast.LENGTH_LONG).show();
+                                //Intent intent = new Intent("lehigh.cse.memcare.MAIN");
+                                //startActivity(intent);
+                                finish();
+                            } else {
+                                Toast.makeText(Registration.this, "Data not Inserted", Toast.LENGTH_LONG).show();
+                            }
                         }
                     }
                 }
