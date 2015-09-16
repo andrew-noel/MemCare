@@ -69,7 +69,8 @@
         android:layout_alignBottom="@+id/textView_lastname"
         android:layout_toRightOf="@+id/textView_firstname"
         android:layout_alignRight="@+id/textView_header"
-        android:layout_alignEnd="@+id/textView_header" />
+        android:layout_alignEnd="@+id/textView_header"
+        android:singleLine="true"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -80,7 +81,8 @@
         android:layout_alignTop="@+id/textView_password"
         android:layout_toRightOf="@+id/textView_username"
         android:layout_alignRight="@+id/textView_header"
-        android:layout_alignEnd="@+id/textView_header" />
+        android:layout_alignEnd="@+id/textView_header"
+        android:singleLine="true"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -90,7 +92,8 @@
         android:layout_alignLeft="@+id/editText_lastname"
         android:layout_alignStart="@+id/editText_lastname"
         android:layout_alignRight="@+id/editText_lastname"
-        android:layout_alignEnd="@+id/editText_lastname" />
+        android:layout_alignEnd="@+id/editText_lastname"
+        android:singleLine="true"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -100,7 +103,8 @@
         android:layout_alignLeft="@+id/editText_lastname"
         android:layout_alignStart="@+id/editText_lastname"
         android:layout_alignRight="@+id/editText_lastname"
-        android:layout_alignEnd="@+id/editText_lastname" />
+        android:layout_alignEnd="@+id/editText_lastname"
+        android:singleLine="true"/>
 
     <Button
         android:layout_width="300dp"

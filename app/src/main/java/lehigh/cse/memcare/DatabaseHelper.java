@@ -44,7 +44,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean insertData_registerCaregiver(String first_name, String last_name, String username, String password) {
-        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUMN_2, first_name);
         contentValues.put(COLUMN_3, last_name);
@@ -55,8 +54,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean check_if_user_exists(String username){
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from " + TABLE_NAME + " where USER_NAME = '" + username + "'", null);
+        res = db.rawQuery("select * from " + TABLE_NAME + " where USER_NAME = '" + username + "'", null);
         return res.getCount() != 0;
     }
 
@@ -91,4 +89,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public void clear_database(){
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+
+
+    }
+
+
+
 }
+
