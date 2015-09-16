@@ -7,9 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-/**
- * Created by andrewmcmullen on 9/13/15.
- */
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "MemCare.db";
@@ -27,10 +24,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final int INDEX_USER_NAME = 3;
     public static final int INDEX_PASSWORD = 4;
 
-
+    SQLiteDatabase db;
+    Cursor res;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
+        db = this.getWritableDatabase();
     }
 
     @Override
@@ -52,41 +51,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COLUMN_4, username);
         contentValues.put(COLUMN_5, password);
         long result = db.insert(TABLE_NAME, null, contentValues);
-        if (result == -1){
-            return false;
-        }
-        return true;
+        return result != -1;
     }
 
     public boolean check_if_user_exists(String username){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from " + TABLE_NAME + " where USER_NAME = '" + username + "'", null);
-        if (res.getCount() == 0){
-            return false;
-        } else{
-            return true;
-        }
+        return res.getCount() != 0;
     }
 
     public boolean checkPassword(String username, String password){
         if (!check_if_user_exists(username)){
             return false;
         }
-        SQLiteDatabase db = this.getWritableDatabase();
 
-        Cursor res = db.rawQuery("select * from " + TABLE_NAME + " where USER_NAME = '" + username + "'", null);
+        res = db.rawQuery("select * from " + TABLE_NAME + " where USER_NAME = '" + username + "'", null);
 
         res.moveToNext();
 
         String db_password = res.getString(INDEX_PASSWORD);
 
-        Log.d("PASSWORD", "PASSWORD = " + db_password);
-        if (password.equals(db_password)) {
-            return true;
-        }else {
-            return false;
+        //Log.d("PASSWORD", "PASSWORD = " + db_password);
+        return password.equals(db_password);
+
+
+    }
+
+    public String get_first_Name(String username, String password){
+
+        if (!checkPassword(username, password)){
+            return null;
         }
 
+        String first_name;
+        res = db.rawQuery("select * from " + TABLE_NAME + " where USER_NAME = '" + username + "'", null);
+        first_name = res.getString(INDEX_FIRST_NAME);
+        Log.d("PASSWORD", "FIRST_NAME = " + first_name);
+        return first_name;
 
     }
 

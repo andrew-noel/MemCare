@@ -42,7 +42,18 @@ public class MainActivity extends AppCompatActivity {
         Login_OnClickButtonListener();
     }
 
+    public void login_to_home(String username, String password){
+        //String first_name = myDb.get_first_Name(username, password);
 
+        Intent intent = new Intent("lehigh.cse.memcare.Home");
+        startActivity(intent);
+        //Intent intentBundle = new Intent(MainActivity.this, Home.class);
+        //Bundle bundle = new Bundle();
+        //bundle.putString("first_name", first_name);
+        //intentBundle.putExtras(bundle);
+        //startActivity(intentBundle);
+
+    }
     public void Login_OnClickButtonListener(){
         button_login = (Button)findViewById(R.id.button_login);
         button_login.setOnClickListener(
@@ -52,9 +63,10 @@ public class MainActivity extends AppCompatActivity {
                         username_text = username.getText().toString();
                         password_text = password.getText().toString();
                         if (myDb.check_if_user_exists(username_text)){
-                            Log.d("PASSWORD", "user PASSWORD = " + password_text);
+                            //Log.d("PASSWORD", "user PASSWORD = " + password_text);
                             if (myDb.checkPassword(username_text, password_text)) {
                                 Toast.makeText(MainActivity.this, "Login Success", Toast.LENGTH_LONG).show();
+                                login_to_home(username_text, password_text);
                             }else{
                                 Toast.makeText(MainActivity.this, "Login Failure. Invalid Password", Toast.LENGTH_LONG).show();
                             }

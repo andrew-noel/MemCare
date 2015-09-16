@@ -25,6 +25,17 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Home"
+            android:label="@string/title_activity_home" >
+            <intent-filter>
+                <action android:name="lehigh.cse.memcare.Home" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
     </application>
 
 </manifest>
