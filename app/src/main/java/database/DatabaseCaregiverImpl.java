@@ -1,4 +1,4 @@
-package lehigh.cse.memcare;
+package database;
 
 import android.content.ContentValues;
 import android.content.Context;

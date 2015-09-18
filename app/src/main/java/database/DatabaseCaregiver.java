@@ -1,4 +1,4 @@
-package lehigh.cse.memcare;
+package database;
 
 /**
  * Created by Noel on 9/18/15.

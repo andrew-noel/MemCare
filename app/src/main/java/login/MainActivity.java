@@ -1,4 +1,4 @@
-package lehigh.cse.memcare;
+package login;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import database.DatabaseCaregiverImpl;
+import lehigh.cse.memcare.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -87,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent("lehigh.cse.memcare.Registration");
+                        Intent intent = new Intent("lehigh.cse.memcare.registration.Registration");
                         startActivity(intent);
                     }
                 }
