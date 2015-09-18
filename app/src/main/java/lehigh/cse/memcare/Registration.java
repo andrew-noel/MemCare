@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class Registration extends AppCompatActivity {
 
-    DatabaseCaregiver myDb;
+    DatabaseCaregiverImpl myDb;
     EditText editText_firstName, editText_lastName, editText_username, editText_password;
     Button btnRegister;
 
@@ -20,7 +20,7 @@ public class Registration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        myDb = new DatabaseCaregiver(this);
+        myDb = new DatabaseCaregiverImpl(this);
 
         editText_firstName = (EditText)findViewById(R.id.editText_firstname);
         editText_lastName = (EditText)findViewById(R.id.editText_lastname);
