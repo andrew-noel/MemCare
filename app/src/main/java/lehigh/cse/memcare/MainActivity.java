@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
 
-    DatabaseHelper myDb;
+    DatabaseCaregiver myDb;
 
     private static Button button_register;
     private static Button button_login;
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        myDb = new DatabaseHelper(this);
+        myDb = new DatabaseCaregiver(this);
 
         //register init
         Registration_OnClickButtonListener();

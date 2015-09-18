@@ -1,6 +1,5 @@
 package lehigh.cse.memcare;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,7 +11,7 @@ import android.widget.Toast;
 
 public class Registration extends AppCompatActivity {
 
-    DatabaseHelper myDb;
+    DatabaseCaregiver myDb;
     EditText editText_firstName, editText_lastName, editText_username, editText_password;
     Button btnRegister;
 
@@ -21,7 +20,7 @@ public class Registration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        myDb = new DatabaseHelper(this);
+        myDb = new DatabaseCaregiver(this);
 
         editText_firstName = (EditText)findViewById(R.id.editText_firstname);
         editText_lastName = (EditText)findViewById(R.id.editText_lastname);
