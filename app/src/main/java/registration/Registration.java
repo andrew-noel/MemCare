@@ -9,12 +9,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import database.DatabaseCaregiverImpl;
+import database.LoginService;
+import database.RegistrationService;
 import lehigh.cse.memcare.R;
 
 public class Registration extends AppCompatActivity {
 
-    DatabaseCaregiverImpl myDb;
+    RegistrationService registrationService;
     EditText editText_firstName, editText_lastName, editText_username, editText_password;
     Button btnRegister;
 
@@ -23,7 +24,7 @@ public class Registration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        myDb = new DatabaseCaregiverImpl(this);
+        registrationService = new RegistrationService(this);
 
         editText_firstName = (EditText)findViewById(R.id.editText_firstname);
         editText_lastName = (EditText)findViewById(R.id.editText_lastname);
@@ -39,11 +40,11 @@ public class Registration extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (myDb.check_if_username_exists(editText_username.getText().toString().trim())) {
+                        if (LoginService.check_if_username_exists(editText_username.getText().toString().trim())) {
                             Toast.makeText(Registration.this, "Username already exists. Please try again.", Toast.LENGTH_LONG).show();
 
                         } else {
-                            boolean isInserted = myDb.insertData_registerCaregiver(editText_firstName.getText().toString().trim(),
+                            boolean isInserted = registrationService.insertData_registerCaregiver(editText_firstName.getText().toString().trim(),
                                     editText_lastName.getText().toString().trim(),
                                     editText_username.getText().toString().trim(),
                                     editText_password.getText().toString().trim());

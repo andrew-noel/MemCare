@@ -11,5 +11,4 @@ public interface DatabaseHelper {
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion);
 
-    public void clear_database();
 }

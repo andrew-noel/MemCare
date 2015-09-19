@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DatabaseHelperImpl extends SQLiteOpenHelper implements DatabaseHelper {
+public abstract class DatabaseHelperImpl extends SQLiteOpenHelper implements DatabaseHelper {
 
     public static final String DATABASE_NAME = "MemCare.db";
     public static final String TABLE_NAME = "Caregivers_table";
@@ -22,8 +22,8 @@ public class DatabaseHelperImpl extends SQLiteOpenHelper implements DatabaseHelp
     public static final int INDEX_USER_NAME = 3;
     public static final int INDEX_PASSWORD = 4;
 
-    SQLiteDatabase db;
-    Cursor res;
+    static SQLiteDatabase db;
+    static Cursor res;
 
     public DatabaseHelperImpl(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -44,7 +44,6 @@ public class DatabaseHelperImpl extends SQLiteOpenHelper implements DatabaseHelp
     public void clear_database(){
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
-
     }
 
 

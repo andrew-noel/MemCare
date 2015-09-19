@@ -10,14 +10,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import database.DatabaseCaregiverImpl;
-import home.Home;
+import database.LoginService;
 import lehigh.cse.memcare.R;
 
 public class MainActivity extends AppCompatActivity {
 
 
-    DatabaseCaregiverImpl myDb;
+    LoginService loginService;
 
     private static Button button_register;
     private static Button button_login;
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        myDb = new DatabaseCaregiverImpl(this);
+        loginService = new LoginService(this);
 
         //register init
         Registration_OnClickButtonListener();
@@ -53,15 +52,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login_to_home(String username, String password){
-
-
-        first_name = myDb.get_first_Name(username, password);
+        //first_name = myDb.get_first_Name(username, password);
         Intent intent = new Intent("lehigh.cse.memcare.Home");
         intent.putExtra("username", first_name);
         startActivity(intent);
-
-
     }
+
+
     public void Login_OnClickButtonListener(){
         button_login = (Button)findViewById(R.id.button_login);
         button_login.setOnClickListener(
@@ -70,9 +67,9 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         username_text = username.getText().toString();
                         password_text = password.getText().toString();
-                        if (myDb.check_if_username_exists(username_text)){
+                        if (LoginService.check_if_username_exists(username_text)){
                             //Log.d("PASSWORD", "user PASSWORD = " + password_text);
-                            if (myDb.checkPassword(username_text, password_text)) {
+                            if (LoginService.checkPassword(username_text, password_text)) {
                                 Toast.makeText(MainActivity.this, "Login Success", Toast.LENGTH_LONG).show();
                                 login_to_home(username_text, password_text);
                             }else{
@@ -105,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener(){
                     @Override
                 public void onClick(View v){
-                        myDb.clear_database();
+                        loginService.clear_database();
                         Toast.makeText(MainActivity.this, "Cleared DataBase", Toast.LENGTH_LONG).show();
                     }
                 }
