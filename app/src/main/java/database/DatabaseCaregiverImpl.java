@@ -58,10 +58,13 @@ public class DatabaseCaregiverImpl extends DatabaseHelperImpl implements Databas
             return null;
         }
 
-        String first_name;
+        String first_name = "";
+        //StringBuffer buffer = new StringBuffer();
         res = db.rawQuery("select * from " + TABLE_NAME + " where USER_NAME = '" + username + "'", null);
-        first_name = res.getString(INDEX_FIRST_NAME);
-        Log.d("PASSWORD", "FIRST_NAME = " + first_name);
+        res.moveToNext();
+        first_name = res.getString(1);
+        //Log.d("PASSWORD", "FIRST_NAME = " + first_name);
+
         return first_name;
 
     }

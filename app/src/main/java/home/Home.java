@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.content.Intent;
 
 import lehigh.cse.memcare.R;
 
@@ -14,6 +16,13 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        TextView textView = (TextView)findViewById(R.id.textView_welcome);
+
+        Intent intent = getIntent();
+
+        String users_name = intent.getStringExtra("username");
+
+        textView.append(" " + users_name);
     }
 
     @Override

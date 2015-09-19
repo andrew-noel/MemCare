@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import database.DatabaseCaregiverImpl;
+import home.Home;
 import lehigh.cse.memcare.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static String username_text;
     private static String password_text;
+
+    public String first_name;
 
 
     @Override
@@ -46,18 +49,17 @@ public class MainActivity extends AppCompatActivity {
         password.setText("");
         Login_OnClickButtonListener();
         Cleardb_OnClickButtonListener();
+
     }
 
     public void login_to_home(String username, String password){
-        //String first_name = myDb.get_first_Name(username, password);
 
+
+        first_name = myDb.get_first_Name(username, password);
         Intent intent = new Intent("lehigh.cse.memcare.Home");
+        intent.putExtra("username", first_name);
         startActivity(intent);
-        //Intent intentBundle = new Intent(MainActivity.this, Home.class);
-        //Bundle bundle = new Bundle();
-        //bundle.putString("first_name", first_name);
-        //intentBundle.putExtras(bundle);
-        //startActivity(intentBundle);
+
 
     }
     public void Login_OnClickButtonListener(){
