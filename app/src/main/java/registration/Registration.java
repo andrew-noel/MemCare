@@ -40,7 +40,7 @@ public class Registration extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (LoginService.check_if_username_exists(editText_username.getText().toString().trim())) {
+                        if (LoginService.username_exists(editText_username.getText().toString().trim())) {
                             Toast.makeText(Registration.this, "Username already exists. Please try again.", Toast.LENGTH_LONG).show();
 
                         } else {

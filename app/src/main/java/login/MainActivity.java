@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import common.CaregiverDAO;
+import database.CaregiverFacade;
 import database.LoginService;
 import lehigh.cse.memcare.R;
 
@@ -51,10 +53,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void login_to_home(String username, String password){
-        //first_name = myDb.get_first_Name(username, password);
+    public void login_to_home(String username){
+        CaregiverDAO caregiver = CaregiverFacade.retrieve_Caregiver(username);
         Intent intent = new Intent("lehigh.cse.memcare.Home");
-        intent.putExtra("username", first_name);
+        intent.putExtra("first_name", caregiver.get_firstname());
         startActivity(intent);
     }
 
@@ -67,11 +69,11 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         username_text = username.getText().toString();
                         password_text = password.getText().toString();
-                        if (LoginService.check_if_username_exists(username_text)){
+                        if (LoginService.username_exists(username_text)){
                             //Log.d("PASSWORD", "user PASSWORD = " + password_text);
                             if (LoginService.checkPassword(username_text, password_text)) {
                                 Toast.makeText(MainActivity.this, "Login Success", Toast.LENGTH_LONG).show();
-                                login_to_home(username_text, password_text);
+                                login_to_home(username_text);
                             }else{
                                 Toast.makeText(MainActivity.this, "Login Failure. Invalid Password", Toast.LENGTH_LONG).show();
                             }

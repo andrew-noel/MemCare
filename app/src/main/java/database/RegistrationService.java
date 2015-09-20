@@ -3,6 +3,8 @@ package database;
 import android.content.ContentValues;
 import android.content.Context;
 
+import static common.CaregiverTableConstants.*;
+
 /**
  * Created by andrewmcmullen on 9/19/15.
  */

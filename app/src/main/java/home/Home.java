@@ -20,7 +20,7 @@ public class Home extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        String users_name = intent.getStringExtra("username");
+        String users_name = intent.getStringExtra("first_name");
 
         textView.append(" " + users_name);
     }
