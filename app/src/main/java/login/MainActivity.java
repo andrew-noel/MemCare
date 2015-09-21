@@ -10,8 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import common.CaregiverDAO;
-import database.CaregiverFacade;
+import common.CaregiverDTO;
+import common.CaregiverDTOImpl;
+import database.CaregiverDAOImpl;
 import database.LoginService;
 import lehigh.cse.memcare.R;
 
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private static String username_text;
     private static String password_text;
 
-    public String first_name;
+    CaregiverDAOImpl caregiverDAO;
 
 
     @Override
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         loginService = new LoginService(this);
+        caregiverDAO = new CaregiverDAOImpl();
 
         //register init
         Registration_OnClickButtonListener();
@@ -54,9 +56,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login_to_home(String username){
-        CaregiverDAO caregiver = CaregiverFacade.retrieve_Caregiver(username);
+        CaregiverDTO caregiverDTO = caregiverDAO.retrieve_Caregiver(username);
         Intent intent = new Intent("lehigh.cse.memcare.Home");
-        intent.putExtra("first_name", caregiver.get_firstname());
+        intent.putExtra("first_name", caregiverDTO.get_firstname());
         startActivity(intent);
     }
 

@@ -16,7 +16,7 @@ public class NumberAdderTest {
     @Test
     public void addNumbersTest(){
         int result = NumberAdder.addNumbers(2,4);
-        assertEquals(6,result);
+        assertEquals(7,result);
     }
 
 
