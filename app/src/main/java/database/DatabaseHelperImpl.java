@@ -8,8 +8,8 @@ import static common.CaregiverTableConstants.*;
 
 public abstract class DatabaseHelperImpl extends SQLiteOpenHelper implements DatabaseHelper {
 
-    static SQLiteDatabase db;
-    static Cursor res;
+    public static SQLiteDatabase db;
+    public static Cursor res;
 
     public DatabaseHelperImpl(Context context) {
         super(context, DATABASE_NAME, null, 1);

@@ -1,14 +1,13 @@
-package database;
+package Services;
 
 import android.content.ContentValues;
 import android.content.Context;
 
+import database.DatabaseHelperImpl;
+
 import static common.CaregiverTableConstants.*;
 
-/**
- * Created by andrewmcmullen on 9/19/15.
- */
-public class RegistrationService extends DatabaseHelperImpl{
+public class RegistrationService extends DatabaseHelperImpl {
 
     public RegistrationService(Context context){
         super(context);

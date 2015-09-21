@@ -10,10 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import common.CaregiverDTO;
-import common.CaregiverDTOImpl;
-import database.CaregiverDAOImpl;
-import database.LoginService;
+import DAO.CaregiverDAOImpl;
+import TO.CaregiverDTO;
+import Services.LoginService;
 import lehigh.cse.memcare.R;
 
 public class MainActivity extends AppCompatActivity {

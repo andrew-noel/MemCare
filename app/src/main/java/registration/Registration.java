@@ -9,8 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import database.LoginService;
-import database.RegistrationService;
+import Services.LoginService;
+import Services.RegistrationService;
 import lehigh.cse.memcare.R;
 
 public class Registration extends AppCompatActivity {

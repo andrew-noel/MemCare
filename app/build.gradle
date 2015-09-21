@@ -10,7 +10,7 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
-        testApplicationId "login.tests"
+        testApplicationId "UserInterface.login.tests"
     }
     buildTypes {
         release {

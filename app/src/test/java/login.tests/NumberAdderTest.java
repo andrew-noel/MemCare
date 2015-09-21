@@ -1,10 +1,6 @@
 package login.tests;
-/**
- * Created by Noel on 9/20/15.
- */
-import org.junit.Test;
-import java.util.regex.Pattern;
 
+import org.junit.Test;
 import login.NumberAdder;
 
 import static org.junit.Assert.assertEquals;
