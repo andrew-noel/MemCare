@@ -1,4 +1,4 @@
-package database;
+package medtier.database;
 
 import android.content.Context;
 import android.database.Cursor;

@@ -1,9 +1,9 @@
-package Services;
+package medtier.Services;
 
 import android.content.ContentValues;
 import android.content.Context;
 
-import database.DatabaseHelperImpl;
+import medtier.database.DatabaseHelperImpl;
 
 import static common.CaregiverTableConstants.*;
 

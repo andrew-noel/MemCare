@@ -1,7 +1,7 @@
 package login.tests;
 
 import org.junit.Test;
-import login.NumberAdder;
+import ui.login.NumberAdder;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -12,7 +12,7 @@ public class NumberAdderTest {
     @Test
     public void addNumbersTest(){
         int result = NumberAdder.addNumbers(2,4);
-        assertEquals(7,result);
+        assertEquals(6,result);
     }
 
 
