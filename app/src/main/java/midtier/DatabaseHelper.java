@@ -1,4 +1,4 @@
-package midtier.database;
+package midtier;
 
 import android.database.sqlite.SQLiteDatabase;
 

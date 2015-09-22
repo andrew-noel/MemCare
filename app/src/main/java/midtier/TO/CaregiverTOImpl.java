@@ -1,18 +1,16 @@
-package common;
-
-import common.CaregiverDAO;
+package midtier.TO;
 
 /**
  * Created by Noel on 9/20/15.
  */
-public class CaregiverDAOImpl implements CaregiverDAO {
+public class CaregiverTOImpl implements CaregiverTO {
 
     private String firstname;
     private String lastname;
     private String username;
     private String id;
 
-    public CaregiverDAOImpl(String firstname, String lastname, String username, String id){
+    public CaregiverTOImpl(String firstname, String lastname, String username, String id){
         this.firstname = firstname;
         this.lastname = lastname;
         this.username = username;

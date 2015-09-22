@@ -1,4 +1,4 @@
-package login;
+package ui.login;
 
 /**
  * Created by Noel on 9/20/15.

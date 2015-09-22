@@ -1,4 +1,4 @@
-package home;
+package ui.home;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

@@ -3,9 +3,8 @@ package login.tests;
  * Created by Noel on 9/20/15.
  */
 import org.junit.Test;
-import java.util.regex.Pattern;
 
-import login.NumberAdder;
+import ui.login.NumberAdder;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

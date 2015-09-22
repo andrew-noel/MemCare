@@ -1,9 +1,9 @@
-package common;
+package midtier.TO;
 
 /**
  * Created by Andrew on 9/20/15.
  */
-public interface CaregiverDAO {
+public interface CaregiverTO {
 
     public String get_firstname();
 

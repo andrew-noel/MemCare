@@ -1,4 +1,4 @@
-package registration;
+package ui.registration;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,8 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import midtier.database.LoginService;
-import midtier.database.RegistrationService;
+import midtier.services.LoginService;
+import midtier.services.RegistrationService;
 import lehigh.cse.memcare.R;
 
 public class Registration extends AppCompatActivity {
