@@ -8,8 +8,8 @@ public class NumberAdder {
     public static int addNumbers(int one, int two){
         int x = one;
         int y = two;
-        int z = x + y;
-        return z;
+        int r = x + y;
+        return r;
     }
 
     public static int substractNumbers(int one, int two){
