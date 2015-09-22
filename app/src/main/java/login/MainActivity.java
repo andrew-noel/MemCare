@@ -11,8 +11,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import common.CaregiverDAO;
-import database.CaregiverFacade;
-import database.LoginService;
+import midtier.database.CaregiverFacade;
+import midtier.database.LoginService;
 import lehigh.cse.memcare.R;
 
 public class MainActivity extends AppCompatActivity {

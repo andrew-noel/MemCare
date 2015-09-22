@@ -1,4 +1,4 @@
-package database;
+package midtier.database;
 
 import android.content.Context;
 
