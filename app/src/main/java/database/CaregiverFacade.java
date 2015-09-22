@@ -1,16 +1,21 @@
-package medtier.DAO;
+package database;
 
 import android.database.Cursor;
-import medtier.TO.CaregiverDTOImpl;
+
+import common.CaregiverDAO;
+import common.CaregiverDAOImpl;
 import common.CaregiverTableIndex;
-import medtier.database.DatabaseHelperImpl;
+
 import static common.CaregiverTableConstants.*;
 
-public class CaregiverDAOImpl implements CaregiverDAO{
+/**
+ * Created by Noel on 9/20/15.
+ */
+public class CaregiverFacade {
 
 
-    public CaregiverDTOImpl retrieve_Caregiver(String username) {
-        CaregiverDTOImpl caregiverDTO;
+    public static CaregiverDAO retrieve_Caregiver(String username) {
+        CaregiverDAO caregiverDAO;
         String firstname;
         String lastname;
         String id;
@@ -21,7 +26,7 @@ public class CaregiverDAOImpl implements CaregiverDAO{
         lastname = res.getString(CaregiverTableIndex.INDEX_LAST_NAME.toValue());
         id = res.getString(CaregiverTableIndex.INDEX_ID.toValue());
 
-        caregiverDTO = new CaregiverDTOImpl(firstname, lastname, username, id);
-        return caregiverDTO;
+        caregiverDAO = new CaregiverDAOImpl(firstname, lastname, username, id);
+        return caregiverDAO;
     }
 }

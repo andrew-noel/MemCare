@@ -1,4 +1,4 @@
-package medtier.database;
+package database;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -8,8 +8,8 @@ import static common.CaregiverTableConstants.*;
 
 public abstract class DatabaseHelperImpl extends SQLiteOpenHelper implements DatabaseHelper {
 
-    public static SQLiteDatabase db;
-    public static Cursor res;
+    static SQLiteDatabase db;
+    static Cursor res;
 
     public DatabaseHelperImpl(Context context) {
         super(context, DATABASE_NAME, null, 1);

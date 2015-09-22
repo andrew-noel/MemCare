@@ -1,20 +1,22 @@
-package medtier.Services;
+package database;
 
 import android.content.Context;
 
 import common.CaregiverTableIndex;
-import medtier.database.DatabaseHelperImpl;
 
 import static common.CaregiverTableConstants.*;
 
-public class LoginService extends DatabaseHelperImpl {
+/**
+ * Created by andrewmcmullen on 9/19/15.
+ */
+public class LoginService extends DatabaseHelperImpl{
 
     public LoginService(Context context) {
         super(context);
     }
     public static boolean username_exists(String username){
         res = db.rawQuery("select * from " + TABLE_NAME + " where USER_NAME = '" + username + "'", null);
-        return DatabaseHelperImpl.res.getCount() != 0;
+        return res.getCount() != 0;
     }
 
     public static boolean checkPassword(String username, String password){
@@ -22,8 +24,8 @@ public class LoginService extends DatabaseHelperImpl {
             return false;
         }
         res = db.rawQuery("select * from " + TABLE_NAME + " where USER_NAME = '" + username + "'", null);
-        DatabaseHelperImpl.res.moveToNext();
-        String db_password = DatabaseHelperImpl.res.getString(CaregiverTableIndex.INDEX_PASSWORD.toValue());
+        res.moveToNext();
+        String db_password = res.getString(CaregiverTableIndex.INDEX_PASSWORD.toValue());
         //Log.d("PASSWORD", "PASSWORD = " + db_password);
         return password.equals(db_password);
     }

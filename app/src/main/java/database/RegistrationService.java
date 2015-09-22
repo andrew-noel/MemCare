@@ -1,13 +1,14 @@
-package medtier.Services;
+package database;
 
 import android.content.ContentValues;
 import android.content.Context;
 
-import medtier.database.DatabaseHelperImpl;
-
 import static common.CaregiverTableConstants.*;
 
-public class RegistrationService extends DatabaseHelperImpl {
+/**
+ * Created by andrewmcmullen on 9/19/15.
+ */
+public class RegistrationService extends DatabaseHelperImpl{
 
     public RegistrationService(Context context){
         super(context);
