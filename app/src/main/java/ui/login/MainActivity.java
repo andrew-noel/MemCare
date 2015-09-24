@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent("lehigh.cse.memcare.Registration");
+                        Intent intent = new Intent("lehigh.cse.memcare.registration.Registration");
                         startActivity(intent);
                     }
                 }

@@ -1,4 +1,4 @@
-package login.tests;
+package ui;
 /**
  * Created by Noel on 9/20/15.
  */

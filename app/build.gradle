@@ -4,12 +4,20 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
 
+    sourceSets {
+
+        androidTest {
+            java.srcDirs = ['src/test/java']
+        }
+    }
+
     defaultConfig {
         applicationId "lehigh.cse.memcare"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        testApplicationId = 'src/test/java'
     }
     buildTypes {
         release {
@@ -24,5 +32,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.0.1'
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:1.10.19'
-    androidTestCompile 'org.hamcrest:hamcrest-library:1.1'
+
 }
