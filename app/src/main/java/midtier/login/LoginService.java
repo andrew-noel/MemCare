@@ -1,4 +1,4 @@
-package midtier.services;
+package midtier.login;
 
 import android.content.Context;
 
@@ -20,7 +20,7 @@ public class LoginService extends DatabaseHelperImpl {
         return DatabaseHelperImpl.res.getCount() != 0;
     }
 
-    public static boolean checkPassword(String username, String password){
+    public boolean login(String username, String password){
         if (!username_exists(username)){
             return false;
         }

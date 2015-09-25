@@ -1,4 +1,4 @@
-package midtier.DAO;
+package midtier.registration;
 
 import midtier.TO.CaregiverTO;
 

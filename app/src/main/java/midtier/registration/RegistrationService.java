@@ -1,4 +1,4 @@
-package midtier.services;
+package midtier.registration;
 
 import android.content.ContentValues;
 import android.content.Context;

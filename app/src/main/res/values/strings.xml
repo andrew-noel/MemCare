@@ -6,4 +6,7 @@
     <string name="title_activity_registration">Registration</string>
     <string name="title_activity_home">Home</string>
     <string name="textView_welcome_Home">Welcome,</string>
+    <string name="username_error">Enter username</string>
+    <string name="password_error">Enter password</string>
+    <string name="login_failed">Login failed</string>
 </resources>

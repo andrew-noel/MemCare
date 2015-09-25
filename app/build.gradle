@@ -15,7 +15,6 @@ android {
         versionCode 1
         versionName "1.0"
         //testApplicationId = 'src/test/java'
-
     }
     buildTypes {
         release {
@@ -24,7 +23,6 @@ android {
         }
     }
 }
-
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:23.0.1'

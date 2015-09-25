@@ -1,4 +1,4 @@
-package midtier.DAO;
+package midtier.registration;
 
 import android.database.Cursor;
 
