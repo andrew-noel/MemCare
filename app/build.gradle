@@ -1,15 +1,21 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.0+'
+    }
+}
 apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
 
-    sourceSets {
-
-        androidTest {
-            java.srcDirs = ['src/test/java']
-        }
+    dependencies {
+        compile fileTree(dir: 'libs', include: '*.jar')
     }
+
 
     defaultConfig {
         applicationId "lehigh.cse.memcare"
@@ -18,6 +24,7 @@ android {
         versionCode 1
         versionName "1.0"
         testApplicationId = 'src/test/java'
+
     }
     buildTypes {
         release {
@@ -27,10 +34,36 @@ android {
     }
 }
 
+sourceSets{
+    unitTest{
+        java.srcDirs = ['src/test']
+        resources.srcDirs = ['src/test']
+
+    }
+}
+
+configurations{
+    unitTestCompile.extendsFrom runtime
+    unitTestRuntime.extendsFrom unitTestingCompile
+}
+
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:23.0.1'
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:1.10.19'
+    unitTestCompile files("project.buildDir/classes/release")
+    unitTestCompile 'junit:junit:4.11'
 
 }
+
+task unitTest(type:Test, dependsOn: assemble) {
+    description = "run unit tests"
+    testClassesDir = sourceSets.unitTest.output.classesDir
+    classpath = files("$System.env.ANDROID_HOME/sources/android-18")
+    //actualy I didn't  get any report
+    getReports().getJunitXml().setOutputPerTestCase(true)
+}
+
+build.dependsOn unitTest
