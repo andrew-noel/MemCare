@@ -9,16 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-//import midtier.TO.CaregiverTO;
-//import midtier.registration.CaregiverDAOImpl;
 import midtier.login.LoginService;
 import lehigh.cse.memcare.R;
 
 import java.lang.String;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
-
-    //TODO: implement LoginModel
 
     private static EditText username;
     private static EditText password;
@@ -32,7 +28,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         setContentView(R.layout.activity_login);
 
         presenter = new LoginPresenter(this, new LoginService(this));
-        //CaregiverDAOImpl caregiverDAO = new CaregiverDAOImpl();
 
         //register buttons
         Registration_OnClickButtonListener();
