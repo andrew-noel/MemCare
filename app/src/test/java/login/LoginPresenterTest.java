@@ -66,7 +66,15 @@ public class LoginPresenterTest {
         verify(view).showLoginError(R.string.login_failed);
     }
 
-    //TODO: test clear db
+    @Test
+    public void shouldClearDBOnClick() throws Exception {
+        presenter.onClearDBClick();
+        verify(view).showClearDbMessage();
+    }
 
-    //TODO: test start RegistrationPage
+    @Test
+    public void shouldStartRegistrationPageOnClick() throws Exception {
+        presenter.onRegistrationClick();
+        verify(view).startRegistrationActvity();
+    }
 }

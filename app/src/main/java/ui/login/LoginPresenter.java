@@ -32,7 +32,12 @@ public class LoginPresenter {
         view.showLoginError(R.string.login_failed);
     }
 
-    //TODO: clear DB
+    public void onClearDBClick() {
+        view.showClearDbMessage();
+        service.clear_database();
+    }
 
-    //TODO: startRegistrationPage
+    public void onRegistrationClick() {
+        view.startRegistrationActvity();
+    }
 }

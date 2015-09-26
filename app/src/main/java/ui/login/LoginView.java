@@ -16,4 +16,8 @@ public interface LoginView {
     void startHomeActivity();
 
     void showLoginError(int resId);
+
+    void showClearDbMessage();
+
+    void startRegistrationActvity();
 }

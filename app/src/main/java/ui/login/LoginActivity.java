@@ -19,16 +19,10 @@ import java.lang.String;
 public class LoginActivity extends AppCompatActivity implements LoginView {
 
     //TODO: implement LoginModel
-    LoginService loginService;
 
     private static EditText username;
     private static EditText password;
 
-    //private static Button button_register;
-    //private static Button button_login;
-    //private static Button button_cleardb;
-
-    //CaregiverDAOImpl caregiverDAO;
     LoginPresenter presenter;
 
 
@@ -43,7 +37,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         //register buttons
         Registration_OnClickButtonListener();
         Login_OnClickButtonListener();
-        Cleardb_OnClickButtonListener();
+        ClearDB_OnClickButtonListener();
 
         //text handles
         username = (EditText) findViewById(R.id.editText_username);
@@ -52,48 +46,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         //initialize values
         username.setText("");
         password.setText("");
-    }
-
-
-    public void Login_OnClickButtonListener() {
-        Button button_login = (Button) findViewById(R.id.button_login);
-        button_login.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        presenter.onLoginClicked();
-                    }
-                }
-        );
-    }
-
-    public void Registration_OnClickButtonListener() {
-        Button button_register = (Button) findViewById(R.id.button_register);
-        button_register.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //TODO: refactor to presenter
-                        Intent intent = new Intent("lehigh.cse.memcare.registration.RegistrationActivity");
-                        startActivity(intent);
-                    }
-                }
-        );
-    }
-
-    public void Cleardb_OnClickButtonListener() {
-        Button button_cleardb = (Button) findViewById(R.id.button_cleardb);
-        button_cleardb.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //TODO: refactor to presenter
-                        loginService.clear_database();
-                        Toast.makeText(LoginActivity.this, "Cleared DataBase", Toast.LENGTH_LONG).show();
-                    }
-                }
-        );
-
     }
 
     @Override
@@ -117,6 +69,44 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void Login_OnClickButtonListener() {
+        Button button_login = (Button) findViewById(R.id.button_login);
+        button_login.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        presenter.onLoginClicked();
+                    }
+                }
+        );
+    }
+
+    public void Registration_OnClickButtonListener() {
+        Button button_register = (Button) findViewById(R.id.button_register);
+        button_register.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        presenter.onRegistrationClick();
+                    }
+                }
+        );
+    }
+
+    public void ClearDB_OnClickButtonListener() {
+        Button button_cleardb = (Button) findViewById(R.id.button_cleardb);
+        button_cleardb.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        presenter.onClearDBClick();
+                    }
+                }
+        );
+
+    }
+
 
     @Override
     public String getUsername() {
@@ -150,5 +140,16 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Override
     public void showLoginError(int resId) {
         Toast.makeText(LoginActivity.this, "Login Failure.", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void showClearDbMessage() {
+        Toast.makeText(LoginActivity.this, "Cleared DataBase", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void startRegistrationActvity() {
+        Intent intent = new Intent("lehigh.cse.memcare.registration.RegistrationActivity");
+        startActivity(intent);
     }
 }
