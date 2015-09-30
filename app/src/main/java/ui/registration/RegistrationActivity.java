@@ -1,5 +1,6 @@
 package ui.registration;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -7,15 +8,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import midtier.login.LoginService;
 import midtier.registration.RegistrationService;
 import lehigh.cse.memcare.R;
 
-public class RegistrationActivity extends AppCompatActivity {
+public class RegistrationActivity extends AppCompatActivity implements RegistrationView{
 
-    RegistrationService registrationService;
+    RegistrationService service;
     EditText editText_firstName, editText_lastName, editText_username, editText_password;
     Button btnRegister;
 
@@ -24,7 +23,7 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        registrationService = new RegistrationService(this);
+        service = new RegistrationService(this);
 
         editText_firstName = (EditText)findViewById(R.id.editText_firstname);
         editText_lastName = (EditText)findViewById(R.id.editText_lastname);
@@ -33,33 +32,6 @@ public class RegistrationActivity extends AppCompatActivity {
         btnRegister = (Button)findViewById(R.id.button_register);
         Register_OnClickButtonListener();
 
-    }
-
-    public void Register_OnClickButtonListener() {
-        btnRegister.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (LoginService.username_exists(editText_username.getText().toString().trim())) {
-                            Toast.makeText(RegistrationActivity.this, "Username already exists. Please try again.", Toast.LENGTH_LONG).show();
-
-                        } else {
-                            boolean isInserted = registrationService.insertData_registerCaregiver(editText_firstName.getText().toString().trim(),
-                                    editText_lastName.getText().toString().trim(),
-                                    editText_username.getText().toString().trim(),
-                                    editText_password.getText().toString().trim());
-                            if (isInserted) {
-                                Toast.makeText(RegistrationActivity.this, "RegistrationActivity Successful", Toast.LENGTH_LONG).show();
-                                //Intent intent = new Intent("lehigh.cse.memcare.MAIN");
-                                //startActivity(intent);
-                                finish();
-                            } else {
-                                Toast.makeText(RegistrationActivity.this, "Data not Inserted", Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    }
-                }
-        );
     }
 
     @Override
@@ -82,5 +54,70 @@ public class RegistrationActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void Register_OnClickButtonListener() {
+        final RegistrationPresenter presenter = new RegistrationPresenter(this, service);
+        btnRegister.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        presenter.onLoginClicked();
+                    }
+
+                }
+        );
+    }
+
+
+    @Override
+    public String getUsername() {
+        return editText_username.getText().toString();
+    }
+
+    @Override
+    public String getLastName() {
+        return editText_lastName.getText().toString();
+    }
+
+    @Override
+    public String getFirstName() {
+        return editText_firstName.getText().toString();
+    }
+
+    @Override
+    public String getPassword() {
+        return editText_password.getText().toString();
+    }
+
+    @Override
+    public void showUsernameError(int username_error) {
+        editText_username.setError(getString(username_error));
+    }
+
+    @Override
+    public void showFirstNameError(int registration_firstname_error) {
+        editText_firstName.setError(getString(registration_firstname_error));
+    }
+
+    @Override
+    public void showLastNameError(int lastname_error) {
+        editText_lastName.setError(getString(lastname_error));
+    }
+
+    @Override
+    public void showPasswordError(int registration_password_error) {
+        editText_password.setError(getString(registration_password_error));
+    }
+
+    @Override
+    public void showUsernameAlreadyExistsError(int registration_userAlreadyExists_error) {
+        editText_username.setError(getString(registration_userAlreadyExists_error));
+    }
+
+    @Override
+    public void returnToLogin() {
+        Intent intent = new Intent("lehigh.cse.memcare.login.LoginActivity");
+        startActivity(intent);
     }
 }

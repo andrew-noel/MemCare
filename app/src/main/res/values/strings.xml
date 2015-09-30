@@ -9,4 +9,9 @@
     <string name="username_error">Enter username</string>
     <string name="password_error">Enter password</string>
     <string name="login_failed">Login failed</string>
+    <string name="Registration_username_error">Please Enter a username</string>
+    <string name="Registration_firstname_error">Please enter a first name</string>
+    <string name="Registration_lastname_error">Please enter a last name</string>
+    <string name="Registration_password_error">Please enter a password</string>
+    <string name="Registration_userAlreadyExists_error">That username already exists</string>
 </resources>
