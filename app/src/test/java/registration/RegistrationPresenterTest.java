@@ -37,6 +37,7 @@ public class RegistrationPresenterTest {
         when(view.getFirstName()).thenReturn("firstname");
         when(view.getLastName()).thenReturn("lastname");
         when(view.getPassword()).thenReturn("password");
+        when(service.username_exists("")).thenReturn(true);
         presenter.onLoginClicked();
         verify(view).showUsernameError(R.string.Registration_username_error);
     }
@@ -47,6 +48,7 @@ public class RegistrationPresenterTest {
         when(view.getFirstName()).thenReturn("");
         when(view.getLastName()).thenReturn("lastname");
         when(view.getPassword()).thenReturn("password");
+        when(service.username_exists("username")).thenReturn(true);
         presenter.onLoginClicked();
         verify(view).showFirstNameError(R.string.Registration_firstname_error);
     }
@@ -57,6 +59,7 @@ public class RegistrationPresenterTest {
         when(view.getFirstName()).thenReturn("firstname");
         when(view.getLastName()).thenReturn("");
         when(view.getPassword()).thenReturn("password");
+        when(service.username_exists("username")).thenReturn(true);
         presenter.onLoginClicked();
         verify(view).showLastNameError(R.string.Registration_lastname_error);
     }
@@ -66,29 +69,35 @@ public class RegistrationPresenterTest {
         when(view.getFirstName()).thenReturn("firstname");
         when(view.getLastName()).thenReturn("lastname");
         when(view.getPassword()).thenReturn("");
+        when(service.username_exists("username")).thenReturn(true);
         presenter.onLoginClicked();
         verify(view).showPasswordError(R.string.Registration_password_error);
     }
+
     @Test
     public void shouldShowErrorMessageWhenUsernameAlreadyExists() throws Exception{
         when(view.getUsername()).thenReturn("username");
         when(view.getFirstName()).thenReturn("firstname");
         when(view.getLastName()).thenReturn("lastname");
         when(view.getPassword()).thenReturn("password");
-        when(service.insertData_registerCaregiver("firstname", "lastname", "username", "password")).thenReturn(false);
+        when(service.username_exists("username")).thenReturn(true);
         presenter.onLoginClicked();
         verify(view).showUsernameAlreadyExistsError(R.string.Registration_userAlreadyExists_error);
     }
+
+
     @Test
     public void shouldReturnToLoginOnSuccessfulRegister() throws Exception{
         when(view.getUsername()).thenReturn("username");
         when(view.getFirstName()).thenReturn("firstname");
         when(view.getLastName()).thenReturn("lastname");
         when(view.getPassword()).thenReturn("password");
+        when(service.username_exists("username")).thenReturn(false);
         when(service.insertData_registerCaregiver("firstname", "lastname", "username", "password")).thenReturn(true);
         presenter.onLoginClicked();
-        verify(view).returnToLogin();
+        verify(view).returnToLoginActivity();
     }
+
 
 
 }

@@ -16,6 +16,11 @@ public class RegistrationService extends DatabaseHelperImpl {
         super(context);
     }
 
+    public boolean username_exists(String username){
+        res = db.rawQuery("select * from " + TABLE_NAME + " where USER_NAME = '" + username + "'", null);
+        return DatabaseHelperImpl.res.getCount() != 0;
+    }
+
     public boolean insertData_registerCaregiver(String first_name, String last_name, String username, String password) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUMN_2, first_name);

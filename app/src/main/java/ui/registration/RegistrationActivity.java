@@ -116,7 +116,7 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
     }
 
     @Override
-    public void returnToLogin() {
+    public void returnToLoginActivity() {
         Intent intent = new Intent("lehigh.cse.memcare.login.LoginActivity");
         startActivity(intent);
     }

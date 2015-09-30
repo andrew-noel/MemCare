@@ -15,16 +15,11 @@ public class LoginService extends DatabaseHelperImpl {
     public LoginService(Context context) {
         super(context);
     }
-    public static boolean username_exists(String username){
-        res = db.rawQuery("select * from " + TABLE_NAME + " where USER_NAME = '" + username + "'", null);
-        return DatabaseHelperImpl.res.getCount() != 0;
-    }
-
     public boolean login(String username, String password){
-        if (!username_exists(username)){
+        res = db.rawQuery("select * from " + TABLE_NAME + " where USER_NAME = '" + username + "'", null);
+        if (DatabaseHelperImpl.res.getCount() != 0){
             return false;
         }
-        res = db.rawQuery("select * from " + TABLE_NAME + " where USER_NAME = '" + username + "'", null);
         DatabaseHelperImpl.res.moveToNext();
         String db_password = DatabaseHelperImpl.res.getString(CaregiverTableIndex.INDEX_PASSWORD.toValue());
         //Log.d("PASSWORD", "PASSWORD = " + db_password);

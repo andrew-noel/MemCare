@@ -7,8 +7,8 @@ import midtier.registration.RegistrationService;
  * Created by andrewmcmullen on 9/29/15.
  */
 public class RegistrationPresenter {
-    RegistrationView view;
-    RegistrationService service;
+    public RegistrationView view;
+    public RegistrationService service;
 
     public RegistrationPresenter(RegistrationView view, RegistrationService service) {
         this.service = service;
@@ -39,15 +39,17 @@ public class RegistrationPresenter {
             view.showPasswordError(R.string.Registration_password_error);
             error = true;
         }
-        if (error == false){
-        if (service.insertData_registerCaregiver(firstname, lastname, username, password) == false){
+
+        if (service.username_exists(username)){
             view.showUsernameAlreadyExistsError(R.string.Registration_userAlreadyExists_error);
             error = true;
-        }}
+        }
 
         if (error == false){
-            view.returnToLogin();
+            service.insertData_registerCaregiver(firstname, lastname, username, password);
+            view.returnToLoginActivity();
         }
+
 
     }
 }

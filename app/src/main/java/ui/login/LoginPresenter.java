@@ -5,8 +5,8 @@ import midtier.login.LoginService;
 
 public class LoginPresenter {
 
-    private LoginView view;
-    private LoginService service;
+    public LoginView view;
+    public LoginService service;
 
     public LoginPresenter(LoginView view, LoginService service){
         this.view = view;
