@@ -98,6 +98,18 @@ public class RegistrationPresenterTest {
         verify(view).returnToLoginActivity();
     }
 
+    @Test
+    public void shouldDisplayErrorOnRegistrationFailure() throws Exception{
+        when(view.getUsername()).thenReturn("username");
+        when(view.getFirstName()).thenReturn("firstname");
+        when(view.getLastName()).thenReturn("lastname");
+        when(view.getPassword()).thenReturn("password");
+        when(service.username_exists("username")).thenReturn(false);
+        when(service.insertData_registerCaregiver("firstname", "lastname", "username", "password")).thenReturn(false);
+        presenter.onLoginClicked();
+        verify(view).showRegistrationError();
+    }
+
 
 
 }

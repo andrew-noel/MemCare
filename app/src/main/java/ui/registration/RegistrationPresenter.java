@@ -1,5 +1,7 @@
 package ui.registration;
 
+import android.widget.Toast;
+
 import lehigh.cse.memcare.R;
 import midtier.registration.RegistrationService;
 
@@ -46,8 +48,11 @@ public class RegistrationPresenter {
         }
 
         if (error == false){
-            service.insertData_registerCaregiver(firstname, lastname, username, password);
-            view.returnToLoginActivity();
+            if (service.insertData_registerCaregiver(firstname, lastname, username, password) == false){
+                view.showRegistrationError();
+            }else {
+                view.returnToLoginActivity();
+            }
         }
 
 

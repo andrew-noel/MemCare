@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import midtier.registration.RegistrationService;
 import lehigh.cse.memcare.R;
@@ -116,8 +117,12 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
     }
 
     @Override
+    public void showRegistrationError() {
+        Toast.makeText(RegistrationActivity.this, "Login Failure.", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
     public void returnToLoginActivity() {
-        Intent intent = new Intent("lehigh.cse.memcare.login.LoginActivity");
-        startActivity(intent);
+       finish();
     }
 }

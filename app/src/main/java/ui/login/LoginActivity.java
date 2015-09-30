@@ -127,7 +127,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     public void startHomeActivity() {
         //TODO: implement caregiverTO and transfer to HomeActivity
         //CaregiverTO caregiver = caregiverDAO.retrieve_Caregiver(username);
-        Intent intent = new Intent("lehigh.cse.memcare.HomeActivity");
+        Intent intent = new Intent("lehigh.cse.memcare.Home");
         intent.putExtra("first_name", "Username"/*caregiver.get_firstname()*/);
         startActivity(intent);
     }

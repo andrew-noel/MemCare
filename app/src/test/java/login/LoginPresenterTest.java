@@ -77,4 +77,6 @@ public class LoginPresenterTest {
         presenter.onRegistrationClick();
         verify(view).startRegistrationActvity();
     }
+
+
 }

@@ -22,6 +22,8 @@ public interface RegistrationView {
 
     void showUsernameAlreadyExistsError(int registration_userAlreadyExists_error);
 
+    void showRegistrationError();
+
     void returnToLoginActivity();
 
 }
