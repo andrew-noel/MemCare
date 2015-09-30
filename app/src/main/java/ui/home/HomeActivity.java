@@ -7,9 +7,18 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.content.Intent;
 
+import com.dropbox.client2.DropboxAPI;
+import com.dropbox.client2.android.AndroidAuthSession;
+
 import lehigh.cse.memcare.R;
 
 public class HomeActivity extends AppCompatActivity {
+
+    final static private String APP_KEY = "mp95yxmhtyz7d5d";
+    final static private String APP_SECRET = "hop2bk0uj5b2r0d";
+    // In the class declaration section:
+    private DropboxAPI<AndroidAuthSession> mDBApi;
+
 
 
     @Override
