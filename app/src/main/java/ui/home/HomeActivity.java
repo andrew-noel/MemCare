@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.content.Intent;
 import android.widget.Toast;
 
+import com.dropbox.chooser.android.DbxChooser;
 import com.dropbox.client2.DropboxAPI;
 import com.dropbox.client2.android.AndroidAuthSession;
 import com.dropbox.client2.session.AccessTokenPair;
@@ -37,6 +38,12 @@ public class HomeActivity extends AppCompatActivity {
     final static private Session.AccessType ACCESS_TYPE = Session.AccessType.DROPBOX;
 
     private Button button_connectToDropBox;
+    private Button button_discconect;
+    private Button button_chooseImage;
+
+    private DbxChooser mChooser;
+    static final int DBX_CHOOSER_REQUEST = 0;
+
     private LinearLayout container;
 
     // In the class declaration section:
@@ -50,7 +57,11 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         button_connectToDropBox = (Button)findViewById(R.id.button_dropbox);
+        button_discconect = (Button)findViewById(R.id.button_disconnect);
+        button_chooseImage = (Button)findViewById(R.id.button_chooseImage);
         container = (LinearLayout) findViewById(R.id.container);
+
+        mChooser = new DbxChooser(APP_KEY);
 
         TextView textView = (TextView)findViewById(R.id.textView_welcome);
         Intent intent = getIntent();
@@ -73,6 +84,8 @@ public class HomeActivity extends AppCompatActivity {
 
         dropboxApi = new DropboxAPI<AndroidAuthSession>(session);
         Connect_OnClickButtonListener();
+        Disconnect_OnClickButtonListener();
+        ChooseImage_OnClickButtonListener();
     }
 
 
@@ -108,6 +121,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         }
     };
+
     public void Connect_OnClickButtonListener() {
         button_connectToDropBox.setOnClickListener(
                 new View.OnClickListener() {
@@ -120,6 +134,35 @@ public class HomeActivity extends AppCompatActivity {
                 }
         );
     }
+    public void Disconnect_OnClickButtonListener() {
+        button_discconect.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dropboxApi.getSession().unlink();
+                        SharedPreferences prefs = getSharedPreferences(DROPBOX_NAME, 0);
+                        SharedPreferences.Editor editor = prefs.edit();
+                        editor.clear();
+                        editor.commit();
+                        Toast.makeText(HomeActivity.this, "Disconnected from Dropbox", Toast.LENGTH_SHORT).show();
+                        container.removeAllViews();
+                    }
+                }
+        );
+    }
+
+    public void ChooseImage_OnClickButtonListener() {
+        button_chooseImage.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mChooser.forResultType(DbxChooser.ResultType.PREVIEW_LINK)
+                                .launch(HomeActivity.this, DBX_CHOOSER_REQUEST);
+                    }
+                }
+        );
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

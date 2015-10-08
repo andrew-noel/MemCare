@@ -28,8 +28,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="List files"
-        android:id="@+id/button_listFiles"
+        android:text="Disconnect"
+        android:id="@+id/button_disconnect"
         android:layout_below="@+id/button_dropbox"
         android:layout_centerHorizontal="true" />
 
@@ -37,9 +37,15 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="41dp"
-        android:layout_below="@+id/button_listFiles"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/container"></LinearLayout>
+        android:id="@+id/container"
+        android:layout_below="@+id/button_chooseImage"></LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose Image"
+        android:id="@+id/button_chooseImage"
+        android:layout_below="@+id/button_disconnect"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
