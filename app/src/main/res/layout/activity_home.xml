@@ -12,12 +12,34 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/textView_welcome_Home"
         android:id="@+id/textView_welcome"
-        android:layout_marginTop="56dp"
         android:textSize="50dp"
         android:textStyle="bold"
-        android:layout_marginLeft="50dp"
-        android:layout_marginStart="50dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Connect to Dropbox"
+        android:id="@+id/button_dropbox"
+        android:layout_below="@+id/textView_welcome"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="List files"
+        android:id="@+id/button_listFiles"
+        android:layout_below="@+id/button_dropbox"
+        android:layout_centerHorizontal="true" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="41dp"
+        android:layout_below="@+id/button_listFiles"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/container"></LinearLayout>
+
 </RelativeLayout>
