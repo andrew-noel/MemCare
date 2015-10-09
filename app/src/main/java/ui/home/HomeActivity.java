@@ -1,14 +1,21 @@
 package ui.home;
 
+import android.app.Activity;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.net.Uri;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.content.Intent;
@@ -22,6 +29,11 @@ import com.dropbox.client2.session.AppKeyPair;
 import com.dropbox.client2.session.Session;
 import com.dropbox.client2.session.TokenPair;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 
 import lehigh.cse.memcare.R;
@@ -41,6 +53,8 @@ public class HomeActivity extends AppCompatActivity {
     private Button button_discconect;
     private Button button_chooseImage;
 
+    private ImageView imageView_pic;
+
     private DbxChooser mChooser;
     static final int DBX_CHOOSER_REQUEST = 0;
 
@@ -59,6 +73,9 @@ public class HomeActivity extends AppCompatActivity {
         button_connectToDropBox = (Button)findViewById(R.id.button_dropbox);
         button_discconect = (Button)findViewById(R.id.button_disconnect);
         button_chooseImage = (Button)findViewById(R.id.button_chooseImage);
+
+        imageView_pic = (ImageView)findViewById(R.id.imageView_pic);
+
         container = (LinearLayout) findViewById(R.id.container);
 
         mChooser = new DbxChooser(APP_KEY);
@@ -156,11 +173,52 @@ public class HomeActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        mChooser.forResultType(DbxChooser.ResultType.PREVIEW_LINK)
+                        mChooser.forResultType(DbxChooser.ResultType.FILE_CONTENT)
                                 .launch(HomeActivity.this, DBX_CHOOSER_REQUEST);
                     }
                 }
         );
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == DBX_CHOOSER_REQUEST) {
+            if (resultCode == Activity.RESULT_OK) {
+                DbxChooser.Result result = new DbxChooser.Result(data);
+                Uri image = result.getLink();
+                //Bitmap bm = getImageBitmap(image.toString());
+                //imageView_pic.setImageBitmap(bm);
+                imageView_pic.setImageURI(image);
+
+                TextView textView = new TextView(HomeActivity.this);
+                textView.setText(image.toString());
+                container.addView(textView);
+                // Handle the result
+            } else {
+                // Failed or was cancelled by the user.
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+    private Bitmap getImageBitmap(String url) {
+        Bitmap bm = null;
+        try {
+            URL aURL = new URL(url);
+            URLConnection conn = aURL.openConnection();
+            conn.connect();
+            InputStream is = conn.getInputStream();
+            BufferedInputStream bis = new BufferedInputStream(is);
+            bm = BitmapFactory.decodeStream(bis);
+            bis.close();
+            is.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            //Log.e(TAG, "Error getting bitmap", e);
+        }
+        return bm;
     }
 
 

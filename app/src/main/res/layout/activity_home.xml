@@ -23,7 +23,8 @@
         android:text="Connect to Dropbox"
         android:id="@+id/button_dropbox"
         android:layout_below="@+id/textView_welcome"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -31,14 +32,34 @@
         android:text="Disconnect"
         android:id="@+id/button_disconnect"
         android:layout_below="@+id/button_dropbox"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView_pic"
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/button_chooseImage"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/button_dropbox"
+        android:layout_toEndOf="@+id/button_dropbox" />
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/container"
-        android:layout_below="@+id/button_chooseImage"></LinearLayout>
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/button_chooseImage"
+        android:layout_alignRight="@+id/button_dropbox"
+        android:layout_alignEnd="@+id/button_dropbox">
+
+    </LinearLayout>
 
     <Button
         android:layout_width="wrap_content"
@@ -46,6 +67,7 @@
         android:text="Choose Image"
         android:id="@+id/button_chooseImage"
         android:layout_below="@+id/button_disconnect"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
