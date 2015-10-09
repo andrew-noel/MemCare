@@ -187,8 +187,6 @@ public class HomeActivity extends AppCompatActivity {
             if (resultCode == Activity.RESULT_OK) {
                 DbxChooser.Result result = new DbxChooser.Result(data);
                 Uri image = result.getLink();
-                //Bitmap bm = getImageBitmap(image.toString());
-                //imageView_pic.setImageBitmap(bm);
                 imageView_pic.setImageURI(image);
 
                 TextView textView = new TextView(HomeActivity.this);
@@ -201,24 +199,6 @@ public class HomeActivity extends AppCompatActivity {
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
-    }
-
-    private Bitmap getImageBitmap(String url) {
-        Bitmap bm = null;
-        try {
-            URL aURL = new URL(url);
-            URLConnection conn = aURL.openConnection();
-            conn.connect();
-            InputStream is = conn.getInputStream();
-            BufferedInputStream bis = new BufferedInputStream(is);
-            bm = BitmapFactory.decodeStream(bis);
-            bis.close();
-            is.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-            //Log.e(TAG, "Error getting bitmap", e);
-        }
-        return bm;
     }
 
 
