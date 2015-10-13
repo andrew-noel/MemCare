@@ -14,4 +14,6 @@
     <string name="Registration_lastname_error">Please enter a last name</string>
     <string name="Registration_password_error">Please enter a password</string>
     <string name="Registration_userAlreadyExists_error">That username already exists</string>
+    <string name="title_activity_create_test">createTest</string>
+    <string name="title_activity_register_patient">register_patient</string>
 </resources>
