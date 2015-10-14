@@ -1,4 +1,4 @@
-package ui.testCreate;
+package ui.construction.face_recognition_construction;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,18 +7,18 @@ import android.view.MenuItem;
 
 import lehigh.cse.memcare.R;
 
-public class registerPatientActivity extends AppCompatActivity {
+public class FaceRecognitionConstructionActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_patient);
+        setContentView(R.layout.activity_face_recognition_construction);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_register_patient, menu);
+        getMenuInflater().inflate(R.menu.menu_face_recognition_construction, menu);
         return true;
     }
 

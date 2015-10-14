@@ -11,22 +11,24 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
 
-        <!--Login Activity -->
+        <!-- Login Activity -->
         <activity
             android:name="ui.login.LoginActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!--Registration Activity-->
+        <!-- Registration Activity -->
         <activity
             android:name="ui.registration.user_registration.RegistrationActivity"
             android:label="@string/title_activity_registration" >
             <intent-filter>
-                <action android:name="lehigh.cse.memcare.registration.RegistrationActivity" />
+                <action android:name="lehigh.cse.memcare.registration.user_registration.RegistrationActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -41,6 +43,37 @@
             </intent-filter>
         </activity>
 
+        <!-- Construction Activity -->
+        <activity
+            android:name="ui.construction.ConstructionActivity"
+            android:label="@string/title_activity_create_test" >
+            <intent-filter>
+                <action android:name="lehigh.cse.memcare.construction.ConstructionActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <!-- Face Recognition Construction -->
+        <activity
+            android:name="ui.construction.face_recognition_construction.FaceRecognitionConstructionActivity"
+            android:label="@string/title_activity_face_recognition_construction" >
+            <intent-filter>
+                <action android:name="lehigh.cse.memcare.construction.FaceRecognitionConstructionActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name="ui.registration.patient_registration.RegisterPatientActivity"
+            android:label="@string/title_activity_register_patient" >
+            <intent-filter>
+                <action android:name="lehigh.cse.memcare.registration.RegisterPatientActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <!--
         <activity
             android:name="ui.home.HomeActivity11"
@@ -51,26 +84,19 @@
             </intent-filter>
         </activity>
         -->
+
+        <!-- Dropbox authentication -->
         <activity
             android:name="com.dropbox.client2.android.AuthActivity"
             android:configChanges="orientation|keyboard"
             android:launchMode="singleTask" >
             <intent-filter>
-
                 <!-- Change this to be db- followed by your app key -->
                 <data android:scheme="db-mp95yxmhtyz7d5d" />
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name="ui.construction.ConstructionActivity"
-            android:label="@string/title_activity_create_test" >
-        </activity>
-        <activity
-            android:name="ui.registration.patient_registration.RegisterPatientActivity"
-            android:label="@string/title_activity_register_patient" >
         </activity>
 
     </application>
