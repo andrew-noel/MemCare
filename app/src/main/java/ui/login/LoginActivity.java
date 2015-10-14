@@ -144,7 +144,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void startRegistrationActvity() {
-        Intent intent = new Intent("lehigh.cse.memcare.registration.RegistrationActivity");
+        Intent intent = new Intent("lehigh.cse.memcare.registration.user_registration.RegistrationActivity");
         startActivity(intent);
     }
 }
