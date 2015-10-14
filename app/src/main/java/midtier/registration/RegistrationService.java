@@ -6,6 +6,7 @@ import android.content.Context;
 import midtier.DatabaseHelperImpl;
 
 import static common.CaregiverTableConstants.*;
+import static common.PatientTableConstants.*;
 
 /**
  * Created by andrewmcmullen on 9/19/15.
@@ -21,6 +22,11 @@ public class RegistrationService extends DatabaseHelperImpl {
         return DatabaseHelperImpl.res.getCount() != 0;
     }
 
+    public boolean patient_exists(String patient){
+        res = db.rawQuery("select * from " + TABLE_NAME2 + " where FIRST_NAME = '" + patient + "'", null);
+        return DatabaseHelperImpl.res.getCount() != 0;
+    }
+
     public boolean insertData_registerCaregiver(String first_name, String last_name, String username, String password) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUMN_2, first_name);
@@ -29,5 +35,16 @@ public class RegistrationService extends DatabaseHelperImpl {
         contentValues.put(COLUMN_5, password);
         long result = db.insert(TABLE_NAME, null, contentValues);
         return result != -1;
+    }
+
+    public boolean insertData_registerPatient(String first_name, String last_name, String age, String gender){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(PCOLUMN_2, first_name);
+        contentValues.put(PCOLUMN_3, last_name);
+        contentValues.put(PCOLUMN_4, age);
+        contentValues.put(PCOLUMN_5, gender);
+        long result = db.insert(TABLE_NAME2, null, contentValues);
+        return result != -1;
+
     }
 }

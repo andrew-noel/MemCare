@@ -7,7 +7,7 @@ import android.view.MenuItem;
 
 import lehigh.cse.memcare.R;
 
-public class RegisterPatientActivity extends AppCompatActivity {
+public class RegisterPatientActivity extends AppCompatActivity implements RegisterPatientView{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,5 +35,60 @@ public class RegisterPatientActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public String getFirstName() {
+        return null;
+    }
+
+    @Override
+    public String getLastName() {
+        return null;
+    }
+
+    @Override
+    public String getAge() {
+        return null;
+    }
+
+    @Override
+    public String getGender() {
+        return null;
+    }
+
+    @Override
+    public void showFirstnameError(int registration_firstname_error) {
+
+    }
+
+    @Override
+    public void showLastnameError(int registration_lastname_error) {
+
+    }
+
+    @Override
+    public void showAgeError(int registration_age_error) {
+
+    }
+
+    @Override
+    public void showGenderError(int registration_gender_error) {
+
+    }
+
+    @Override
+    public void showPatientAlreadyExistsError(int registration_patientAlreadyExists_error) {
+
+    }
+
+    @Override
+    public void showRegistationError() {
+
+    }
+
+    @Override
+    public void returnToTestActivity() {
+
     }
 }
