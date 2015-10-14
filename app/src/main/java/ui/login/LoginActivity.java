@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the HomeActivity/Up button, so long
+        // automatically handle clicks on the HomeActivity1/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
@@ -125,9 +125,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void startHomeActivity() {
-        //TODO: implement caregiverTO and transfer to HomeActivity
+        //TODO: implement caregiverTO and transfer to HomeActivity1
         //CaregiverTO caregiver = caregiverDAO.retrieve_Caregiver(username);
-        Intent intent = new Intent("lehigh.cse.memcare.Home");
+        Intent intent = new Intent("lehigh.cse.memcare.home.HomeActivity");
         intent.putExtra("first_name", "Username"/*caregiver.get_firstname()*/);
         startActivity(intent);
     }

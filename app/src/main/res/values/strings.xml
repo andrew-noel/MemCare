@@ -16,4 +16,5 @@
     <string name="Registration_userAlreadyExists_error">That username already exists</string>
     <string name="title_activity_create_test">createTest</string>
     <string name="title_activity_register_patient">register_patient</string>
+    <string name="title_activity_home_screen">HomeScreen</string>
 </resources>
