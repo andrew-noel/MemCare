@@ -8,8 +8,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import lehigh.cse.memcare.R;
 import midtier.registration.RegistrationService;
-import ui.registration.RegistrationPresenter;
-import ui.registration.RegistrationView;
+import ui.registration.user_registration.RegistrationPresenter;
+import ui.registration.user_registration.RegistrationView;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;

@@ -1,6 +1,5 @@
-package ui.registration;
+package ui.registration.user_registration;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -22,7 +21,7 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration);
+        setContentView(R.layout.activity_register_user);
 
         service = new RegistrationService(this);
 

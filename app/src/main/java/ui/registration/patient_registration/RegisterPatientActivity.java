@@ -1,4 +1,4 @@
-package ui.testCreate;
+package ui.registration.patient_registration;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,18 +7,18 @@ import android.view.MenuItem;
 
 import lehigh.cse.memcare.R;
 
-public class createActivity extends AppCompatActivity {
+public class RegisterPatientActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create);
+        setContentView(R.layout.activity_register_patient);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_create_test, menu);
+        getMenuInflater().inflate(R.menu.menu_register_patient, menu);
         return true;
     }
 

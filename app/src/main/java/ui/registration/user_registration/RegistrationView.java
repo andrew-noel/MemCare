@@ -1,4 +1,4 @@
-package ui.registration;
+package ui.registration.user_registration;
 
 /**
  * Created by andrewmcmullen on 9/29/15.

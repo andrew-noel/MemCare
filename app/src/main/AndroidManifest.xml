@@ -23,7 +23,7 @@
 
         <!--Registration Activity-->
         <activity
-            android:name="ui.registration.RegistrationActivity"
+            android:name="ui.registration.user_registration.RegistrationActivity"
             android:label="@string/title_activity_registration" >
             <intent-filter>
                 <action android:name="lehigh.cse.memcare.registration.RegistrationActivity" />
@@ -65,11 +65,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="ui.testCreate.createActivity"
+            android:name="ui.construction.ConstructionActivity"
             android:label="@string/title_activity_create_test" >
         </activity>
         <activity
-            android:name="ui.testCreate.registerPatientActivity"
+            android:name="ui.registration.patient_registration.RegisterPatientActivity"
             android:label="@string/title_activity_register_patient" >
         </activity>
 

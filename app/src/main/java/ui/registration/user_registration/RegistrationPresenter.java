@@ -1,6 +1,4 @@
-package ui.registration;
-
-import android.widget.Toast;
+package ui.registration.user_registration;
 
 import lehigh.cse.memcare.R;
 import midtier.registration.RegistrationService;
