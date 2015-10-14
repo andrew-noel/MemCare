@@ -22,9 +22,11 @@ import com.dropbox.client2.session.AppKeyPair;
 import com.dropbox.client2.session.Session;
 import com.dropbox.client2.session.TokenPair;
 
+import java.util.Map;
+
 import lehigh.cse.memcare.R;
 
-public class FaceRecognitionConstructionActivity extends AppCompatActivity {
+public class FaceRecognitionConstructionActivity extends AppCompatActivity implements FaceRecognitionConstructionView{
 
     Button button_browse;
     Button button_add;
@@ -34,6 +36,9 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity {
 
 
     private DropboxAPI<AndroidAuthSession> dropboxApi;
+
+    //TODO: pull out dropbox stuff to seperate file
+    //TODO: should not have to authenticate dropbox account every you create a test.
 
     final static private String DROPBOX_FILE_DIR = "/";
     final static private String DROPBOX_NAME = "dropbox_prefs";
@@ -47,18 +52,8 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity {
 
     Intent intent = getIntent();
 
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_face_recognition_construction);
-
-        button_browse = (Button)findViewById(R.id.button_browse);
-        button_add = (Button)findViewById(R.id.button_addPhoto);
-        editText_name = (EditText)findViewById(R.id.editText_photo_name);
-        imageView_photo = (ImageView)findViewById(R.id.imageView_photo);
-
-        mChooser = new DbxChooser(APP_KEY);
+    public void AuthenticateDropBox() {
         AppKeyPair appKeyPair = new AppKeyPair(APP_KEY, APP_SECRET);
         AndroidAuthSession session;
 
@@ -75,7 +70,21 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity {
 
         dropboxApi = new DropboxAPI<AndroidAuthSession>(session);
         dropboxApi.getSession().startAuthentication(FaceRecognitionConstructionActivity.this);
+    }
 
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_face_recognition_construction);
+
+        button_browse = (Button)findViewById(R.id.button_browse);
+        button_add = (Button)findViewById(R.id.button_addPhoto);
+        editText_name = (EditText)findViewById(R.id.editText_photo_name);
+        imageView_photo = (ImageView)findViewById(R.id.imageView_photo);
+
+        mChooser = new DbxChooser(APP_KEY);
+        AuthenticateDropBox();
         chooseImage_OnClickButtonListener();;
 
     }
@@ -117,13 +126,11 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //TODO: // pull out logic to presenter.
         if (requestCode == DBX_CHOOSER_REQUEST) if (resultCode == Activity.RESULT_OK) {
             DbxChooser.Result result = new DbxChooser.Result(data);
-
-            Uri image = result.getLink();
-
-            imageView_photo.setImageURI(image);
-            // Handle the result
+            Uri image_path = result.getLink();
+            setPhoto(image_path);
         } else {
             // Failed or was cancelled by the user.
         }
@@ -137,7 +144,6 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_face_recognition_construction, menu);
         return true;
-
     }
 
     @Override
@@ -151,8 +157,24 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
-
     }
+
+    @Override
+    public String getPhotoName() {
+        return editText_name.getText().toString();
+    }
+
+    @Override
+    public void setPhoto(Uri image_path) {
+        imageView_photo.setImageURI(image_path);
+    }
+
+    @Override
+    public Map<String, Uri> getPhotoURIMap() {
+        //TODO: Append photos to test in construction.
+        return null;
+    }
+
+
 }

@@ -15,8 +15,9 @@ public class LoginService extends DatabaseHelperImpl {
     public LoginService(Context context) {
         super(context);
     }
+
     public boolean login(String username, String password){
-        res = db.rawQuery("select * from " + TABLE_NAME + " where USER_NAME = '" + username + "'", null);
+        res = db.rawQuery("select * from " + CAREGIVER_TABLE_NAME + " where USER_NAME = '" + username + "'", null);
         if (DatabaseHelperImpl.res.getCount() == 0){
             return false;
         }

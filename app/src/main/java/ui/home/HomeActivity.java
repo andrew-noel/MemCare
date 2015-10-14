@@ -10,16 +10,23 @@ import android.widget.Button;
 
 import lehigh.cse.memcare.R;
 
+//TODO: refactor to MVP
 public class HomeActivity extends AppCompatActivity {
 
     Button button_create_test;
+    Button button_logout;
+    Button button_settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
         button_create_test = (Button) findViewById(R.id.button_create_test);
-        CreateTest_OnClickButtonListener();
+        button_logout = (Button) findViewById(R.id.button_logout);
+        button_settings = (Button) findViewById(R.id.button_settings);
+        ConstructTest_OnClickButtonListener();
+        Settings_OnClickButtonListener();
+        Logout_OnClickButtonListener();
     }
 
     @Override
@@ -44,8 +51,7 @@ public class HomeActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void CreateTest_OnClickButtonListener(){
-
+    public void ConstructTest_OnClickButtonListener() {
         button_create_test.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -57,4 +63,31 @@ public class HomeActivity extends AppCompatActivity {
                 }
         );
     }
+
+    public void Logout_OnClickButtonListener() {
+        button_logout.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //TODO: fix login intent
+                        Intent intent = new Intent("android.intent.action.MAIN");
+                        startActivity(intent);
+                    }
+                }
+        );
+    }
+
+    public void Settings_OnClickButtonListener() {
+        button_settings.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //FIXME: temporarily goes to patient registration
+                        Intent intent = new Intent("lehigh.cse.memcare.registration.RegisterPatientActivity");
+                        startActivity(intent);
+                    }
+                }
+        );
+    }
+
 }

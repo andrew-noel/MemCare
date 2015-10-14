@@ -64,7 +64,7 @@
             </intent-filter>
         </activity>
 
-
+        <!-- Register Patient Activity -->
         <activity
             android:name="ui.registration.patient_registration.RegisterPatientActivity"
             android:label="@string/title_activity_register_patient" >

@@ -18,7 +18,7 @@ public class CaregiverDAOImpl implements CaregiverDAO{
         String lastname;
         String id;
 
-        Cursor res = DatabaseHelperImpl.query("select * from " + TABLE_NAME + " where USER_NAME = '" + username + "'");
+        Cursor res = DatabaseHelperImpl.query("select * from " + CAREGIVER_TABLE_NAME + " where USER_NAME = '" + username + "'");
         res.moveToNext();
         firstname = res.getString(CaregiverTableIndex.INDEX_FIRST_NAME.toValue());
         lastname = res.getString(CaregiverTableIndex.INDEX_LAST_NAME.toValue());

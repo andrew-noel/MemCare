@@ -18,7 +18,7 @@ public class RegistrationService extends DatabaseHelperImpl {
     }
 
     public boolean username_exists(String username){
-        res = db.rawQuery("select * from " + TABLE_NAME + " where USER_NAME = '" + username + "'", null);
+        res = db.rawQuery("select * from " + CAREGIVER_TABLE_NAME + " where USER_NAME = '" + username + "'", null);
         return DatabaseHelperImpl.res.getCount() != 0;
     }
 
@@ -29,11 +29,11 @@ public class RegistrationService extends DatabaseHelperImpl {
 
     public boolean insertData_registerCaregiver(String first_name, String last_name, String username, String password) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COLUMN_2, first_name);
-        contentValues.put(COLUMN_3, last_name);
-        contentValues.put(COLUMN_4, username);
-        contentValues.put(COLUMN_5, password);
-        long result = db.insert(TABLE_NAME, null, contentValues);
+        contentValues.put(COLUMN_FN, first_name);
+        contentValues.put(COLUMN_LN, last_name);
+        contentValues.put(COLUMN_UN, username);
+        contentValues.put(COLUMN_PWD, password);
+        long result = db.insert(CAREGIVER_TABLE_NAME, null, contentValues);
         return result != -1;
     }
 

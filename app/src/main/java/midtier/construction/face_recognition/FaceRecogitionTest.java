@@ -1,5 +1,7 @@
 package midtier.construction.face_recognition;
 
+import android.net.Uri;
+
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -7,6 +9,8 @@ import java.util.Map;
 /**
  * Created by andrewmcmullen on 10/13/15.
  */
+
+//TODO: refactor Test to Quiz to avoid confusion?
 public class FaceRecogitionTest {
 
     private String id;
@@ -16,7 +20,7 @@ public class FaceRecogitionTest {
     private String patient_name;
     private Date creation_date;
 
-    private Map questions = new HashMap<String, String>();
+    private Map questions = new HashMap<Uri, String>();
 
 
     public FaceRecogitionTest(String username, String patient_name, Date creation_date){
@@ -50,7 +54,7 @@ public class FaceRecogitionTest {
         return id;
     }
 
-    public void addPicture(String uri, String name){
+    public void addPicture(Uri uri, String name){
         questions.put(uri, name);
     }
 
