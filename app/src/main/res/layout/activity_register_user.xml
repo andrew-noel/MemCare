@@ -36,7 +36,7 @@
         android:text="Username:"
         android:id="@+id/textView_username"
         android:layout_marginTop="57dp"
-        android:layout_below="@+id/editText_lastname"
+        android:layout_below="@+id/editText_patientlastname"
         android:layout_alignLeft="@+id/textView_lastname"
         android:layout_alignStart="@+id/textView_lastname" />
 
@@ -64,7 +64,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText_lastname"
+        android:id="@+id/editText_patientlastname"
         android:layout_alignBaseline="@+id/textView_lastname"
         android:layout_alignBottom="@+id/textView_lastname"
         android:layout_toRightOf="@+id/textView_firstname"
@@ -89,28 +89,28 @@
         android:layout_height="wrap_content"
         android:id="@+id/editText_username"
         android:layout_above="@+id/textView_password"
-        android:layout_alignLeft="@+id/editText_lastname"
-        android:layout_alignStart="@+id/editText_lastname"
-        android:layout_alignRight="@+id/editText_lastname"
-        android:layout_alignEnd="@+id/editText_lastname"
+        android:layout_alignLeft="@+id/editText_patientlastname"
+        android:layout_alignStart="@+id/editText_patientlastname"
+        android:layout_alignRight="@+id/editText_patientlastname"
+        android:layout_alignEnd="@+id/editText_patientlastname"
         android:singleLine="true"/>
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText_firstname"
+        android:id="@+id/editText_patientfirstname"
         android:layout_above="@+id/textView_lastname"
-        android:layout_alignLeft="@+id/editText_lastname"
-        android:layout_alignStart="@+id/editText_lastname"
-        android:layout_alignRight="@+id/editText_lastname"
-        android:layout_alignEnd="@+id/editText_lastname"
+        android:layout_alignLeft="@+id/editText_patientlastname"
+        android:layout_alignStart="@+id/editText_patientlastname"
+        android:layout_alignRight="@+id/editText_patientlastname"
+        android:layout_alignEnd="@+id/editText_patientlastname"
         android:singleLine="true"/>
 
     <Button
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:text="Register"
-        android:id="@+id/button_register"
+        android:id="@+id/button_patientregister"
         android:layout_marginTop="114dp"
         android:layout_below="@+id/editText_password"
         android:layout_centerHorizontal="true"
@@ -134,7 +134,7 @@
         android:ems="10"
         android:id="@+id/editText_confirmpassword"
         android:layout_alignBottom="@+id/textView_confirmpassword"
-        android:layout_alignRight="@+id/button_register"
-        android:layout_alignEnd="@+id/button_register" />
+        android:layout_alignRight="@+id/button_patientregister"
+        android:layout_alignEnd="@+id/button_patientregister" />
 
 </RelativeLayout>

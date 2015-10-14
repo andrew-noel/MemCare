@@ -7,10 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
  */
 public interface DatabaseHelper {
 
-    public void onCreate(SQLiteDatabase db);
+    void onCreate(SQLiteDatabase db);
 
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion);
+    void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion);
 
-    public void clear_database();
+    void delete_table(String table_name);
 
 }

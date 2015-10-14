@@ -24,12 +24,12 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
         setContentView(R.layout.activity_register_user);
 
         service = new RegistrationService(this);
-
-        editText_firstName = (EditText)findViewById(R.id.editText_firstname);
-        editText_lastName = (EditText)findViewById(R.id.editText_lastname);
+        //service.create();
+        editText_firstName = (EditText)findViewById(R.id.editText_patientfirstname);
+        editText_lastName = (EditText)findViewById(R.id.editText_patientlastname);
         editText_username = (EditText)findViewById(R.id.editText_username);
         editText_password = (EditText)findViewById(R.id.editText_password);
-        btnRegister = (Button)findViewById(R.id.button_register);
+        btnRegister = (Button)findViewById(R.id.button_patientregister);
         Register_OnClickButtonListener();
 
     }
@@ -117,7 +117,7 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
 
     @Override
     public void showRegistrationError() {
-        Toast.makeText(RegistrationActivity.this, "Login Failure.", Toast.LENGTH_LONG).show();
+        Toast.makeText(RegistrationActivity.this, "Registration Failure.", Toast.LENGTH_LONG).show();
     }
 
     @Override

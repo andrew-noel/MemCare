@@ -1,7 +1,9 @@
 package ui.login;
 
+import common.CaregiverTableConstants;
 import lehigh.cse.memcare.R;
 import midtier.login.LoginService;
+import common.CaregiverTableConstants.*;
 
 public class LoginPresenter {
 
@@ -34,7 +36,8 @@ public class LoginPresenter {
 
     public void onClearDBClick() {
         view.showClearDbMessage();
-        service.clear_database();
+        service.delete_table(CaregiverTableConstants.CAREGIVER_TABLE_NAME);
+        //service.clear_database();
     }
 
     public void onRegistrationClick() {

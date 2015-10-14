@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/editText_firstname"
+        android:id="@+id/editText_patientfirstname"
         android:layout_alignBottom="@+id/textView_firstname"
         android:layout_toRightOf="@+id/textView_firstname"
         android:layout_toEndOf="@+id/textView_firstname" />
@@ -54,10 +54,10 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/editText_lastname"
+        android:id="@+id/editText_patientlastname"
         android:layout_alignBottom="@+id/textView_lastname"
-        android:layout_alignRight="@+id/editText_firstname"
-        android:layout_alignEnd="@+id/editText_firstname" />
+        android:layout_alignRight="@+id/editText_patientfirstname"
+        android:layout_alignEnd="@+id/editText_patientfirstname" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -70,56 +70,59 @@
         android:layout_alignLeft="@+id/textView_header"
         android:layout_alignStart="@+id/textView_header" />
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Male"
-        android:id="@+id/checkBox_male"
-        android:checked="false"
-        android:layout_below="@+id/checkBox_female"
-        android:layout_alignRight="@+id/numberPicker"
-        android:layout_alignEnd="@+id/numberPicker" />
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Female"
-        android:id="@+id/checkBox_female"
-        android:checked="false"
-        android:layout_alignTop="@+id/textView_gender"
-        android:layout_alignLeft="@+id/checkBox_male"
-        android:layout_alignStart="@+id/checkBox_male" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Gender:"
         android:id="@+id/textView_gender"
-        android:layout_above="@+id/button_register"
-        android:layout_toLeftOf="@+id/button_register"
-        android:layout_toStartOf="@+id/button_register"
-        android:layout_marginBottom="91dp" />
-
-    <NumberPicker
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/numberPicker"
-        android:layout_below="@+id/editText_lastname"
-        android:layout_toRightOf="@+id/textView_age"
-        android:layout_toEndOf="@+id/textView_age"
-        android:layout_marginLeft="50dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="48dp" />
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/textView_age"
+        android:layout_alignStart="@+id/textView_age" />
 
     <Button
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:text="Register"
-        android:id="@+id/button_register"
+        android:id="@+id/button_patientregister"
         android:layout_marginBottom="58dp"
         android:textSize="35dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textView_age"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/radioGroup_Gender">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Female"
+            android:id="@+id/radioButton_female"
+            android:checked="false"
+            android:layout_gravity="center_horizontal" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Male"
+            android:id="@+id/radioButton_male"
+            android:checked="false"
+            android:layout_gravity="center_horizontal" />
+
+    </RadioGroup>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editText_age"
+        android:layout_above="@+id/radioGroup_Gender"
+        android:layout_toRightOf="@+id/textView_gender"
+        android:layout_toEndOf="@+id/textView_gender" />
 
 </RelativeLayout>

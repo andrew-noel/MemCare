@@ -4,15 +4,53 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import lehigh.cse.memcare.R;
+import midtier.registration.RegistrationService;
+import ui.registration.user_registration.RegistrationPresenter;
 
 public class RegisterPatientActivity extends AppCompatActivity implements RegisterPatientView{
+
+EditText editText_firstname, editText_lastname, editText_age;
+    RadioGroup radioGroup_Gender;
+    Button button_register;
+    RegistrationService service;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_patient);
+        editText_firstname = (EditText)(findViewById(R.id.editText_patientfirstname));
+        editText_lastname = (EditText)(findViewById(R.id.editText_patientlastname));
+        editText_age = (EditText)(findViewById(R.id.editText_age));
+        radioGroup_Gender = (RadioGroup)(findViewById(R.id.radioGroup_Gender));
+        button_register = (Button)(findViewById(R.id.button_patientregister));
+
+        service = new RegistrationService(this);
+
+        Register_OnClickButtonListener();
+
+
+
+    }
+
+    public void Register_OnClickButtonListener() {
+        final RegisterPatientPresenter presenter = new RegisterPatientPresenter(this, service);
+        button_register.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        presenter.onRegisterClicked();
+                    }
+
+                }
+        );
     }
 
     @Override
@@ -39,56 +77,55 @@ public class RegisterPatientActivity extends AppCompatActivity implements Regist
 
     @Override
     public String getFirstName() {
-        return null;
+        return editText_firstname.getText().toString();
     }
 
     @Override
     public String getLastName() {
-        return null;
+        return editText_lastname.getText().toString();
     }
 
     @Override
     public String getAge() {
-        return null;
+        return editText_age.getText().toString();
     }
 
     @Override
     public String getGender() {
-        return null;
+        int id = radioGroup_Gender.getCheckedRadioButtonId();
+        RadioButton sex = (RadioButton)(findViewById(id));
+        return sex.getText().toString();
     }
 
     @Override
     public void showFirstnameError(int registration_firstname_error) {
-
+        editText_firstname.setError(getString(registration_firstname_error));
     }
 
     @Override
     public void showLastnameError(int registration_lastname_error) {
-
+        editText_lastname.setError(getString(registration_lastname_error));
     }
 
     @Override
     public void showAgeError(int registration_age_error) {
-
+        editText_age.setError(getString(registration_age_error));
     }
 
-    @Override
-    public void showGenderError(int registration_gender_error) {
-
-    }
 
     @Override
     public void showPatientAlreadyExistsError(int registration_patientAlreadyExists_error) {
-
+        button_register.setError(getString(registration_patientAlreadyExists_error));
     }
 
     @Override
     public void showRegistationError() {
-
+        button_register.setError("Registration Failed.");
     }
 
     @Override
     public void returnToTestActivity() {
-
+        //TODO: go HOME
+        finish();
     }
 }

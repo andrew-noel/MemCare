@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     public void Registration_OnClickButtonListener() {
-        Button button_register = (Button) findViewById(R.id.button_register);
+        Button button_register = (Button) findViewById(R.id.button_patientregister);
         button_register.setOnClickListener(
                 new View.OnClickListener() {
                     @Override

@@ -18,8 +18,6 @@ public interface RegisterPatientView {
 
     void showAgeError(int registration_age_error);
 
-    void showGenderError(int registration_gender_error);
-
     void showPatientAlreadyExistsError(int registration_patientAlreadyExists_error);
 
     void showRegistationError();
