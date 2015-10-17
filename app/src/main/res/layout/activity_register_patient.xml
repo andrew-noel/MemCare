@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Register Patient"
-        android:id="@+id/textView_header"
+        android:id="@+id/textView_createTestHeader"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textSize="50dp" />
@@ -23,7 +23,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="First Name:"
         android:id="@+id/textView_firstname"
-        android:layout_below="@+id/textView_header"
+        android:layout_below="@+id/textView_createTestHeader"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="59dp" />
@@ -67,8 +67,8 @@
         android:id="@+id/textView_age"
         android:layout_marginTop="111dp"
         android:layout_below="@+id/textView_lastname"
-        android:layout_alignLeft="@+id/textView_header"
-        android:layout_alignStart="@+id/textView_header" />
+        android:layout_alignLeft="@+id/textView_createTestHeader"
+        android:layout_alignStart="@+id/textView_createTestHeader" />
 
     <TextView
         android:layout_width="wrap_content"

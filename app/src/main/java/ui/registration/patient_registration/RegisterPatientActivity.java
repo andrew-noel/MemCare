@@ -139,7 +139,6 @@ EditText editText_firstname, editText_lastname, editText_age;
 
     @Override
     public void returnToTestActivity() {
-        //TODO: go HOME
         finish();
     }
 }

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Memcare Login"
-        android:id="@+id/textView_header"
+        android:id="@+id/textView_createTestHeader"
         android:textSize="50dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -25,7 +25,7 @@
         android:text="username:"
         android:id="@+id/textView_username"
         android:layout_marginTop="56dp"
-        android:layout_below="@+id/textView_header"
+        android:layout_below="@+id/textView_createTestHeader"
         android:layout_alignLeft="@+id/textView_password"
         android:layout_alignStart="@+id/textView_password" />
 

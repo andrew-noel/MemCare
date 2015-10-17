@@ -24,7 +24,6 @@ public class RegisterPatientPresenter {
         String gender;
 
         boolean error = false;
-//TODO: Actually fix these error messages. Didn't fully implement because sleep is a thing.
         if ((gender = view.getGender()).isEmpty()) {
             view.showGenderError(R.string.Registration_gender_error);
             error = true;
