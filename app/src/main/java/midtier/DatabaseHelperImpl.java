@@ -21,11 +21,16 @@ public abstract class DatabaseHelperImpl extends SQLiteOpenHelper implements Dat
     public void onCreate(SQLiteDatabase db) {
         //TODO: create table on first run
         db.execSQL("create table " + CAREGIVER_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, USER_NAME TEXT, PASSWORD TEXT )");
-        //db.execSQL("create table " + PATIENT_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, AGE TEXT, GENDER TEXT )");
+        db.execSQL("create table " + PATIENT_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, AGE TEXT, GENDER TEXT )");
     }
 
-    public void create(){
-        db.execSQL("create table " + CAREGIVER_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, USER_NAME TEXT, PASSWORD TEXT )");
+    public void create(String tableName){
+        if(tableName == CAREGIVER_TABLE_NAME) {
+            db.execSQL("create table " + CAREGIVER_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, USER_NAME TEXT, PASSWORD TEXT )");
+        }
+        else if(tableName == PATIENT_TABLE_NAME) {
+            db.execSQL("create table " + PATIENT_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, AGE TEXT, GENDER TEXT )");
+        }
     }
 
     @Override
@@ -38,7 +43,7 @@ public abstract class DatabaseHelperImpl extends SQLiteOpenHelper implements Dat
     @Override
     public void delete_table(String tableName){
         db.execSQL("DROP TABLE IF EXISTS " + tableName);
-        onCreate(db);
+        create(tableName);
     }
 
 

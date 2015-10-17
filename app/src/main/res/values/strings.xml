@@ -9,11 +9,14 @@
     <string name="username_error">Enter username</string>
     <string name="password_error">Enter password</string>
     <string name="login_failed">Login failed</string>
-    <string name="Registration_username_error">Please Enter a username</string>
+    <string name="Registration_username_error">Please enter a username</string>
     <string name="Registration_firstname_error">Please enter a first name</string>
     <string name="Registration_lastname_error">Please enter a last name</string>
     <string name="Registration_password_error">Please enter a password</string>
+    <string name="Registration_age_error">Please enter an age</string>
+    <string name="Registration_gender_error">Please select a gender</string>
     <string name="Registration_userAlreadyExists_error">That username already exists</string>
+    <string name="Registration_patientAlreadyExists_error">That patient already exists</string>
     <string name="title_activity_create_test">createTest</string>
     <string name="title_activity_register_patient">register_patient</string>
     <string name="title_activity_home_screen">HomeScreen</string>

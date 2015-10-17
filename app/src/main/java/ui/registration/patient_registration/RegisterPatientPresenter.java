@@ -25,30 +25,30 @@ public class RegisterPatientPresenter {
 
         boolean error = false;
 //TODO: Actually fix these error messages. Didn't fully implement because sleep is a thing.
-        /*if ((gender = view.getGender()).isEmpty()) {
-            //view.showGenderError(5);
+        if ((gender = view.getGender()).isEmpty()) {
+            view.showGenderError(R.string.Registration_gender_error);
             error = true;
-        }*/
+        }
         if ((lastname = view.getLastName()).isEmpty()) {
-            view.showLastnameError(5);
+            view.showLastnameError(R.string.Registration_lastname_error);
             error = true;
         }
         if ((firstname = view.getFirstName()).isEmpty()) {
-            view.showFirstnameError(5);
+            view.showFirstnameError(R.string.Registration_firstname_error);
             error = true;
         }
         if ((age = view.getAge()).isEmpty()) {
-            view.showAgeError(5);
+            view.showAgeError(R.string.Registration_age_error);
             error = true;
         }
 
-        if (service.patient_exists(firstname)) {
-            view.showPatientAlreadyExistsError(5);
+        if (service.patient_exists(view.getFirstName(), view.getLastName())) {
+            view.showPatientAlreadyExistsError(R.string.Registration_patientAlreadyExists_error);
             error = true;
         }
 
         if (error == false) {
-            if (service.insertData_registerPatient(firstname, lastname, age, "Male") == false) {
+            if (service.insertData_registerPatient(firstname, lastname, age, gender) == false) {
                 view.showRegistationError();
             } else {
                 view.returnToTestActivity();

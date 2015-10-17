@@ -18,6 +18,7 @@ public class RegisterPatientActivity extends AppCompatActivity implements Regist
 
 EditText editText_firstname, editText_lastname, editText_age;
     RadioGroup radioGroup_Gender;
+    RadioButton radioButton_female, radioButton_male;
     Button button_register;
     RegistrationService service;
 
@@ -25,11 +26,15 @@ EditText editText_firstname, editText_lastname, editText_age;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        service = new RegistrationService(this);
+        //service.delete_table("Patients_table");
         setContentView(R.layout.activity_register_patient);
         editText_firstname = (EditText)(findViewById(R.id.editText_patientfirstname));
         editText_lastname = (EditText)(findViewById(R.id.editText_patientlastname));
         editText_age = (EditText)(findViewById(R.id.editText_age));
         radioGroup_Gender = (RadioGroup)(findViewById(R.id.radioGroup_Gender));
+        radioButton_female = (RadioButton)(findViewById(R.id.radioButton_female));
+        radioButton_male = (RadioButton) (findViewById(R.id.radioButton_male));
         button_register = (Button)(findViewById(R.id.button_patientregister));
 
         service = new RegistrationService(this);
@@ -93,8 +98,11 @@ EditText editText_firstname, editText_lastname, editText_age;
     @Override
     public String getGender() {
         int id = radioGroup_Gender.getCheckedRadioButtonId();
+
         RadioButton sex = (RadioButton)(findViewById(id));
-        return sex.getText().toString();
+
+        if(sex == null) return "";
+        else return sex.getText().toString();
     }
 
     @Override
@@ -110,6 +118,12 @@ EditText editText_firstname, editText_lastname, editText_age;
     @Override
     public void showAgeError(int registration_age_error) {
         editText_age.setError(getString(registration_age_error));
+    }
+
+    @Override
+    public  void showGenderError(int registration_gender_error){
+        radioButton_female.setError(getString(registration_gender_error));
+        radioButton_male.setError(getString(registration_gender_error));
     }
 
 

@@ -22,8 +22,8 @@ public class RegistrationService extends DatabaseHelperImpl {
         return DatabaseHelperImpl.res.getCount() != 0;
     }
 
-    public boolean patient_exists(String patient){
-        res = db.rawQuery("select * from " + PATIENT_TABLE_NAME + " where FIRST_NAME = '" + patient + "'", null);
+    public boolean patient_exists(String patient_firstname, String patient_lastname){
+        res = db.rawQuery("select * from " + PATIENT_TABLE_NAME + " where FIRST_NAME = '" + patient_firstname + "' and LAST_NAME = '" + patient_lastname + "'", null);
         return DatabaseHelperImpl.res.getCount() != 0;
     }
 
