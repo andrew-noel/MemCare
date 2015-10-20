@@ -43,11 +43,18 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         password = (EditText) findViewById(R.id.editText_password);
 
         Typeface type = Typeface.createFromAsset(getAssets(), "fonts/Sansation-LightItalic.ttf");
+        Typeface glyphicons = Typeface.createFromAsset(getAssets(), "fonts/fontawesome-webfont.ttf");
 
         //initialize values
         header.setTypeface(type);
+
         username.setText("");
+        username.setTypeface(glyphicons);
+        username.setHint("  \uf007    Username");
+
         password.setText("");
+        password.setTypeface(glyphicons);
+        password.setHint("  \uf023    Password");
 
     }
 
