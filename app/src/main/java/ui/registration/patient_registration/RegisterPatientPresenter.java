@@ -47,7 +47,7 @@ public class RegisterPatientPresenter {
         }
 
         if (error == false) {
-            if (service.insertData_registerPatient(firstname, lastname, age, gender) == false) {
+            if (service.insertData_registerPatient(firstname, lastname, age, "Male") == false) {
                 view.showRegistationError();
             } else {
                 view.returnToTestActivity();

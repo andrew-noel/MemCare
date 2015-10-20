@@ -40,7 +40,7 @@ public class RegisterPatientPresenterTest {
         when(view.getAge()).thenReturn("100");
         when(view.getGender()).thenReturn("Male");
         presenter.onRegisterClicked();
-        verify(view).showFirstnameError(5);
+        verify(view).showFirstnameError(R.string.Registration_firstname_error);
     }
 
     @Test
@@ -50,7 +50,7 @@ public class RegisterPatientPresenterTest {
         when(view.getAge()).thenReturn("100");
         when(view.getGender()).thenReturn("Male");
         presenter.onRegisterClicked();
-        verify(view).showLastnameError(5);
+        verify(view).showLastnameError(R.string.Registration_lastname_error);
     }
 
     @Test
@@ -60,17 +60,18 @@ public class RegisterPatientPresenterTest {
         when(view.getAge()).thenReturn("");
         when(view.getGender()).thenReturn("Male");
         presenter.onRegisterClicked();
-        verify(view).showAgeError(5);
+        verify(view).showAgeError(R.string.Registration_age_error);
     }
 
     @Test
-    public void shouldShowErrorMessageWhenUsernameAlreadyExists() throws Exception{
+    public void shouldShowErrorMessageWhenPatientAlreadyExists() throws Exception{
         when(view.getFirstName()).thenReturn("firstname");
         when(view.getLastName()).thenReturn("lastname");
         when(view.getAge()).thenReturn("50");
-        when(service.patient_exists("firstname")).thenReturn(true);
+        when(view.getGender()).thenReturn("Male");
+        when(service.patient_exists("firstname", "lastname")).thenReturn(true);
         presenter.onRegisterClicked();
-        verify(view).showPatientAlreadyExistsError(5);
+        verify(view).showPatientAlreadyExistsError(R.string.Registration_patientAlreadyExists_error);
     }
 
     @Test
@@ -78,7 +79,8 @@ public class RegisterPatientPresenterTest {
         when(view.getFirstName()).thenReturn("firstname");
         when(view.getLastName()).thenReturn("lastname");
         when(view.getAge()).thenReturn("33");
-        when(service.patient_exists("firstname")).thenReturn(false);
+        when(view.getGender()).thenReturn("Male");
+        when(service.patient_exists("firstname", "lastname")).thenReturn(false);
         when(service.insertData_registerPatient("firstname", "lastname", "33", "Male")).thenReturn(true);
         presenter.onRegisterClicked();
         verify(view).returnToTestActivity();
