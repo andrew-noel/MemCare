@@ -1,6 +1,7 @@
 package ui.login;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import midtier.login.LoginService;
 import lehigh.cse.memcare.R;
@@ -16,6 +18,7 @@ import java.lang.String;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
 
+    private static TextView header;
     private static EditText username;
     private static EditText password;
 
@@ -29,18 +32,23 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
         presenter = new LoginPresenter(this, new LoginService(this));
 
-        //register buttons
-        Registration_OnClickButtonListener();
+        //register buttonn
         Login_OnClickButtonListener();
         ClearDB_OnClickButtonListener();
+        RegistrationLink_OnClickListener();
 
         //text handles
+        header =   (TextView) findViewById(R.id.textView_header);
         username = (EditText) findViewById(R.id.editText_username);
         password = (EditText) findViewById(R.id.editText_password);
 
+        Typeface type = Typeface.createFromAsset(getAssets(), "fonts/Sansation-LightItalic.ttf");
+
         //initialize values
+        header.setTypeface(type);
         username.setText("");
         password.setText("");
+
     }
 
     @Override
@@ -77,10 +85,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         );
     }
 
-    public void Registration_OnClickButtonListener() {
-        Button button_register = (Button) findViewById(R.id.button_patientregister);
-        button_register.setOnClickListener(
-                new View.OnClickListener() {
+    public void RegistrationLink_OnClickListener(){
+        TextView link = (TextView) findViewById(R.id.textView_registerLink);
+        link.setOnClickListener(
+                new View.OnClickListener(){
+
                     @Override
                     public void onClick(View v) {
                         presenter.onRegistrationClick();

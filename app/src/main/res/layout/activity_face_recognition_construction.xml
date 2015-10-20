@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Face Recognition Test Construction"
-        android:id="@+id/textView_createTestHeader"
+        android:id="@+id/textView_header"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textSize="40dp"
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:text="Browse Photos"
         android:id="@+id/button_browse"
-        android:layout_below="@+id/textView_createTestHeader"
+        android:layout_below="@+id/textView_header"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="33dp" />

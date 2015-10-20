@@ -5,71 +5,51 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".MainActivity"
+    android:background="#2c4366"
     >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Memcare Login"
-        android:id="@+id/textView_createTestHeader"
+        android:text="Memcare "
+        android:id="@+id/textView_header"
         android:textSize="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="username:"
-        android:id="@+id/textView_username"
-        android:layout_marginTop="56dp"
-        android:layout_below="@+id/textView_createTestHeader"
-        android:layout_alignLeft="@+id/textView_password"
-        android:layout_alignStart="@+id/textView_password" />
+        android:textStyle="bold"
+        android:textColor="#fffafe"
+        android:typeface="serif"
+        android:layout_above="@+id/editText_username"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:id="@+id/editText_username"
-        android:layout_alignBottom="@+id/textView_username"
-        android:layout_toRightOf="@+id/textView_username"
-        android:layout_alignTop="@+id/textView_username"
-        android:layout_alignRight="@+id/button_login"
-        android:layout_alignEnd="@+id/button_login"
         android:singleLine="true"
-        android:maxLines="1" />
+        android:maxLines="1"
+
+        android:background="@drawable/back"
+
+        android:hint="Username"
+        android:layout_above="@+id/editText_password"
+        android:layout_alignLeft="@+id/textView_header"
+        android:layout_alignStart="@+id/textView_header"
+        android:layout_alignRight="@+id/button_login"
+        android:layout_alignEnd="@+id/button_login" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="Log in"
         android:id="@+id/button_login"
-        android:layout_marginTop="54dp"
         android:width="400dp"
-        android:layout_below="@+id/editText_password"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        android:id="@+id/button_patientregister"
-        android:width="400dp"
-        android:layout_below="@+id/button_login"
-        android:layout_alignLeft="@+id/button_login"
-        android:layout_alignStart="@+id/button_login" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="password:"
-        android:id="@+id/textView_password"
-        android:layout_above="@+id/button_login"
-        android:layout_alignLeft="@+id/button_login"
-        android:layout_alignStart="@+id/button_login" />
+        android:background="#31486d"
+        android:textColor="#fbfffd"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:layout_above="@+id/textView_registerLink"
+        android:layout_alignLeft="@+id/button_cleardb"
+        android:layout_alignStart="@+id/button_cleardb" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -82,14 +62,42 @@
 
     <EditText
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/editText_password"
-        android:layout_below="@+id/editText_username"
-        android:layout_alignLeft="@+id/editText_username"
-        android:layout_alignStart="@+id/editText_username"
+        android:background="#fdffff"
+        android:hint="Password"
+        android:password="true"
+        android:layout_above="@+id/button_login"
         android:layout_alignRight="@+id/editText_username"
-        android:layout_alignEnd="@+id/editText_username" />
+        android:layout_alignEnd="@+id/editText_username"
+        android:layout_alignLeft="@+id/textView_header"
+        android:layout_alignStart="@+id/textView_header" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="New User? Register here"
+        android:id="@+id/textView_registerLink"
+        android:textColor="#fefdff"
+        android:clickable="true"
+        android:layout_marginBottom="206dp"
+        android:layout_above="@+id/button_cleardb"
+        android:layout_alignLeft="@+id/button_login"
+        android:layout_alignStart="@+id/button_login" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@mipmap/brain_pic"
+        android:layout_above="@+id/textView_header"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

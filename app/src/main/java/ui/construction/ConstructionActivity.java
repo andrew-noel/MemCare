@@ -11,7 +11,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.Calendar;
-import java.util.Date;
 
 import lehigh.cse.memcare.R;
 
@@ -28,7 +27,7 @@ public class ConstructionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_construction);
 
-        textView_header = (TextView)(findViewById(R.id.textView_createTestHeader));
+        textView_header = (TextView)(findViewById(R.id.textView_header));
         textView_selectPatient = (TextView)(findViewById(R.id.textView_selectPatient));
         textView_testType = (TextView)(findViewById(R.id.textView_testType));
         textView_testName = (TextView)(findViewById(R.id.textView_testName));
