@@ -22,7 +22,7 @@
         android:layout_centerHorizontal="true" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="40dp"
         android:id="@+id/editText_username"
         android:singleLine="true"
@@ -35,7 +35,8 @@
         android:layout_alignLeft="@+id/textView_header"
         android:layout_alignStart="@+id/textView_header"
         android:layout_alignRight="@+id/textView_header"
-        android:layout_alignEnd="@+id/textView_header" />
+        android:layout_alignEnd="@+id/textView_header"
+        android:paddingLeft="25dp" />
 
     <Button
         android:layout_width="200dp"
@@ -75,7 +76,8 @@
         android:layout_alignRight="@+id/editText_username"
         android:layout_alignEnd="@+id/editText_username"
         android:layout_alignLeft="@+id/textView_header"
-        android:layout_alignStart="@+id/textView_header" />
+        android:layout_alignStart="@+id/textView_header"
+        android:paddingLeft="25dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -88,7 +90,8 @@
         android:layout_marginBottom="206dp"
         android:layout_above="@+id/button_cleardb"
         android:layout_alignRight="@+id/button_login"
-        android:layout_alignEnd="@+id/button_login" />
+        android:layout_alignEnd="@+id/button_login"
+        android:paddingTop="25dp" />
 
     <ImageView
         android:layout_width="100dp"

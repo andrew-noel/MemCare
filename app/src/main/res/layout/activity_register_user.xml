@@ -5,6 +5,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.ui.registration.user_registration.RegistrationActivity"
+    android:background="#2c4366"
     >
 
     <TextView
@@ -13,10 +14,11 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="First Name:"
         android:id="@+id/textView_firstname"
-        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/editText_patientfirstname"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="90dp" />
+        android:textColor="#FFFFFF"
+        android:textSize="18dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -24,10 +26,12 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Last Name"
         android:id="@+id/textView_lastname"
-        android:layout_below="@+id/textView_firstname"
-        android:layout_alignRight="@+id/textView_firstname"
-        android:layout_alignEnd="@+id/textView_firstname"
-        android:layout_marginTop="53dp" />
+        android:layout_above="@+id/editText_username"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="62dp"
+        android:textColor="#FFFFFF"
+        android:textSize="18dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -35,10 +39,11 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Username:"
         android:id="@+id/textView_username"
-        android:layout_marginTop="57dp"
-        android:layout_below="@+id/editText_patientlastname"
-        android:layout_alignLeft="@+id/textView_lastname"
-        android:layout_alignStart="@+id/textView_lastname" />
+        android:layout_alignBottom="@+id/editText_username"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#FFFFFF"
+        android:textSize="18dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -46,10 +51,12 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Password"
         android:id="@+id/textView_password"
-        android:layout_marginTop="55dp"
-        android:layout_below="@+id/textView_username"
-        android:layout_alignLeft="@+id/textView_username"
-        android:layout_alignStart="@+id/textView_username" />
+        android:layout_above="@+id/editText_confirmpassword"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="50dp"
+        android:textColor="#FFFFFF"
+        android:textSize="18dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -58,81 +65,102 @@
         android:text="Registration"
         android:id="@+id/textView_header"
         android:textSize="50dp"
+        android:textColor="#ffffff"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_toRightOf="@+id/textView_confirmpassword"
+        android:layout_toEndOf="@+id/textView_confirmpassword" />
 
     <EditText
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:id="@+id/editText_patientlastname"
         android:layout_alignBaseline="@+id/textView_lastname"
         android:layout_alignBottom="@+id/textView_lastname"
-        android:layout_toRightOf="@+id/textView_firstname"
-        android:layout_alignRight="@+id/textView_header"
-        android:layout_alignEnd="@+id/textView_header"
-        android:singleLine="true"/>
+        android:singleLine="true"
+        android:layout_alignLeft="@+id/editText_username"
+        android:layout_alignStart="@+id/editText_username"
+        android:layout_alignRight="@+id/editText_username"
+        android:layout_alignEnd="@+id/editText_username"
+        android:background="#fdffff"
+        android:hint="  last name"/>
 
     <EditText
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/editText_password"
-        android:layout_alignTop="@+id/textView_password"
-        android:layout_toRightOf="@+id/textView_username"
-        android:layout_alignRight="@+id/textView_header"
-        android:layout_alignEnd="@+id/textView_header"
-        android:singleLine="true"/>
+        android:singleLine="true"
+        android:layout_alignBottom="@+id/textView_password"
+        android:layout_alignLeft="@+id/editText_confirmpassword"
+        android:layout_alignStart="@+id/editText_confirmpassword"
+        android:layout_alignRight="@+id/editText_confirmpassword"
+        android:layout_alignEnd="@+id/editText_confirmpassword"
+        android:background="#fdffff"
+        android:hint="  password"/>
 
     <EditText
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:id="@+id/editText_username"
-        android:layout_above="@+id/textView_password"
-        android:layout_alignLeft="@+id/editText_patientlastname"
-        android:layout_alignStart="@+id/editText_patientlastname"
-        android:layout_alignRight="@+id/editText_patientlastname"
-        android:layout_alignEnd="@+id/editText_patientlastname"
-        android:singleLine="true"/>
+        android:singleLine="true"
+        android:layout_above="@+id/editText_password"
+        android:layout_marginBottom="62dp"
+        android:layout_alignLeft="@+id/editText_password"
+        android:layout_alignStart="@+id/editText_password"
+        android:layout_alignRight="@+id/editText_confirmpassword"
+        android:layout_alignEnd="@+id/editText_confirmpassword"
+        android:background="#fdffff"
+        android:hint="  username"/>
 
     <EditText
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:id="@+id/editText_patientfirstname"
-        android:layout_above="@+id/textView_lastname"
-        android:layout_alignLeft="@+id/editText_patientlastname"
-        android:layout_alignStart="@+id/editText_patientlastname"
+        android:singleLine="true"
+        android:layout_above="@+id/editText_patientlastname"
+        android:layout_marginBottom="47dp"
         android:layout_alignRight="@+id/editText_patientlastname"
         android:layout_alignEnd="@+id/editText_patientlastname"
-        android:singleLine="true"/>
+        android:background="#fdffff"
+        android:hint="  first name"
+        android:layout_alignLeft="@+id/editText_patientlastname"
+        android:layout_alignStart="@+id/editText_patientlastname" />
 
     <Button
-        android:layout_width="300dp"
-        android:layout_height="100dp"
+        android:layout_width="250dp"
+        android:layout_height="75dp"
         android:text="Register"
         android:id="@+id/button_patientregister"
-        android:layout_marginTop="114dp"
-        android:layout_below="@+id/editText_password"
-        android:layout_centerHorizontal="true"
-        android:textSize="35dp" />
+        android:textSize="25dp"
+        android:background="#31486d"
+        android:textColor="#f2ecff"
+        android:layout_marginBottom="76dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/textView_confirmpassword"
+        android:layout_toEndOf="@+id/textView_confirmpassword" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Confirm Password:"
+        android:text="ConfirmPassword:"
         android:id="@+id/textView_confirmpassword"
-        android:layout_below="@+id/editText_password"
+        android:layout_above="@+id/button_patientregister"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="48dp" />
+        android:layout_marginBottom="83dp"
+        android:textColor="#FFFFFF"
+        android:textSize="18dp" />
 
     <EditText
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/editText_confirmpassword"
+        android:background="#fdffff"
+        android:hint="  confirm password"
         android:layout_alignBottom="@+id/textView_confirmpassword"
         android:layout_alignRight="@+id/button_patientregister"
         android:layout_alignEnd="@+id/button_patientregister" />
