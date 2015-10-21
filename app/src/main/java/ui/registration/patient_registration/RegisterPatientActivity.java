@@ -102,7 +102,7 @@ EditText editText_firstname, editText_lastname, editText_age;
         RadioButton sex = (RadioButton)(findViewById(id));
 
         if(sex == null) return "";
-        else return sex.getText().toString();
+        return sex.getText().toString();
     }
 
     @Override
