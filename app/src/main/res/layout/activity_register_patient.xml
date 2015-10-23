@@ -92,7 +92,7 @@
 
     <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/textView_age"
         android:layout_centerHorizontal="true"
         android:id="@+id/radioGroup_Gender">
@@ -124,5 +124,15 @@
         android:layout_above="@+id/radioGroup_Gender"
         android:layout_toRightOf="@+id/textView_gender"
         android:layout_toEndOf="@+id/textView_gender" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear DB"
+        android:id="@+id/button_clearPatientDB"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

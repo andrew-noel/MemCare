@@ -1,5 +1,6 @@
 package ui.registration.patient_registration;
 
+import common.PatientTableConstants;
 import lehigh.cse.memcare.R;
 import midtier.registration.RegistrationService;
 import ui.registration.patient_registration.RegisterPatientView;
@@ -54,5 +55,10 @@ public class RegisterPatientPresenter {
             }
         }
 
+    }
+
+    public void onClearDBClicked() {
+        view.showClearPatientDBMessage();
+        service.delete_table(PatientTableConstants.PATIENT_TABLE_NAME);
     }
 }

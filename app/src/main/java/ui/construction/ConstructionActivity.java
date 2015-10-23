@@ -7,12 +7,16 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.Calendar;
+import java.util.List;
 
 import lehigh.cse.memcare.R;
+import midtier.registration.PatientDAO;
+import midtier.registration.PatientDAOImpl;
 
 public class ConstructionActivity extends AppCompatActivity {
 
@@ -21,6 +25,9 @@ public class ConstructionActivity extends AppCompatActivity {
     EditText editText_testName;
     private String[] tests, patients;
     Button createTest;
+    List<String> patientNames;
+
+    PatientDAOImpl patientDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +42,16 @@ public class ConstructionActivity extends AppCompatActivity {
         spinner_patientList = (Spinner)(findViewById(R.id.spinner_patientList));
         spinner_testType = (Spinner)(findViewById(R.id.spinner_testType));
         editText_testName = (EditText)(findViewById(R.id.editText_testName));
+        patientDAO = new PatientDAOImpl();
 
         tests = getResources().getStringArray(R.array.test_type);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, tests);
 
+
+
         spinner_testType.setAdapter(adapter);
 
+        loadPatients();
         Calendar currentDate = Calendar.getInstance();
         int currentDay = currentDate.get(Calendar.DAY_OF_MONTH);
         int currentMonth = currentDate.get(Calendar.MONTH);
@@ -48,7 +59,17 @@ public class ConstructionActivity extends AppCompatActivity {
 
         textView_insertDate.append(" " + currentMonth + "/" + currentDay + "/" + currentYear);
 
-        //TODO: Finish this construction class. Almost done, waiting on the patient name dropdown.
+        //TODO: All the elements are here now. Adding functionality to these elements soon. Also need to create Presenter & View
+
+    }
+
+    private void loadPatients() {
+        patientNames = patientDAO.getEveryPatientName();
+
+        ArrayAdapter<String> patientAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, patientNames);
+
+        spinner_patientList.setAdapter(patientAdapter);
+
 
     }
 

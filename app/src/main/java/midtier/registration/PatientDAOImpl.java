@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import android.database.Cursor;
 
+import common.PatientTableConstants;
 import midtier.DatabaseHelperImpl;
 import midtier.TO.PatientTO;
 import static common.PatientTableConstants.*;
@@ -14,7 +15,7 @@ import static common.PatientTableConstants.*;
 public class PatientDAOImpl implements PatientDAO {
 
 
-//TODO: Finish the PatientDAOImpl because it's not quite done yet. Will work more in the morning.
+
 
 
 
@@ -26,11 +27,20 @@ public class PatientDAOImpl implements PatientDAO {
     @Override
     public List<String> getEveryPatientName() {
         List<String> names = new ArrayList<String>();
+        String wholeName;
 
-        Cursor res = DatabaseHelperImpl.query("select PATIENT_COLUMN_2, PATIENT_COLUMN_3 from " + PATIENT_TABLE_NAME + " ");
+        Cursor res = DatabaseHelperImpl.query("select * from " + PATIENT_TABLE_NAME);
+        if(res.moveToFirst()){
+            do{
+                wholeName = res.getString(1) + " " + res.getString(2);
+
+                names.add(wholeName);
+            }while(res.moveToNext());
+        }
 
 
+        res.close();
 
-        return null;
+        return names;
     }
 }

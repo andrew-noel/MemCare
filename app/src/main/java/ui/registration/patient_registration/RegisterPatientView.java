@@ -26,4 +26,5 @@ public interface RegisterPatientView {
 
     void returnToTestActivity();
 
+    void showClearPatientDBMessage();
 }

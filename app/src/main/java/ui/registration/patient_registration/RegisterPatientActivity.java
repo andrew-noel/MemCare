@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import lehigh.cse.memcare.R;
 import midtier.registration.RegistrationService;
@@ -19,7 +20,7 @@ public class RegisterPatientActivity extends AppCompatActivity implements Regist
 EditText editText_firstname, editText_lastname, editText_age;
     RadioGroup radioGroup_Gender;
     RadioButton radioButton_female, radioButton_male;
-    Button button_register;
+    Button button_register, button_clearDB;
     RegistrationService service;
 
 
@@ -36,10 +37,12 @@ EditText editText_firstname, editText_lastname, editText_age;
         radioButton_female = (RadioButton)(findViewById(R.id.radioButton_female));
         radioButton_male = (RadioButton) (findViewById(R.id.radioButton_male));
         button_register = (Button)(findViewById(R.id.button_patientregister));
+        button_clearDB = (Button)(findViewById(R.id.button_clearPatientDB));
 
         service = new RegistrationService(this);
 
         Register_OnClickButtonListener();
+        ClearDB_OnClickButtonListener();
 
 
 
@@ -56,6 +59,19 @@ EditText editText_firstname, editText_lastname, editText_age;
 
                 }
         );
+    }
+    public void ClearDB_OnClickButtonListener(){
+        final RegisterPatientPresenter presenter = new RegisterPatientPresenter(this, service);
+        button_clearDB.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        presenter.onClearDBClicked();
+                    }
+
+                }
+        );
+
     }
 
     @Override
@@ -140,5 +156,10 @@ EditText editText_firstname, editText_lastname, editText_age;
     @Override
     public void returnToTestActivity() {
         finish();
+    }
+
+    @Override
+    public void showClearPatientDBMessage() {
+        Toast.makeText(RegisterPatientActivity.this, "Cleared DataBase", Toast.LENGTH_LONG).show();
     }
 }
