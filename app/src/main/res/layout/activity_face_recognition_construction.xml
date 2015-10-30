@@ -59,6 +59,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -70,4 +71,8 @@
         android:layout_alignRight="@+id/button_browse"
         android:layout_alignEnd="@+id/button_browse"
         android:background="#ffe7c0" />
+
+
+
+
 </RelativeLayout>
