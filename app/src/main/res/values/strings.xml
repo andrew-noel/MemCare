@@ -21,5 +21,6 @@
     <string name="title_activity_register_patient">register_patient</string>
     <string name="title_activity_home_screen">HomeScreen</string>
     <string name="title_activity_face_recognition_construction">FaceRecognitionConstructionActivity</string>
+    <string name="title_activity_give_test">GiveTest</string>
 
 </resources>

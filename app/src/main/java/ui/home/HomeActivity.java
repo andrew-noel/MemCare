@@ -17,6 +17,7 @@ public class HomeActivity extends AppCompatActivity {
     Button button_logout;
     Button button_settings;
     Button button_give_test;
+    Button button_viewPastTests;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +27,11 @@ public class HomeActivity extends AppCompatActivity {
         button_logout = (Button) findViewById(R.id.button_logout);
         button_settings = (Button) findViewById(R.id.button_settings);
         button_give_test = (Button)findViewById(R.id.button_give_test);
+        button_viewPastTests = (Button)findViewById(R.id.button_view_past_tests);
         ConstructTest_OnClickButtonListener();
         Settings_OnClickButtonListener();
         Logout_OnClickButtonListener();
-
+        ViewPastTests_OnClickButtonListener();
         GiveTest_OnClickButtonListener();
 
     }
@@ -56,13 +58,27 @@ public class HomeActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void ViewPastTests_OnClickButtonListener(){
+        button_viewPastTests.setOnClickListener(
+                new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v){
+                        //TODO: this is a temporary placement for the construction activity. I plan on moving it when it's up and running.
+                        Intent intent = new Intent ("lehigh.cse.memcare.construction.ConstructionActivity");
+                        startActivity(intent);
+                    }
+                }
+        );
+
+    }
+
     public void GiveTest_OnClickButtonListener(){
         button_give_test.setOnClickListener(
                 new View.OnClickListener(){
                     @Override
                 public void onClick(View v){
                         //TODO: this is a temporary placement for the construction activity. I plan on moving it when it's up and running.
-                        Intent intent = new Intent ("lehigh.cse.memcare.construction.ConstructionActivity");
+                        Intent intent = new Intent ("lehigh.cse.memcare.registration.GiveTest");
                         startActivity(intent);
                     }
                 }

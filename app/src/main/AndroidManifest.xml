@@ -17,7 +17,6 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -28,7 +27,6 @@
             android:label="@string/title_activity_registration" >
             <intent-filter>
                 <action android:name="lehigh.cse.memcare.registration.user_registration.RegistrationActivity" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -53,7 +51,6 @@
             </intent-filter>
         </activity>
 
-
         <!-- Face Recognition Construction -->
         <activity
             android:name="ui.construction.face_recognition_construction.FaceRecognitionConstructionActivity"
@@ -74,16 +71,17 @@
             </intent-filter>
         </activity>
 
-        <!--
+
+        <!-- Give Test Activity -->
         <activity
-            android:name="ui.home.HomeActivity11"
-            android:label="@string/title_activity_home" >
+            android:name=".GiveTest"
+            android:label="@string/title_activity_give_test" >
             <intent-filter>
-                <action android:name="lehigh.cse.memcare.Home" />
+                <action android:name="lehigh.cse.memcare.registration.GiveTest" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        -->
+
 
         <!-- Dropbox authentication -->
         <activity
@@ -91,9 +89,12 @@
             android:configChanges="orientation|keyboard"
             android:launchMode="singleTask" >
             <intent-filter>
+
                 <!-- Change this to be db- followed by your app key -->
                 <data android:scheme="db-mp95yxmhtyz7d5d" />
+
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -102,6 +103,7 @@
         <meta-data
             android:name="com.google.android.gms.vision.DEPENDENCIES"
             android:value="face" />
+
 
     </application>
 
