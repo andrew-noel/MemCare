@@ -74,7 +74,7 @@
 
         <!-- Give Test Activity -->
         <activity
-            android:name=".GiveTest"
+            android:name="ui.administer.GiveTest"
             android:label="@string/title_activity_give_test" >
             <intent-filter>
                 <action android:name="lehigh.cse.memcare.registration.GiveTest" />

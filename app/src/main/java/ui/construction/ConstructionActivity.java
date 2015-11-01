@@ -16,8 +16,8 @@ import java.util.Calendar;
 import java.util.List;
 
 import lehigh.cse.memcare.R;
+import midtier.DAOs.PatientDAOInt;
 import midtier.DAOs.PatientDAO;
-import midtier.DAOs.PatientDAOImpl;
 import midtier.services.testCreationService;
 
 public class ConstructionActivity extends AppCompatActivity {
@@ -36,7 +36,7 @@ public class ConstructionActivity extends AppCompatActivity {
 
     List<String> patientNames;
 
-    PatientDAO patientDAO;
+    PatientDAOInt patientDAO;
     testCreationService service;
 
     @Override
@@ -52,7 +52,7 @@ public class ConstructionActivity extends AppCompatActivity {
         editText_testName = (EditText)(findViewById(R.id.editText_testName));
         button_createTest = (Button)(findViewById(R.id.button_createTest));
         button_clearDB = (Button)(findViewById(R.id.button_clearDB));
-        patientDAO = new PatientDAOImpl();
+        patientDAO = new PatientDAO();
 
         tests = getResources().getStringArray(R.array.test_type);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, tests);
