@@ -7,7 +7,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import lehigh.cse.memcare.R;
-import midtier.login.LoginService;
+import midtier.services.LoginService;
 import ui.login.LoginPresenter;
 import ui.login.LoginView;
 

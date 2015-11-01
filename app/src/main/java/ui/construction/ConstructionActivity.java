@@ -4,73 +4,113 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.List;
 
 import lehigh.cse.memcare.R;
-import midtier.registration.PatientDAO;
-import midtier.registration.PatientDAOImpl;
+import midtier.DAOs.PatientDAO;
+import midtier.DAOs.PatientDAOImpl;
+import midtier.services.testCreationService;
 
 public class ConstructionActivity extends AppCompatActivity {
 
-    TextView textView_header, textView_selectPatient, textView_testType, textView_testName, textView_insertDate;
+    //TextView textView_header, textView_selectPatient, textView_testType, textView_testName, textView_insertDate;
+    TextView textView_insertDate;
+
     Spinner spinner_patientList, spinner_testType;
+
     EditText editText_testName;
+
     private String[] tests, patients;
-    Button createTest;
+
+    Button button_createTest;
+    Button button_clearDB;
+
     List<String> patientNames;
 
-    PatientDAOImpl patientDAO;
+    PatientDAO patientDAO;
+    testCreationService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_construction);
 
-        textView_header = (TextView)(findViewById(R.id.textView_header));
-        textView_selectPatient = (TextView)(findViewById(R.id.textView_selectPatient));
-        textView_testType = (TextView)(findViewById(R.id.textView_testType));
-        textView_testName = (TextView)(findViewById(R.id.textView_testName));
+        service = new testCreationService(this);
+
         textView_insertDate = (TextView)(findViewById(R.id.textView_insertDate));
         spinner_patientList = (Spinner)(findViewById(R.id.spinner_patientList));
         spinner_testType = (Spinner)(findViewById(R.id.spinner_testType));
         editText_testName = (EditText)(findViewById(R.id.editText_testName));
+        button_createTest = (Button)(findViewById(R.id.button_createTest));
+        button_clearDB = (Button)(findViewById(R.id.button_clearDB));
         patientDAO = new PatientDAOImpl();
 
         tests = getResources().getStringArray(R.array.test_type);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, tests);
-
-
-
         spinner_testType.setAdapter(adapter);
 
         loadPatients();
-        Calendar currentDate = Calendar.getInstance();
-        int currentDay = currentDate.get(Calendar.DAY_OF_MONTH);
-        int currentMonth = currentDate.get(Calendar.MONTH);
-        int currentYear = currentDate.get(Calendar.YEAR);
 
-        textView_insertDate.append(" " + currentMonth + "/" + currentDay + "/" + currentYear);
+        textView_insertDate.append(getCurrentDate());
+        createTest_OnClickButtonListener();
+        clearDB_OnClickButtonListener();
 
         //TODO: All the elements are here now. Adding functionality to these elements soon. Also need to create Presenter & View
 
     }
 
+    private String getCurrentDate(){
+        Calendar currentDate = Calendar.getInstance();
+        int currentDay = currentDate.get(Calendar.DAY_OF_MONTH);
+        int currentMonth = currentDate.get(Calendar.MONTH);
+        int currentYear = currentDate.get(Calendar.YEAR);
+        return " " + currentMonth + "/" + currentDay + "/" + currentYear;
+    }
+
     private void loadPatients() {
-        patientNames = patientDAO.getEveryPatientName();
-
+        patientNames = patientDAO.getListOfPatientNames();
         ArrayAdapter<String> patientAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, patientNames);
-
         spinner_patientList.setAdapter(patientAdapter);
+    }
 
+    public void createTest_OnClickButtonListener() {
+        button_createTest.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //TODO: refactor to presenter, get real owner
+                        String owner = "Andrew McMullen"; //FIXME: temporary
+                        String patient_full_name = spinner_patientList.getSelectedItem().toString();
+                        String testName = editText_testName.getText().toString();
+                        String testType = spinner_testType.getSelectedItem().toString();
+                        String dateOfCreation = getCurrentDate();
 
+                        service.insertData_createTest(owner, patient_full_name, testName, testType, dateOfCreation);
+                        Toast.makeText(ConstructionActivity.this, "Successfuly inserted into DB", Toast.LENGTH_LONG).show();
+                    }
+                }
+        );
+    }
+
+    public void clearDB_OnClickButtonListener() {
+        button_clearDB.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        service.dropTable();
+                        Toast.makeText(ConstructionActivity.this, "Cleared DB", Toast.LENGTH_LONG).show();
+                    }
+                }
+        );
     }
 
     @Override
@@ -91,7 +131,6 @@ public class ConstructionActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

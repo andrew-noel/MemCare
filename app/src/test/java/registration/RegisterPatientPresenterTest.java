@@ -7,7 +7,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import lehigh.cse.memcare.R;
-import midtier.registration.RegistrationService;
+import midtier.services.RegistrationService;
 import ui.registration.patient_registration.RegisterPatientPresenter;
 import ui.registration.patient_registration.RegisterPatientView;
 

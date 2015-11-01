@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import midtier.login.LoginService;
+import midtier.services.LoginService;
 import lehigh.cse.memcare.R;
 
 import java.lang.String;

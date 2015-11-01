@@ -1,7 +1,7 @@
 package ui.registration.user_registration;
 
 import lehigh.cse.memcare.R;
-import midtier.registration.RegistrationService;
+import midtier.services.RegistrationService;
 
 /**
  * Created by andrewmcmullen on 9/29/15.

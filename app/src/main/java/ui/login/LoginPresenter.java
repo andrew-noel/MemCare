@@ -2,8 +2,7 @@ package ui.login;
 
 import common.CaregiverTableConstants;
 import lehigh.cse.memcare.R;
-import midtier.login.LoginService;
-import common.CaregiverTableConstants.*;
+import midtier.services.LoginService;
 
 public class LoginPresenter {
 

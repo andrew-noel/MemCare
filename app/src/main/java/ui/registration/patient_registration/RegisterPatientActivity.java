@@ -12,8 +12,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import lehigh.cse.memcare.R;
-import midtier.registration.RegistrationService;
-import ui.registration.user_registration.RegistrationPresenter;
+import midtier.services.RegistrationService;
 
 public class RegisterPatientActivity extends AppCompatActivity implements RegisterPatientView{
 

@@ -87,7 +87,10 @@
         android:id="@+id/button_createTest"
         android:layout_marginBottom="80dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/editText_testName"
+        android:layout_alignEnd="@+id/editText_testName" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -110,5 +113,14 @@
         android:layout_alignRight="@+id/editText_testName"
         android:layout_alignEnd="@+id/editText_testName"
         android:layout_alignBottom="@+id/textView_dateOfCreation" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear DB"
+        android:id="@+id/button_clearDB"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="35dp" />
 
 </RelativeLayout>

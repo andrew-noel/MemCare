@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import midtier.registration.RegistrationService;
+import midtier.services.RegistrationService;
 import lehigh.cse.memcare.R;
 
 public class RegistrationActivity extends AppCompatActivity implements RegistrationView{

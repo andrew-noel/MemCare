@@ -2,8 +2,7 @@ package ui.registration.patient_registration;
 
 import common.PatientTableConstants;
 import lehigh.cse.memcare.R;
-import midtier.registration.RegistrationService;
-import ui.registration.patient_registration.RegisterPatientView;
+import midtier.services.RegistrationService;
 
 /**
  * Created by Noel on 10/14/15.
