@@ -26,6 +26,7 @@ import android.widget.Button;
 import android.widget.EditText;;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dropbox.chooser.android.DbxChooser;
@@ -40,6 +41,7 @@ import java.io.IOException;
 import java.util.Map;
 
 import lehigh.cse.memcare.R;
+import midtier.services.testCreationService;
 
 
 import android.graphics.Bitmap;
@@ -53,10 +55,17 @@ import com.google.android.gms.vision.face.FaceDetector;
 
 public class FaceRecognitionConstructionActivity extends AppCompatActivity implements FaceRecognitionConstructionView{
 
+
+    testCreationService service;
+
     Button button_browse;
     Button button_add;
     EditText editText_name;
 
+    TextView header;
+
+
+    Uri image_path;
     ImageView imageView_photo;
 
 
@@ -82,7 +91,11 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity imple
     private DbxChooser mChooser;
     static final int DBX_CHOOSER_REQUEST = 0;
 
+
+
     Intent intent = getIntent();
+
+    String testName;
 
     @Override
     public void AuthenticateDropBox() {
@@ -110,15 +123,24 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity imple
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_face_recognition_construction);
 
+        Bundle b = getIntent().getExtras();
+        testName = b.getString("testName");
+
+        service = new testCreationService(this);
+
+        header = (TextView)findViewById(R.id.textView_header);
         button_browse = (Button)findViewById(R.id.button_browse);
         button_add = (Button)findViewById(R.id.button_addPhoto);
         editText_name = (EditText)findViewById(R.id.editText_photo_name);
         imageView_photo = (ImageView)findViewById(R.id.imageView_photo);
 
+        addPhoto_OnClickButtonListener();
 
         mChooser = new DbxChooser(APP_KEY);
         AuthenticateDropBox();
         chooseImage_OnClickButtonListener();
+
+        header.setText(testName);
 
 
     }
@@ -158,12 +180,26 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity imple
         );
     }
 
+    public void addPhoto_OnClickButtonListener() {
+        button_add.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //TODO: add photo
+                        String name = editText_name.getText().toString();
+                        service.insertData_addQuestion(testName, image_path.toString(), name);
+                        Toast.makeText(FaceRecognitionConstructionActivity.this, "Photo Succesfully inserted into DB", Toast.LENGTH_LONG).show();
+                    }
+                }
+        );
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         //TODO: // pull out logic to presenter.
         if (requestCode == DBX_CHOOSER_REQUEST) if (resultCode == Activity.RESULT_OK) {
             DbxChooser.Result result = new DbxChooser.Result(data);
-            Uri image_path = result.getLink();
+            image_path = result.getLink();
             setPhoto(image_path);
 
 

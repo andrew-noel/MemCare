@@ -78,7 +78,7 @@ public class HomeActivity extends AppCompatActivity {
                     @Override
                 public void onClick(View v){
                         //TODO: this is a temporary placement for the construction activity. I plan on moving it when it's up and running.
-                        Intent intent = new Intent ("lehigh.cse.memcare.registration.GiveTest");
+                        Intent intent = new Intent ("lehigh.cse.memcare.registration.selectTest");
                         startActivity(intent);
                     }
                 }
@@ -92,7 +92,7 @@ public class HomeActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         //TODO: start intent to ConstructionActivity where you can create different kinds of tests
-                        Intent intent = new Intent("lehigh.cse.memcare.construction.FaceRecognitionConstructionActivity");
+                        Intent intent = new Intent("lehigh.cse.memcare.construction.ConstructionActivity");
                         startActivity(intent);
                     }
                 }

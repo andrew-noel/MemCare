@@ -17,6 +17,7 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -27,6 +28,7 @@
             android:label="@string/title_activity_registration" >
             <intent-filter>
                 <action android:name="lehigh.cse.memcare.registration.user_registration.RegistrationActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -37,16 +39,18 @@
             android:label="@string/title_activity_home_screen" >
             <intent-filter>
                 <action android:name="lehigh.cse.memcare.home.HomeActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
         <!-- Construction Activity -->
         <activity
-            android:name="ui.construction.ConstructionActivity"
+            android:name="ui.construction.face_recognition_construction_init.ConstructionActivity"
             android:label="@string/title_activity_create_test" >
             <intent-filter>
                 <action android:name="lehigh.cse.memcare.construction.ConstructionActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -57,6 +61,7 @@
             android:label="@string/title_activity_face_recognition_construction" >
             <intent-filter>
                 <action android:name="lehigh.cse.memcare.construction.FaceRecognitionConstructionActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -67,21 +72,32 @@
             android:label="@string/title_activity_register_patient" >
             <intent-filter>
                 <action android:name="lehigh.cse.memcare.registration.RegisterPatientActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
-
-        <!-- Give Test Activity -->
+        <!-- Select Test Activity -->
         <activity
-            android:name="ui.administer.GiveTest"
+            android:name="ui.administer.administer_selectTest"
             android:label="@string/title_activity_give_test" >
             <intent-filter>
-                <action android:name="lehigh.cse.memcare.registration.GiveTest" />
+                <action android:name="lehigh.cse.memcare.registration.selectTest" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
+        <!-- Take Test Activity -->
+        <activity
+            android:name="ui.administer.adminster_takeTest"
+            android:label="@string/title_activity_adminster_take_test" >
+            <intent-filter>
+                <action android:name="lehigh.cse.memcare.registration.takeTest" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <!-- Dropbox authentication -->
         <activity

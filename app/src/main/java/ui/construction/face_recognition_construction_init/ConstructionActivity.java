@@ -1,5 +1,6 @@
-package ui.construction;
+package ui.construction.face_recognition_construction_init;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,6 +20,7 @@ import lehigh.cse.memcare.R;
 import midtier.DAOs.PatientDAOInt;
 import midtier.DAOs.PatientDAO;
 import midtier.services.testCreationService;
+import ui.construction.face_recognition_construction.FaceRecognitionConstructionActivity;
 
 public class ConstructionActivity extends AppCompatActivity {
 
@@ -95,7 +97,17 @@ public class ConstructionActivity extends AppCompatActivity {
                         String dateOfCreation = getCurrentDate();
 
                         service.insertData_createTest(owner, patient_full_name, testName, testType, dateOfCreation);
+                        Intent intent = new Intent("lehigh.cse.memcare.construction.FaceRecognitionConstructionActivity");
+
+
+
+                        Intent i = new Intent(ConstructionActivity.this, FaceRecognitionConstructionActivity.class);
+                        Bundle b = new Bundle();
+                        b.putString("testName", testName);
+                        i.putExtras(b);
+
                         Toast.makeText(ConstructionActivity.this, "Successfuly inserted into DB", Toast.LENGTH_LONG).show();
+                        startActivity(i);
                     }
                 }
         );

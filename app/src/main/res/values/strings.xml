@@ -22,5 +22,6 @@
     <string name="title_activity_home_screen">HomeScreen</string>
     <string name="title_activity_face_recognition_construction">FaceRecognitionConstructionActivity</string>
     <string name="title_activity_give_test">GiveTest</string>
+    <string name="title_activity_adminster_take_test">adminster_takeTest</string>
 
 </resources>
