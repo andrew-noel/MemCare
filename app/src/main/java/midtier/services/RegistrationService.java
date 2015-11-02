@@ -20,8 +20,10 @@ public class RegistrationService extends DatabaseHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + CAREGIVER_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, USER_NAME TEXT, PASSWORD TEXT )");
-        db.execSQL("create table " + CAREGIVER_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, USER_NAME TEXT, PASSWORD TEXT )");
+      //  db.execSQL("create table " + CAREGIVER_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, USER_NAME TEXT, PASSWORD TEXT )");
+         db.execSQL("create table " + PATIENT_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, AGE TEXT, GENDER TEXT )");
+
+        //db.execSQL("create table " + CAREGIVER_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, USER_NAME TEXT, PASSWORD TEXT )");
     }
 
     public boolean username_exists(String username){
@@ -45,6 +47,7 @@ public class RegistrationService extends DatabaseHelper {
     }
 
     public boolean insertData_registerPatient(String first_name, String last_name, String age, String gender){
+
         ContentValues contentValues = new ContentValues();
         contentValues.put(PATIENT_COLUMN_2, first_name);
         contentValues.put(PATIENT_COLUMN_3, last_name);

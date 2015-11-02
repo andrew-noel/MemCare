@@ -40,6 +40,7 @@ public class testCreationService extends DatabaseHelper{
 
     public boolean insertData_createTest(String owner, String patient_full_name, String testName, String testType, String dateOfCreation) {
 
+
         ContentValues contentValues = new ContentValues();
         contentValues.put(TESTCREATE_COLUMN_2, owner);
         contentValues.put(TESTCREATE_COLUMN_3, patient_full_name);

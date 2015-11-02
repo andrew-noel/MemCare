@@ -6,10 +6,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import java.util.HashMap;
+import java.util.Set;
+
 import lehigh.cse.memcare.R;
+import midtier.DAOs.TestDAO;
 
 public class adminster_takeTest extends AppCompatActivity {
 
+
+    TestDAO dao;
 
     String testName;
     TextView textView_header;
@@ -21,10 +27,22 @@ public class adminster_takeTest extends AppCompatActivity {
         setContentView(R.layout.activity_adminster_take_test);
         Bundle b = getIntent().getExtras();
         testName = b.getString("testName");
+        dao = new TestDAO();
 
         textView_header = (TextView)findViewById(R.id.textView_header);
         textView_results = (TextView)findViewById(R.id.textView_results);
         textView_header.setText(testName);
+        HashMap<String,String> questions = dao.getQuestionsHashTable(testName);
+        Set<String> imageURIs = questions.keySet();
+
+        for (String x : imageURIs){
+            String temp = "";
+            temp += questions.get(x) + "\n";
+            temp += x;
+
+            textView_results.append("\n" + temp + "\n");
+        }
+
 
     }
 

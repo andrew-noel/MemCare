@@ -10,7 +10,7 @@ public class QuestionsConstants {
     public static final String QUESTIONS_TABLE_NAME = "QUESTIONS_TABLE";
 
     public static final String QUESTION_COLUMN_1 = "ID";
-    public static final String QUESTION_COLUMN_2 = "TEST_ID";
+    public static final String QUESTION_COLUMN_2 = "TEST_NAME";
     public static final String QUESTION_COLUMN_3 = "IMAGE_URI";
     public static final String QUESTION_COLUMN_4 = "PERSON_NAME";
 
