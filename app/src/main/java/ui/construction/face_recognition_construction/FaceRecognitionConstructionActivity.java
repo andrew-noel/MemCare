@@ -18,9 +18,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.SparseArray;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.GestureDetector;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;;
@@ -53,7 +58,7 @@ import com.google.android.gms.vision.face.Face;
 import com.google.android.gms.vision.face.FaceDetector;
 
 
-public class FaceRecognitionConstructionActivity extends AppCompatActivity implements FaceRecognitionConstructionView{
+public class FaceRecognitionConstructionActivity extends AppCompatActivity implements FaceRecognitionConstructionView, OnTouchListener{
 
 
     testCreationService service;
@@ -69,12 +74,13 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity imple
     ImageView imageView_photo;
 
 
+
     private Bitmap mFaceBitmap;
 
     private int mFaceWidth = 200;
     private int mFaceHeight = 200;
     private static final int MAX_FACES = 1;
-    private static String TAG = "FaceDetecting";
+
 
     private DropboxAPI<AndroidAuthSession> dropboxApi;
 
@@ -96,6 +102,7 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity imple
     Intent intent = getIntent();
 
     String testName;
+    int faceID;
 
     @Override
     public void AuthenticateDropBox() {
@@ -141,6 +148,9 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity imple
         chooseImage_OnClickButtonListener();
 
         header.setText(testName);
+
+        imageView_photo.setOnTouchListener((OnTouchListener) this);
+
 
 
     }
@@ -202,50 +212,6 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity imple
             image_path = result.getLink();
             setPhoto(image_path);
 
-
-            //TESTING AREA
-
-
-            Bitmap myBitmap = null;
-            try {
-                myBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), image_path);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-
-            Paint myRectPaint = new Paint();
-            myRectPaint.setStrokeWidth(5);
-            myRectPaint.setColor(Color.RED);
-            myRectPaint.setStyle(Paint.Style.STROKE);
-
-            Bitmap tempBitmap = Bitmap.createBitmap(myBitmap.getWidth(), myBitmap.getHeight(), Bitmap.Config.RGB_565);
-            Canvas tempCanvas = new Canvas(tempBitmap);
-            tempCanvas.drawBitmap(myBitmap, 0, 0, null);
-
-            FaceDetector faceDetector = new
-                    FaceDetector.Builder(getApplicationContext()).setTrackingEnabled(false)
-                    .build();
-            if(!faceDetector.isOperational()){
-               // new AlertDialog.Builder(v.getContext()).setMessage("Could not set up the face detector!").show();
-                return;
-            }
-
-            Frame frame = new Frame.Builder().setBitmap(myBitmap).build();
-            SparseArray<Face> faces = faceDetector.detect(frame);
-
-
-            for(int i=0; i<faces.size(); i++) {
-                Face thisFace = faces.valueAt(i);
-                float x1 = thisFace.getPosition().x;
-                float y1 = thisFace.getPosition().y;
-                float x2 = x1 + thisFace.getWidth();
-                float y2 = y1 + thisFace.getHeight();
-                tempCanvas.drawRoundRect(new RectF(x1, y1, x2, y2), 2, 2, myRectPaint);
-            }
-            imageView_photo.setImageDrawable(new BitmapDrawable(getResources(),tempBitmap));
-
-            //END TESTING AREA
         } else {
             // Failed or was cancelled by the user.
         }
@@ -292,6 +258,66 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity imple
     }
 
 
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        if(v.getId() == R.id.imageView_photo){
+
+            if(image_path != null) {
+                int touchx = (int) event.getX();
+                int touchy = (int) event.getY();
+
+                Bitmap myBitmap = null;
+                try {
+                    myBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), image_path);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
 
+                Paint myRectPaint = new Paint();
+                myRectPaint.setStrokeWidth(5);
+                myRectPaint.setColor(Color.RED);
+                myRectPaint.setStyle(Paint.Style.STROKE);
+
+                Bitmap tempBitmap = Bitmap.createBitmap(myBitmap.getWidth(), myBitmap.getHeight(), Bitmap.Config.RGB_565);
+                Canvas tempCanvas = new Canvas(tempBitmap);
+                tempCanvas.drawBitmap(myBitmap, 0, 0, null);
+
+                FaceDetector faceDetector = new
+                        FaceDetector.Builder(getApplicationContext()).setTrackingEnabled(false)
+                        .build();
+                if (!faceDetector.isOperational()) {
+                    // new AlertDialog.Builder(v.getContext()).setMessage("Could not set up the face detector!").show();
+                    return false;
+                }
+
+                Frame frame = new Frame.Builder().setBitmap(myBitmap).build();
+                SparseArray<Face> faces = faceDetector.detect(frame);
+
+
+                for (int i = 0; i < faces.size(); i++) {
+                    Face thisFace = faces.valueAt(i);
+                    float x1 = thisFace.getPosition().x;
+                    float y1 = thisFace.getPosition().y;
+                    float x2 = x1 + thisFace.getWidth();
+                    float y2 = y1 + thisFace.getHeight();
+
+                    if(touchx > x1  && touchx < x2 && touchy > y1  && touchy < y2 ){
+
+                        faceID = thisFace.getId();
+                    tempCanvas.drawRoundRect(new RectF(x1, y1, x2, y2), 2, 2, myRectPaint);
+                    }
+                }
+                imageView_photo.setImageDrawable(new BitmapDrawable(getResources(), tempBitmap));
+                faceDetector.release();
+            }
+
+
+
+
+
+        }
+
+        return true;
+    }
 }

@@ -73,7 +73,7 @@ public class ConstructionActivity extends AppCompatActivity {
     private String getCurrentDate(){
         Calendar currentDate = Calendar.getInstance();
         int currentDay = currentDate.get(Calendar.DAY_OF_MONTH);
-        int currentMonth = currentDate.get(Calendar.MONTH);
+        int currentMonth = currentDate.get(Calendar.MONTH) + 1;
         int currentYear = currentDate.get(Calendar.YEAR);
         return " " + currentMonth + "/" + currentDay + "/" + currentYear;
     }
