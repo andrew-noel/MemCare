@@ -57,19 +57,30 @@
         android:layout_alignParentEnd="true" />
 
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView_photo"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_below="@+id/button_browse"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_above="@+id/editText_photo_name"
         android:layout_alignRight="@+id/button_browse"
-        android:layout_alignEnd="@+id/button_browse"
-        android:background="#d4d4dd" />
+        android:layout_alignEnd="@+id/button_browse">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView_photo"
+            android:layout_below="@+id/button_browse"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_above="@+id/editText_photo_name"
+            android:layout_alignRight="@+id/button_browse"
+            android:layout_alignEnd="@+id/button_browse"
+            android:background="#d4d4dd"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
 
+            />
+    </RelativeLayout>
 
 
 </RelativeLayout>
