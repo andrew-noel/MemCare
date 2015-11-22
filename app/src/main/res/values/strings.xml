@@ -23,5 +23,7 @@
     <string name="title_activity_face_recognition_construction">FaceRecognitionConstructionActivity</string>
     <string name="title_activity_give_test">GiveTest</string>
     <string name="title_activity_adminster_take_test">adminster_takeTest</string>
+    <string name="title_activity_anaylsis">Anaylsis</string>
+    <string name="title_activity_view_past_results">ViewPastResults</string>
 
 </resources>

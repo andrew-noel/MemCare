@@ -120,7 +120,14 @@
             android:name="com.google.android.gms.vision.DEPENDENCIES"
             android:value="face" />
 
-
+        <activity
+            android:name="ui.Results.Anaylsis"
+            android:label="@string/title_activity_anaylsis" >
+        </activity>
+        <activity
+            android:name="ui.Results.ViewPastResults"
+            android:label="@string/title_activity_view_past_results" >
+        </activity>
     </application>
 
 </manifest>

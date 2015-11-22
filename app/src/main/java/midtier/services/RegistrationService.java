@@ -32,7 +32,7 @@ public class RegistrationService extends DatabaseHelper {
     }
 
     public boolean patient_exists(String patient_firstname, String patient_lastname){
-        onCreate(db);
+        //onCreate(db);
         res = db.rawQuery("select * from " + PATIENT_TABLE_NAME + " where FIRST_NAME = '" + patient_firstname + "' and LAST_NAME = '" + patient_lastname + "'", null);
         return DatabaseHelper.res.getCount() != 0;
     }
