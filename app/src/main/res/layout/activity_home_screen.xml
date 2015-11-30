@@ -23,7 +23,7 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="80dp"
-        android:text="Settings"
+        android:text="REGISTER PATIENT"
         android:id="@+id/button_settings"
         android:layout_below="@+id/textView"
         android:layout_alignParentRight="true"
@@ -33,7 +33,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:text="Create Test"
+        android:text="CREATE TEST"
         android:id="@+id/button_create_test"
         android:layout_below="@+id/button_settings"
         android:layout_alignParentRight="true"
@@ -42,7 +42,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:text="Give Test"
+        android:text="TAKE TEST"
         android:id="@+id/button_give_test"
         android:layout_below="@+id/button_view_past_tests"
         android:layout_alignParentRight="true"
@@ -51,7 +51,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:text="View Past Tests"
+        android:text="ANAYLSIS"
         android:id="@+id/button_view_past_tests"
         android:layout_below="@+id/button_create_test"
         android:layout_alignParentRight="true"
@@ -60,7 +60,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:text="View Stats"
+        android:text="NA"
         android:id="@+id/button_view_stats"
         android:layout_below="@+id/button_give_test"
         android:layout_alignParentRight="true"

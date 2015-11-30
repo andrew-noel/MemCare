@@ -99,6 +99,17 @@
             </intent-filter>
         </activity>
 
+        <!-- Anayalsis -->
+        <activity
+            android:name="ui.Results.Anaylsis"
+            android:label="@string/title_activity_anaylsis" >
+            <intent-filter>
+                <action android:name="lehigh.cse.memcare.ui.anaylsis" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <!-- Dropbox authentication -->
         <activity
             android:name="com.dropbox.client2.android.AuthActivity"
@@ -120,10 +131,6 @@
             android:name="com.google.android.gms.vision.DEPENDENCIES"
             android:value="face" />
 
-        <activity
-            android:name="ui.Results.Anaylsis"
-            android:label="@string/title_activity_anaylsis" >
-        </activity>
         <activity
             android:name="ui.Results.ViewPastResults"
             android:label="@string/title_activity_view_past_results" >
