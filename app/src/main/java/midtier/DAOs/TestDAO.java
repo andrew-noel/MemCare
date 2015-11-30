@@ -30,6 +30,21 @@ public class TestDAO {
         return testNames;
     }
 
+    public HashMap<String, Integer> getFaceIndexHashMap(String testName){
+        HashMap<String, Integer> faceIndices = new HashMap<>();
+        Cursor res = DatabaseHelper.query("select * from " + QUESTIONS_TABLE_NAME + " where TEST_NAME = '" + testName + "'" );
+        if (res.moveToFirst()){
+            do{
+                String imageURI = res.getString(2);
+                String index = res.getString(4);
+                faceIndices.put(imageURI, Integer.parseInt(index));
+            }while(res.moveToNext());
+        }
+        res.close();
+
+        return faceIndices;
+    }
+
     public HashMap<String, String> getQuestionsHashTable(String testName){
         HashMap<String, String> questions = new HashMap<>();
         Cursor res = DatabaseHelper.query("select * from " + QUESTIONS_TABLE_NAME + " where TEST_NAME = '" + testName + "'" );

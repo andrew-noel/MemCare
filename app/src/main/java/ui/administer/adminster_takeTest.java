@@ -1,11 +1,24 @@
 package ui.administer;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.Region;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.SparseArray;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +27,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.dropbox.chooser.android.DbxChooser;
+import com.google.android.gms.vision.Frame;
+import com.google.android.gms.vision.face.Face;
+import com.google.android.gms.vision.face.FaceDetector;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,12 +42,26 @@ import java.util.Set;
 
 import lehigh.cse.memcare.R;
 import midtier.DAOs.TestDAO;
+import ui.construction.face_recognition_construction.FaceRecognitionConstructionView;
 import ui.registration.patient_registration.RegisterPatientPresenter;
 
-public class adminster_takeTest extends AppCompatActivity {
+public class adminster_takeTest extends AppCompatActivity{
 
 
     TestDAO dao;
+
+
+    Uri image_path;
+
+    private Bitmap tempBitmap;
+    private Canvas tempCanvas;
+    private Paint myRectPaint;
+
+    int faceID;
+    SparseArray<Face> faces;
+    Drawable photoDrawable;
+    Rect imageBounds;
+    Region imageRegion;
 
     String testName;
     TextView textView_header;
@@ -40,8 +75,7 @@ public class adminster_takeTest extends AppCompatActivity {
 
     static List<String> imageURIs;
     HashMap<String,String> questions;
-
-    //TextView textView_results;
+    HashMap<String, Integer> faceIndices;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,32 +94,77 @@ public class adminster_takeTest extends AppCompatActivity {
         numCorrect = 0;
         numWrong = 0;
 
-
-        //textView_results = (TextView)findViewById(R.id.textView_results);
         textView_header.setText(testName);
 
         questions = dao.getQuestionsHashTable(testName);
-        imageURIs = new ArrayList<String>();
+        faceIndices = dao.getFaceIndexHashMap(testName);
+
+        imageURIs = new ArrayList<>();
         imageURIs.addAll(questions.keySet());
-        //Set<String> imageURIs = questions.keySet();
 
 
         imageView_faceImage.setImageURI(Uri.parse(imageURIs.get(0)));
+        image_path = Uri.parse(imageURIs.get(0));
+        drawFaces(faceIndices.get(image_path.toString())+1);
 
         nextImage_OnClickButtonListener();
-        /*
-
-        for (String x : imageURIs){
-            String temp = "";
-            temp += questions.get(x) + "\n";
-            temp += x;
-
-            textView_results.append("\n" + temp + "\n");
-        }
-        */
-
 
     }
+
+    public void drawFaces(int faceId) {
+        //TODO: // pull out logic to presenter.
+        if (faceId == -1) return;
+
+
+        try {
+                InputStream inputStream = getContentResolver().openInputStream(image_path);
+                photoDrawable = Drawable.createFromStream(inputStream, image_path.toString());
+            } catch (FileNotFoundException e) {
+                photoDrawable = getResources().getDrawable(R.drawable.brain_pic);
+            }
+
+            imageBounds = photoDrawable.getBounds();
+            imageRegion = new Region(imageBounds.left, imageBounds.top, imageBounds.right, imageBounds.bottom);
+
+
+
+            Bitmap myBitmap = null;
+            try {
+                myBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), image_path);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            myRectPaint = new Paint();
+            myRectPaint.setStrokeWidth(5);
+            myRectPaint.setColor(Color.RED);
+            myRectPaint.setStyle(Paint.Style.STROKE);
+
+            tempBitmap = Bitmap.createBitmap(myBitmap.getWidth(), myBitmap.getHeight(), myBitmap.getConfig());
+            tempCanvas = new Canvas(tempBitmap);
+            tempCanvas.drawBitmap(myBitmap, 0, 0, null);
+
+            FaceDetector faceDetector = new FaceDetector.Builder(getApplicationContext()).setTrackingEnabled(false).build();
+            if (!faceDetector.isOperational()) {
+                return;
+            }
+
+            Frame frame = new Frame.Builder().setBitmap(tempBitmap).build();
+            faces = faceDetector.detect(frame);
+
+            Face thisFace = faces.valueAt(faceId-1);
+            float x1 = thisFace.getPosition().x;
+            float y1 = thisFace.getPosition().y;
+            float x2 = x1 + thisFace.getWidth();
+            float y2 = y1 + thisFace.getHeight();
+
+            tempCanvas.drawRoundRect(new RectF(x1, y1, x2, y2), 2, 2, myRectPaint);
+
+
+            imageView_faceImage.setImageDrawable(new BitmapDrawable(getResources(), tempBitmap));
+            faceDetector.release();
+        }
+
 
 
     public boolean isCorrect(String uri, String input, HashMap<String, String> lookupTable){
@@ -129,13 +208,19 @@ public class adminster_takeTest extends AppCompatActivity {
                             } else {
                                 numWrong++;
                             }
-                            counter++;
+                            if (counter + 1 <= imageURIs.size()){
+                                counter++;
+                            }
+                            //counter++;
                             if (counter < imageURIs.size()) {
                                 imageView_faceImage.setImageURI(Uri.parse(imageURIs.get(counter)));
+                                image_path = Uri.parse(imageURIs.get(counter));
+                                drawFaces(faceIndices.get(image_path.toString())+1);
                             }
+
                         }else {
 
-                            if (isCorrect(imageURIs.get(counter-1), editText_inputName.getText().toString(), questions)){
+                            if (isCorrect(imageURIs.get(counter), editText_inputName.getText().toString(), questions)){
                                 numCorrect++;
                             } else {
                                 numWrong++;

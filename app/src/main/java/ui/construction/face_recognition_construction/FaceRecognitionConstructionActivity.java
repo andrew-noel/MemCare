@@ -77,7 +77,6 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity imple
 
     Uri image_path;
     ImageView imageView_photo;
-    ImageView imageView_boxes;
 
     private Bitmap tempBitmap;
     private Canvas tempCanvas;
@@ -102,7 +101,7 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity imple
     Intent intent = getIntent();
 
     String testName;
-    int faceID;
+    int faceID = -2;
     SparseArray<Face> faces;
     Drawable photoDrawable;
     Rect imageBounds;
@@ -200,8 +199,11 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity imple
                     public void onClick(View v) {
                         //TODO: add photo
                         String name = editText_name.getText().toString();
-                        service.insertData_addQuestion(testName, image_path.toString(), name);
+                        int faceId = faceID;
+                        service.insertData_addQuestion(testName, image_path.toString(), name, "" + faceID + "");
                         Toast.makeText(FaceRecognitionConstructionActivity.this, "Photo Succesfully inserted into DB", Toast.LENGTH_LONG).show();
+                        faceID = -2;
+
                     }
                 }
         );
@@ -307,6 +309,7 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity imple
         if(v.getId() == R.id.imageView_photo){
 
             if(image_path != null) {
+                faceID = -2;
 
                 int[] viewCoords = new int[2];
                 imageView_photo.getLocationOnScreen(viewCoords);
@@ -351,7 +354,7 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity imple
                     float y2 = y1 + thisFace.getHeight();
 
                     if(touchX > x1  && touchX < x2 && touchY > y1 && touchY < y2){
-                        faceID = thisFace.getId();
+                        faceID = i;
                         tempCanvas.drawRoundRect(new RectF(x1, y1, x2, y2), 2, 2, myRectPaint);
                         break;
                     }

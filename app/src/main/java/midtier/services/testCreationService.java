@@ -32,7 +32,8 @@ public class testCreationService extends DatabaseHelper{
                 "(ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "" + QUESTION_COLUMN_2 + ", " +
                 "" + QUESTION_COLUMN_3 + ", " +
-                "" + QUESTION_COLUMN_4 + ")");
+                "" + QUESTION_COLUMN_4 + ", " +
+                "" + QUESTION_COLUMN_5 + ")");
 
 
 
@@ -41,7 +42,6 @@ public class testCreationService extends DatabaseHelper{
     }
 
     public boolean insertData_createTest(String owner, String patient_full_name, String testName, String testType, String dateOfCreation) {
-
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(TESTCREATE_COLUMN_2, owner);
@@ -54,11 +54,12 @@ public class testCreationService extends DatabaseHelper{
         return result != -1;
     }
 
-    public boolean insertData_addQuestion(String testName, String URI, String person_name){
+    public boolean insertData_addQuestion(String testName, String URI, String person_name, String faceIndex){
         ContentValues contentValues = new ContentValues();
         contentValues.put(QUESTION_COLUMN_2, testName);
         contentValues.put(QUESTION_COLUMN_3, URI);
         contentValues.put(QUESTION_COLUMN_4, person_name);
+        contentValues.put(QUESTION_COLUMN_5, faceIndex);
         long result = db.insert(QUESTIONS_TABLE_NAME, null, contentValues);
 
         return result != -1;

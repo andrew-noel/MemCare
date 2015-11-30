@@ -13,6 +13,7 @@ public class QuestionsConstants {
     public static final String QUESTION_COLUMN_2 = "TEST_NAME";
     public static final String QUESTION_COLUMN_3 = "IMAGE_URI";
     public static final String QUESTION_COLUMN_4 = "PERSON_NAME";
+    public static final String QUESTION_COLUMN_5 = "FACDE_INDEX";
 
 
 }
