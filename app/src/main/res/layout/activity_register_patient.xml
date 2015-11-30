@@ -5,7 +5,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="ui.registration.patient_registration.RegisterPatientActivity"
-    >
+    android:background="#2c4366">
 
     <TextView
         android:layout_width="wrap_content"
@@ -15,7 +15,8 @@
         android:id="@+id/textView_header"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textSize="50dp" />
+        android:textSize="50dp"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,7 +27,8 @@
         android:layout_below="@+id/textView_header"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="59dp" />
+        android:layout_marginTop="59dp"
+        android:textColor="#FFFFFF" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -36,7 +38,9 @@
         android:id="@+id/editText_patientfirstname"
         android:layout_alignBottom="@+id/textView_firstname"
         android:layout_toRightOf="@+id/textView_firstname"
-        android:layout_toEndOf="@+id/textView_firstname" />
+        android:layout_toEndOf="@+id/textView_firstname"
+        android:singleLine="true"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,7 +51,8 @@
         android:layout_below="@+id/textView_firstname"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="33dp" />
+        android:layout_marginTop="33dp"
+        android:textColor="#FFFFFF" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -57,7 +62,8 @@
         android:id="@+id/editText_patientlastname"
         android:layout_alignBottom="@+id/textView_lastname"
         android:layout_alignRight="@+id/editText_patientfirstname"
-        android:layout_alignEnd="@+id/editText_patientfirstname" />
+        android:layout_alignEnd="@+id/editText_patientfirstname"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -68,7 +74,8 @@
         android:layout_marginTop="111dp"
         android:layout_below="@+id/textView_lastname"
         android:layout_alignLeft="@+id/textView_header"
-        android:layout_alignStart="@+id/textView_header" />
+        android:layout_alignStart="@+id/textView_header"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -78,7 +85,8 @@
         android:id="@+id/textView_gender"
         android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/textView_age"
-        android:layout_alignStart="@+id/textView_age" />
+        android:layout_alignStart="@+id/textView_age"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:layout_width="300dp"
@@ -103,7 +111,9 @@
             android:text="Female"
             android:id="@+id/radioButton_female"
             android:checked="false"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:textColor="#FFFFFF"
+            android:buttonTint="#FFFFFF" />
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -111,7 +121,9 @@
             android:text="Male"
             android:id="@+id/radioButton_male"
             android:checked="false"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:textColor="#FFFFFF"
+            android:buttonTint="#FFFFFF" />
 
     </RadioGroup>
 
@@ -123,7 +135,8 @@
         android:id="@+id/editText_age"
         android:layout_above="@+id/radioGroup_Gender"
         android:layout_toRightOf="@+id/textView_gender"
-        android:layout_toEndOf="@+id/textView_gender" />
+        android:layout_toEndOf="@+id/textView_gender"
+        android:textColor="#FFFFFF" />
 
     <Button
         style="?android:attr/buttonStyleSmall"

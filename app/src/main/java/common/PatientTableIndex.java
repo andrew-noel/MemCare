@@ -8,7 +8,8 @@ public enum PatientTableIndex {
     INDEX_FIRST_NAME(1),
     INDEX_LAST_NAME(2),
     INDEX_AGE(3),
-    INDEX_GENDER(4);
+    INDEX_GENDER(4),
+    INDEX_CREATOR(5);
 
     private int value;
 

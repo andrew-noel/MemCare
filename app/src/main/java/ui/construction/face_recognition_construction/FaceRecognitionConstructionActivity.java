@@ -71,6 +71,7 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity imple
 
     Button button_browse;
     Button button_add;
+    Button button_finishActivity;
     EditText editText_name;
 
     TextView header;
@@ -145,9 +146,10 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity imple
         button_add = (Button) findViewById(R.id.button_addPhoto);
         editText_name = (EditText) findViewById(R.id.editText_photo_name);
         imageView_photo = (ImageView) findViewById(R.id.imageView_photo);
+        button_finishActivity = (Button) findViewById(R.id.button_finish_creation);
 
+        finishActivity_OnClickButtonListener();
         addPhoto_OnClickButtonListener();
-
         mChooser = new DbxChooser(APP_KEY);
         AuthenticateDropBox();
         chooseImage_OnClickButtonListener();
@@ -207,6 +209,21 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity imple
                     }
                 }
         );
+    }
+
+    public void finishActivity_OnClickButtonListener(){
+        button_finishActivity.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                    finish();
+                        Intent intent = new Intent ("lehigh.cse.memcare.home.HomeActivity");
+                        startActivity(intent);
+
+                    }
+                }
+        );
+
     }
 
     @Override
