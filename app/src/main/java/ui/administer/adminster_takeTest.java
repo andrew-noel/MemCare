@@ -228,7 +228,7 @@ public class adminster_takeTest extends AppCompatActivity{
 
     public boolean isCorrect(String uri, String input, HashMap<String, String> lookupTable){
         String answer = lookupTable.get(uri);
-        if (input.equals(answer)){
+        if (input.equalsIgnoreCase(answer)){
             return true;
         }else {
             return false;

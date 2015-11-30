@@ -117,6 +117,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="mediarouter-v7-22.2.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-cast-7.8.0" level="project" />
+    <orderEntry type="library" exported="" name="androidplot-core-0.6.1" level="project" />
     <orderEntry type="library" exported="" name="dropbox-android-sdk-1.6.3" level="project" />
     <orderEntry type="library" exported="" name="play-services-gcm-7.8.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-games-7.8.0" level="project" />
