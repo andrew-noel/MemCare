@@ -1,12 +1,12 @@
 package ui.construction.face_recognition_construction;
 
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PointF;
 import android.graphics.Rect;
@@ -75,19 +75,13 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity imple
 
     TextView header;
 
-
     Uri image_path;
     ImageView imageView_photo;
     ImageView imageView_boxes;
 
-
     private Bitmap tempBitmap;
     private Canvas tempCanvas;
     private Paint myRectPaint;
-
-
-
-
 
     private DropboxAPI<AndroidAuthSession> dropboxApi;
 
@@ -162,9 +156,6 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity imple
         header.setText(testName);
 
 
-
-
-
     }
 
     @Override
@@ -225,11 +216,11 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity imple
             setPhoto(image_path);
 
             try {
-    InputStream inputStream = getContentResolver().openInputStream(image_path);
-    photoDrawable = Drawable.createFromStream(inputStream, image_path.toString());
-} catch (FileNotFoundException e) {
-    photoDrawable = getResources().getDrawable(R.drawable.brain_pic);
-}
+                InputStream inputStream = getContentResolver().openInputStream(image_path);
+                photoDrawable = Drawable.createFromStream(inputStream, image_path.toString());
+            } catch (FileNotFoundException e) {
+                photoDrawable = getResources().getDrawable(R.drawable.brain_pic);
+            }
 
             imageBounds = photoDrawable.getBounds();
             imageRegion = new Region(imageBounds.left, imageBounds.top, imageBounds.right, imageBounds.bottom);
@@ -251,21 +242,10 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity imple
             tempBitmap = Bitmap.createBitmap(myBitmap.getWidth(), myBitmap.getHeight(), myBitmap.getConfig());
             tempCanvas = new Canvas(tempBitmap);
             tempCanvas.drawBitmap(myBitmap, 0, 0, null);
-
-
-            //LayoutParams linearLayout = new LayoutParams(myBitmap.getWidth(),myBitmap.getHeight());
-            //linearLayout.setMargins(imageView_photo.getLeft(), imageView_photo.getTop(), imageView_photo.getRight(), imageView_photo.getBottom());
-
-           // imageView_photo.setLayoutParams(linearLayout);
             imageView_photo.setOnTouchListener(this);
 
-
-
-            FaceDetector faceDetector = new
-                    FaceDetector.Builder(getApplicationContext()).setTrackingEnabled(false)
-                    .build();
+            FaceDetector faceDetector = new FaceDetector.Builder(getApplicationContext()).setTrackingEnabled(false).build();
             if (!faceDetector.isOperational()) {
-                // new AlertDialog.Builder(v.getContext()).setMessage("Could not set up the face detector!").show();
                 return;
             }
 
@@ -285,7 +265,6 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity imple
 
             imageView_photo.setImageDrawable(new BitmapDrawable(getResources(), tempBitmap));
             faceDetector.release();
-
         }
 
          else {
@@ -318,19 +297,8 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity imple
     }
 
     @Override
-    public String getPhotoName() {
-        return editText_name.getText().toString();
-    }
-
-    @Override
     public void setPhoto(Uri image_path) {
         imageView_photo.setImageURI(image_path);
-    }
-
-    @Override
-    public Map<String, Uri> getPhotoURIMap() {
-        //TODO: Append photos to test in construction.
-        return null;
     }
 
 
@@ -339,11 +307,22 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity imple
         if(v.getId() == R.id.imageView_photo){
 
             if(image_path != null) {
-                float touchx = event.getX();
-                float touchy = event.getY();
 
-                float viewXCoor = imageView_photo.getX();
-                float viewYCoor = imageView_photo.getY();
+                int[] viewCoords = new int[2];
+                imageView_photo.getLocationOnScreen(viewCoords);
+
+                // calculate inverse matrix
+                Matrix inverse = new Matrix();
+                imageView_photo.getImageMatrix().invert(inverse);
+
+                // map touch point from ImageView to image
+                float[] touchPoint = new float[] {event.getX(), event.getY()};
+                inverse.mapPoints(touchPoint);
+
+
+                float touchX = touchPoint[0];
+                float touchY = touchPoint[1];
+
 
                 myRectPaint = new Paint();
                 myRectPaint.setStrokeWidth(5);
@@ -370,23 +349,16 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity imple
                     float y1 = thisFace.getPosition().y;
                     float x2 = x1 + thisFace.getWidth();
                     float y2 = y1 + thisFace.getHeight();
-System.out.println(x1 + " " + x2 + " " +y1 + " " + y2 );
-                    System.out.println(touchx + " " + touchy);
-                    System.out.println(viewXCoor + " " + viewYCoor);
-                    System.out.println(imageBounds.left + " " + imageBounds.top);
-                    if(touchx > x1  && touchx < x2 && touchy > y1 && touchy < y2){
 
+                    if(touchX > x1  && touchX < x2 && touchY > y1 && touchY < y2){
                         faceID = thisFace.getId();
-                    tempCanvas.drawRoundRect(new RectF(x1, y1, x2, y2), 2, 2, myRectPaint);
+                        tempCanvas.drawRoundRect(new RectF(x1, y1, x2, y2), 2, 2, myRectPaint);
+                        break;
                     }
                 }
                 imageView_photo.setImageDrawable(new BitmapDrawable(getResources(), tempBitmap));
 
             }
-
-
-
-
 
         }
 

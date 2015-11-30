@@ -11,9 +11,6 @@ public interface FaceRecognitionConstructionView {
 
     void AuthenticateDropBox();
 
-    String getPhotoName();
-
     void setPhoto(Uri image_path);
 
-    Map<String, Uri> getPhotoURIMap();
 }
