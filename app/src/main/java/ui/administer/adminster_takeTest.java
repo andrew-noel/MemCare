@@ -2,6 +2,7 @@ package ui.administer;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,11 +12,14 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Region;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.speech.RecognizerIntent;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.SparseArray;
@@ -26,6 +30,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dropbox.chooser.android.DbxChooser;
 import com.google.android.gms.vision.Frame;
@@ -38,6 +43,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 import lehigh.cse.memcare.R;
@@ -48,8 +54,10 @@ import ui.registration.patient_registration.RegisterPatientPresenter;
 public class adminster_takeTest extends AppCompatActivity{
 
 
-    TestDAO dao;
+    TextToSpeech t1;
 
+    TestDAO dao;
+    private final int REQ_CODE_SPEECH_INPUT = 100;
 
     Uri image_path;
 
@@ -67,6 +75,7 @@ public class adminster_takeTest extends AppCompatActivity{
     TextView textView_header;
     EditText editText_inputName;
     Button button_next;
+    Button button_mic;
     ImageView imageView_faceImage;
 
     static int counter = 0;
@@ -88,6 +97,7 @@ public class adminster_takeTest extends AppCompatActivity{
         textView_header = (TextView)findViewById(R.id.textView_header);
         editText_inputName = (EditText)findViewById(R.id.editText_inputName);
         button_next = (Button)findViewById(R.id.button_next);
+        button_mic = (Button)findViewById(R.id.mic);
         imageView_faceImage = (ImageView)findViewById(R.id.imageView_faceImage);
 
         counter = 0;
@@ -105,10 +115,59 @@ public class adminster_takeTest extends AppCompatActivity{
 
         imageView_faceImage.setImageURI(Uri.parse(imageURIs.get(0)));
         image_path = Uri.parse(imageURIs.get(0));
-        drawFaces(faceIndices.get(image_path.toString())+1);
+        drawFaces(faceIndices.get(image_path.toString()) + 1);
 
         nextImage_OnClickButtonListener();
 
+        Typeface type = Typeface.createFromAsset(getAssets(), "fonts/Sansation-LightItalic.ttf");
+        Typeface glyphicons = Typeface.createFromAsset(getAssets(), "fonts/fontawesome-webfont.ttf");
+
+        button_mic.setText("");
+        button_mic.setTypeface(glyphicons);
+        button_mic.setText("\uf130");
+
+        button_mic.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                promptSpeechInput();
+            }
+        });
+    }
+
+
+    private void promptSpeechInput() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
+                "SAY THE NAME");
+        try {
+            startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
+        } catch (ActivityNotFoundException a) {
+            Toast.makeText(getApplicationContext(),
+                    "NOT SUPPORTED",
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case REQ_CODE_SPEECH_INPUT: {
+                if (resultCode == RESULT_OK && null != data) {
+
+                    ArrayList<String> result = data
+                            .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    editText_inputName.setText(result.get(0));
+                }
+                break;
+            }
+
+        }
     }
 
     public void drawFaces(int faceId) {
