@@ -105,8 +105,10 @@ public class HomeActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         //TODO: fix login intent
-                        Intent intent = new Intent("android.intent.action.MAIN");
-                        startActivity(intent);
+                        //Intent intent = new Intent("android.intent.action.MAIN");
+                        finish();
+                        //Intent intent = new Intent("lehigh.cse.memcare.login.LoginActivity");
+                        //startActivity(intent);
                     }
                 }
         );

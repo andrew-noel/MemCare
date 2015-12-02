@@ -4,7 +4,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="ui.construction.face_recognition_construction_init.ConstructionActivity">
+    tools:context="ui.construction.face_recognition_construction_init.ConstructionActivity"
+    android:background="#2c4366">
 
     <TextView
         android:layout_width="wrap_content"
@@ -17,7 +18,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="137dp"
-        android:layout_marginStart="137dp" />
+        android:layout_marginStart="137dp"
+        android:textColor="#FFFFFF" />
 
     <Spinner
         android:layout_width="wrap_content"
@@ -26,7 +28,8 @@
         android:spinnerMode="dropdown"
         android:layout_alignTop="@+id/textView_selectPatient"
         android:layout_toRightOf="@+id/textView_dateOfCreation"
-        android:layout_toEndOf="@+id/textView_dateOfCreation" />
+        android:layout_toEndOf="@+id/textView_dateOfCreation"
+        android:background="#fdffff" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -37,7 +40,8 @@
         android:layout_below="@+id/textView_header"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="83dp" />
+        android:layout_marginTop="83dp"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,7 +51,8 @@
         android:id="@+id/textView_testType"
         android:layout_alignTop="@+id/spinner_testType"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#FFFFFF" />
 
     <Spinner
         android:layout_width="wrap_content"
@@ -57,17 +62,19 @@
         android:layout_below="@+id/spinner_patientList"
         android:layout_alignLeft="@+id/spinner_patientList"
         android:layout_alignStart="@+id/spinner_patientList"
-        android:layout_marginTop="56dp" />
+        android:layout_marginTop="56dp"
+        android:background="#fdffff" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Enter A Test Name: "
+        android:text="Test Name: "
         android:id="@+id/textView_testName"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#FFFFFF" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -75,22 +82,22 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/editText_testName"
-        android:layout_alignTop="@+id/textView_testName"
-        android:layout_toRightOf="@+id/textView_testName"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:background="#fdffff"
+        android:hint="Enter a test name here"
+        android:width="300dp"
+        android:layout_alignBottom="@+id/textView_testName"
+        android:layout_alignLeft="@+id/textView_header"
+        android:layout_alignStart="@+id/textView_header" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create Test"
         android:id="@+id/button_createTest"
-        android:layout_marginBottom="80dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/editText_testName"
-        android:layout_alignEnd="@+id/editText_testName" />
+        android:width="300dp"
+        android:layout_above="@+id/button_clearDB"
+        android:layout_alignRight="@+id/textView_insertDate"
+        android:layout_alignEnd="@+id/textView_insertDate" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -101,7 +108,8 @@
         android:layout_marginTop="91dp"
         android:layout_below="@+id/editText_testName"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -112,7 +120,8 @@
         android:layout_toRightOf="@+id/textView_dateOfCreation"
         android:layout_alignRight="@+id/editText_testName"
         android:layout_alignEnd="@+id/editText_testName"
-        android:layout_alignBottom="@+id/textView_dateOfCreation" />
+        android:layout_alignBottom="@+id/textView_dateOfCreation"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:layout_width="wrap_content"

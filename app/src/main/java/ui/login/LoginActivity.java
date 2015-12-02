@@ -146,6 +146,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         Intent intent = new Intent("lehigh.cse.memcare.home.HomeActivity");
         intent.putExtra("first_name", "Username"/*caregiver.get_firstname()*/);
         startActivity(intent);
+        username.setText("");
+        password.setText("");
+        //finish();
     }
 
     @Override

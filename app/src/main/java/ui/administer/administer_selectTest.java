@@ -62,6 +62,7 @@ public class administer_selectTest extends AppCompatActivity {
 
                         //Intent intent = new Intent("lehigh.cse.memcare.registration.takeTest");
                         startActivity(i);
+                        finish();
                         //Toast.makeText(ConstructionActivity.this, "Cleared DB", Toast.LENGTH_LONG).show();
                     }
                 }

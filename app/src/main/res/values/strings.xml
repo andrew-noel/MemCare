@@ -13,17 +13,19 @@
     <string name="Registration_firstname_error">Please enter a first name</string>
     <string name="Registration_lastname_error">Please enter a last name</string>
     <string name="Registration_password_error">Please enter a password</string>
+    <string name="Registration_confirm_password_error">Please confirm password</string>
+    <string name="Registration_password_mismatch">Passwords do not match</string>
     <string name="Registration_age_error">Please enter an age</string>
     <string name="Registration_gender_error">Please select a gender</string>
     <string name="Registration_userAlreadyExists_error">That username already exists</string>
     <string name="Registration_patientAlreadyExists_error">That patient already exists</string>
-    <string name="title_activity_create_test">createTest</string>
-    <string name="title_activity_register_patient">register_patient</string>
-    <string name="title_activity_home_screen">HomeScreen</string>
-    <string name="title_activity_face_recognition_construction">FaceRecognitionConstructionActivity</string>
-    <string name="title_activity_give_test">GiveTest</string>
-    <string name="title_activity_adminster_take_test">adminster_takeTest</string>
-    <string name="title_activity_anaylsis">Anaylsis</string>
-    <string name="title_activity_view_past_results">ViewPastResults</string>
+    <string name="title_activity_create_test">Create Test</string>
+    <string name="title_activity_register_patient">Register Patient</string>
+    <string name="title_activity_home_screen">Home Screen</string>
+    <string name="title_activity_face_recognition_construction">Construction Activity</string>
+    <string name="title_activity_give_test">Give Test</string>
+    <string name="title_activity_adminster_take_test">Take Test</string>
+    <string name="title_activity_anaylsis">Analysis</string>
+    <string name="title_activity_view_past_results">View Past Results</string>
 
 </resources>

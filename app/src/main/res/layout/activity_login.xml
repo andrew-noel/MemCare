@@ -50,11 +50,11 @@
         android:textColor="#fbfffd"
         android:textStyle="bold"
         android:textSize="18dp"
-        android:layout_alignLeft="@+id/button_cleardb"
-        android:layout_alignStart="@+id/button_cleardb"
         android:layout_above="@+id/textView_registerLink"
         android:layout_alignRight="@+id/editText_password"
-        android:layout_alignEnd="@+id/editText_password" />
+        android:layout_alignEnd="@+id/editText_password"
+        android:layout_alignLeft="@+id/editText_password"
+        android:layout_alignStart="@+id/editText_password" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -89,11 +89,14 @@
         android:id="@+id/textView_registerLink"
         android:textColor="#fefdff"
         android:clickable="true"
-        android:layout_marginBottom="206dp"
+        android:layout_marginBottom="207dp"
+        android:paddingTop="25dp"
         android:layout_above="@+id/button_cleardb"
+        android:layout_alignLeft="@+id/button_login"
+        android:layout_alignStart="@+id/button_login"
         android:layout_alignRight="@+id/button_login"
         android:layout_alignEnd="@+id/button_login"
-        android:paddingTop="25dp" />
+        android:textSize="20dp" />
 
     <ImageView
         android:layout_width="100dp"

@@ -20,6 +20,7 @@ public class RegistrationPresenter {
         String lastname;
         String username;
         String password;
+        String confirm_password;
 
         boolean error = false;
 
@@ -37,6 +38,14 @@ public class RegistrationPresenter {
         }
         if ((password = view.getPassword()).isEmpty()) {
             view.showPasswordError(R.string.Registration_password_error);
+            error = true;
+        }
+        if((confirm_password = view.getConfirmPassword()).isEmpty()){
+            view.showConfirmPasswordError(R.string.Registration_confirm_password_error);
+            error = true;
+        }
+        if(!password.equals(confirm_password)){
+            view.showConfirmPasswordMismatch(R.string.Registration_password_mismatch);
             error = true;
         }
 

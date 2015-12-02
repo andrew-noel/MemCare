@@ -23,16 +23,16 @@
         android:textStyle="bold" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="80dp"
         android:id="@+id/editText_inputName"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:background="#fdffff"
-        android:text="Enter Person&apos;s Name"
+        android:singleLine="true"
+        android:width="300dp"
         android:layout_alignParentBottom="true"
         android:layout_toStartOf="@+id/mic"
-        android:layout_toLeftOf="@+id/mic" />
+        android:layout_toLeftOf="@+id/mic"
+        android:hint="Enter Person&apos;s Name" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -51,23 +51,21 @@
         android:layout_height="wrap_content"
         android:text="Next"
         android:id="@+id/button_next"
-        android:layout_below="@+id/imageView_faceImage"
         android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/mic"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/textView_header" />
+        android:layout_below="@+id/imageView_faceImage" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="VOICE"
         android:id="@+id/mic"
-        android:layout_below="@+id/imageView_faceImage"
-        android:layout_toStartOf="@+id/button_next"
-        android:layout_alignBottom="@+id/button_next"
-        android:layout_alignRight="@+id/textView_header"
-        android:layout_alignEnd="@+id/textView_header"
         android:textColor="#fbffff"
         android:background="#010101"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_alignTop="@+id/button_next"
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@+id/editText_inputName" />
 </RelativeLayout>

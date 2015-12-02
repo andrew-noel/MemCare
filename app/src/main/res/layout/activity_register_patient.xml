@@ -36,11 +36,12 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/editText_patientfirstname"
-        android:layout_alignBottom="@+id/textView_firstname"
-        android:layout_toRightOf="@+id/textView_firstname"
-        android:layout_toEndOf="@+id/textView_firstname"
         android:singleLine="true"
-        android:textColor="#FFFFFF" />
+        android:background="#fdffff"
+        android:hint="Enter first name"
+        android:layout_alignBottom="@+id/textView_firstname"
+        android:layout_alignLeft="@+id/button_patientregister"
+        android:layout_alignStart="@+id/button_patientregister" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -63,7 +64,9 @@
         android:layout_alignBottom="@+id/textView_lastname"
         android:layout_alignRight="@+id/editText_patientfirstname"
         android:layout_alignEnd="@+id/editText_patientfirstname"
-        android:textColor="#FFFFFF" />
+        android:singleLine="true"
+        android:background="#fdffff"
+        android:hint="Enter last name" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -74,8 +77,9 @@
         android:layout_marginTop="111dp"
         android:layout_below="@+id/textView_lastname"
         android:layout_alignLeft="@+id/textView_header"
-        android:layout_alignStart="@+id/textView_header"
-        android:textColor="#FFFFFF" />
+        android:layout_alignStart="@id/textView_lastname"
+        android:textColor="#FFFFFF"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -101,9 +105,10 @@
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView_age"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/radioGroup_Gender">
+        android:id="@+id/radioGroup_Gender"
+        android:layout_alignTop="@+id/textView_gender"
+        android:layout_toRightOf="@+id/textView_firstname"
+        android:layout_toEndOf="@+id/textView_firstname">
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -111,7 +116,6 @@
             android:text="Female"
             android:id="@+id/radioButton_female"
             android:checked="false"
-            android:layout_gravity="center_horizontal"
             android:textColor="#FFFFFF"
             android:buttonTint="#FFFFFF" />
 
@@ -121,7 +125,6 @@
             android:text="Male"
             android:id="@+id/radioButton_male"
             android:checked="false"
-            android:layout_gravity="center_horizontal"
             android:textColor="#FFFFFF"
             android:buttonTint="#FFFFFF" />
 
@@ -133,10 +136,12 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/editText_age"
-        android:layout_above="@+id/radioGroup_Gender"
-        android:layout_toRightOf="@+id/textView_gender"
-        android:layout_toEndOf="@+id/textView_gender"
-        android:textColor="#FFFFFF" />
+        android:singleLine="true"
+        android:background="#fdffff"
+        android:hint="Enter age"
+        android:layout_alignBottom="@+id/textView_age"
+        android:layout_alignLeft="@+id/editText_patientlastname"
+        android:layout_alignStart="@+id/editText_patientlastname" />
 
     <Button
         style="?android:attr/buttonStyleSmall"

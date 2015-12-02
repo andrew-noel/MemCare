@@ -202,9 +202,20 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity imple
                         //TODO: add photo
                         String name = editText_name.getText().toString();
                         int faceId = faceID;
+                        if(faceID == -2){
+                            Toast.makeText(FaceRecognitionConstructionActivity.this, "Please select a person to add this image to the test", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        if(name.isEmpty()){
+                            editText_name.setError("Please enter a name");
+                            Toast.makeText(FaceRecognitionConstructionActivity.this, "Please enter a name", Toast.LENGTH_LONG).show();
+                            return;
+                        }
                         service.insertData_addQuestion(testName, image_path.toString(), name, "" + faceID + "");
-                        Toast.makeText(FaceRecognitionConstructionActivity.this, "Photo Succesfully inserted into DB", Toast.LENGTH_LONG).show();
+                        Toast.makeText(FaceRecognitionConstructionActivity.this, "Photo successfully inserted into test", Toast.LENGTH_LONG).show();
                         faceID = -2;
+                        editText_name.setText("");
+                        imageView_photo.setImageDrawable(null);
 
                     }
                 }
@@ -216,7 +227,9 @@ public class FaceRecognitionConstructionActivity extends AppCompatActivity imple
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                    finish();
+
+                        Toast.makeText(FaceRecognitionConstructionActivity.this, "Test successfully created", Toast.LENGTH_LONG).show();
+                        finish();
                         Intent intent = new Intent ("lehigh.cse.memcare.home.HomeActivity");
                         startActivity(intent);
 

@@ -4,7 +4,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="ui.administer.administer_selectTest">
+    tools:context="ui.administer.administer_selectTest"
+    android:background="#2c4366">
 
     <TextView
         android:layout_width="wrap_content"
@@ -14,16 +15,19 @@
         android:id="@+id/textView2"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="136dp" />
+        android:layout_marginTop="136dp"
+        android:textColor="#ffffff" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/spinner_availableTests"
         android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="86dp"
-        android:spinnerMode="dialog" />
+        android:spinnerMode="dialog"
+        android:background="#fdffff"
+        android:layout_alignLeft="@+id/button_beginTest"
+        android:layout_alignStart="@+id/button_beginTest" />
 
     <Button
         android:layout_width="wrap_content"
@@ -31,6 +35,18 @@
         android:text="Begin Test"
         android:id="@+id/button_beginTest"
         android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2" />
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please select a test:"
+        android:id="@+id/textView_selectTest"
+        android:layout_alignBottom="@+id/spinner_availableTests"
+        android:layout_toLeftOf="@+id/spinner_availableTests"
+        android:layout_alignTop="@+id/spinner_availableTests"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#fdffff"
+        android:textSize="25dp" />
 </RelativeLayout>

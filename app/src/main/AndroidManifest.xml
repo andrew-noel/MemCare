@@ -9,12 +9,13 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
 
         <!-- Login Activity -->
         <activity
             android:name="ui.login.LoginActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,7 +26,8 @@
         <!-- Registration Activity -->
         <activity
             android:name="ui.registration.user_registration.RegistrationActivity"
-            android:label="@string/title_activity_registration" >
+            android:label="@string/title_activity_registration"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="lehigh.cse.memcare.registration.user_registration.RegistrationActivity" />
 
@@ -36,7 +38,8 @@
         <!-- Home Activity -->
         <activity
             android:name="ui.home.HomeActivity"
-            android:label="@string/title_activity_home_screen" >
+            android:label="@string/title_activity_home_screen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="lehigh.cse.memcare.home.HomeActivity" />
 
@@ -47,7 +50,8 @@
         <!-- Construction Activity -->
         <activity
             android:name="ui.construction.face_recognition_construction_init.ConstructionActivity"
-            android:label="@string/title_activity_create_test" >
+            android:label="@string/title_activity_create_test"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="lehigh.cse.memcare.construction.ConstructionActivity" />
 
@@ -58,7 +62,8 @@
         <!-- Face Recognition Construction -->
         <activity
             android:name="ui.construction.face_recognition_construction.FaceRecognitionConstructionActivity"
-            android:label="@string/title_activity_face_recognition_construction" >
+            android:label="@string/title_activity_face_recognition_construction"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="lehigh.cse.memcare.construction.FaceRecognitionConstructionActivity" />
 
@@ -69,7 +74,8 @@
         <!-- Register Patient Activity -->
         <activity
             android:name="ui.registration.patient_registration.RegisterPatientActivity"
-            android:label="@string/title_activity_register_patient" >
+            android:label="@string/title_activity_register_patient"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="lehigh.cse.memcare.registration.RegisterPatientActivity" />
 
@@ -80,7 +86,8 @@
         <!-- Select Test Activity -->
         <activity
             android:name="ui.administer.administer_selectTest"
-            android:label="@string/title_activity_give_test" >
+            android:label="@string/title_activity_give_test"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="lehigh.cse.memcare.registration.selectTest" />
 
@@ -91,7 +98,8 @@
         <!-- Take Test Activity -->
         <activity
             android:name="ui.administer.adminster_takeTest"
-            android:label="@string/title_activity_adminster_take_test" >
+            android:label="@string/title_activity_adminster_take_test"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="lehigh.cse.memcare.registration.takeTest" />
 
@@ -102,7 +110,8 @@
         <!-- Anayalsis -->
         <activity
             android:name="ui.Results.Anaylsis"
-            android:label="@string/title_activity_anaylsis" >
+            android:label="@string/title_activity_anaylsis"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="lehigh.cse.memcare.ui.anaylsis" />
 
@@ -133,7 +142,8 @@
 
         <activity
             android:name="ui.Results.ViewPastResults"
-            android:label="@string/title_activity_view_past_results" >
+            android:label="@string/title_activity_view_past_results"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

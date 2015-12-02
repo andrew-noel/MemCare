@@ -12,6 +12,8 @@ public interface RegistrationView {
 
     String getPassword();
 
+    String getConfirmPassword();
+
     void showUsernameError(int username_error);
 
     void showFirstNameError(int registration_firstname_error);
@@ -19,6 +21,10 @@ public interface RegistrationView {
     void showLastNameError(int registration_lastname_error);
 
     void showPasswordError(int registration_password_error);
+
+    void showConfirmPasswordError(int registration_confirm_password_error);
+
+    void showConfirmPasswordMismatch(int registration_password_mismatch);
 
     void showUsernameAlreadyExistsError(int registration_userAlreadyExists_error);
 

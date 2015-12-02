@@ -242,14 +242,17 @@ public class adminster_takeTest extends AppCompatActivity{
                 .setMessage(message)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        // continue with delete
+                        finish();
+                        Intent intent = new Intent("lehigh.cse.memcare.home.HomeActivity");
+                        startActivity(intent);
+
                     }
                 })
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+               /* .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // do nothing
                     }
-                })
+                })*/
                 .setIcon(android.R.drawable.ic_dialog_info)
                 .show();
 
@@ -260,6 +263,7 @@ public class adminster_takeTest extends AppCompatActivity{
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         if (counter < imageURIs.size()-1) {
                             //TODO: no input should provide warning, should NOT count as incorrect
                             if (isCorrect(imageURIs.get(counter), editText_inputName.getText().toString(), questions)){
@@ -285,10 +289,13 @@ public class adminster_takeTest extends AppCompatActivity{
                                 numWrong++;
                             }
 
-                            showDialogMessage("Congradulations, you have complete the test.\n" +
-                                    "Num Correct: " + numCorrect + "\n" +
-                                    "Num Wrong: " + numWrong);
+                            showDialogMessage("Congratulations, you have completed the test.\n" +
+                                    "Number Correct: " + numCorrect + "\n" +
+                                    "Number Wrong: " + numWrong);
+
+
                         }
+                        editText_inputName.setText("");
                     }
 
                 }

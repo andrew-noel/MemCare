@@ -96,6 +96,16 @@ public class ConstructionActivity extends AppCompatActivity {
                         String testType = spinner_testType.getSelectedItem().toString();
                         String dateOfCreation = getCurrentDate();
 
+                        if(testName.isEmpty()){
+                            editText_testName.setError("Please enter a test name");
+                            Toast.makeText(ConstructionActivity.this, "Please enter a test name", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        if(patient_full_name.isEmpty()){
+                            Toast.makeText(ConstructionActivity.this, "Please select a patient", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+
                         service.insertData_createTest(owner, patient_full_name, testName, testType, dateOfCreation);
                         Intent intent = new Intent("lehigh.cse.memcare.construction.FaceRecognitionConstructionActivity");
 
@@ -106,7 +116,7 @@ public class ConstructionActivity extends AppCompatActivity {
                         b.putString("testName", testName);
                         i.putExtras(b);
 
-                        Toast.makeText(ConstructionActivity.this, "Successfuly inserted into DB", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ConstructionActivity.this, "Successfully created test", Toast.LENGTH_LONG).show();
                         startActivity(i);
                     }
                 }

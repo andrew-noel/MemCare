@@ -155,6 +155,7 @@ EditText editText_firstname, editText_lastname, editText_age;
 
     @Override
     public void returnToTestActivity() {
+        Toast.makeText(RegisterPatientActivity.this, "Patient successfully added", Toast.LENGTH_LONG).show();
         finish();
     }
 

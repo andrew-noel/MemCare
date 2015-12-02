@@ -15,7 +15,7 @@ import lehigh.cse.memcare.R;
 public class RegistrationActivity extends AppCompatActivity implements RegistrationView{
 
     RegistrationService service;
-    EditText editText_firstName, editText_lastName, editText_username, editText_password;
+    EditText editText_firstName, editText_lastName, editText_username, editText_password, editText_confirmpassword;
     Button btnRegister;
 
     @Override
@@ -29,6 +29,7 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
         editText_lastName = (EditText)findViewById(R.id.editText_patientlastname);
         editText_username = (EditText)findViewById(R.id.editText_username);
         editText_password = (EditText)findViewById(R.id.editText_password);
+        editText_confirmpassword = (EditText)findViewById(R.id.editText_confirmpassword);
         btnRegister = (Button)findViewById(R.id.button_patientregister);
         Register_OnClickButtonListener();
 
@@ -91,6 +92,9 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
     }
 
     @Override
+    public String getConfirmPassword(){ return editText_confirmpassword.getText().toString(); }
+
+    @Override
     public void showUsernameError(int username_error) {
         editText_username.setError(getString(username_error));
     }
@@ -108,6 +112,16 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
     @Override
     public void showPasswordError(int registration_password_error) {
         editText_password.setError(getString(registration_password_error));
+    }
+
+    @Override
+    public void showConfirmPasswordError(int registration_confirm_password_error) {
+        editText_confirmpassword.setError(getString(registration_confirm_password_error));
+    }
+
+    @Override
+    public void showConfirmPasswordMismatch(int registration_password_mismatch) {
+        editText_confirmpassword.setError(getString(registration_password_mismatch));
     }
 
     @Override

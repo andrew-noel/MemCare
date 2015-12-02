@@ -43,7 +43,8 @@
         android:paddingTop="15dp"
         android:textSize="25dp"
         android:hint="Enter Person's Name Here"
-        android:paddingLeft="20dp" />
+        android:paddingLeft="20dp"
+        android:singleLine="true" />
 
     <Button
         android:layout_width="250dp"
