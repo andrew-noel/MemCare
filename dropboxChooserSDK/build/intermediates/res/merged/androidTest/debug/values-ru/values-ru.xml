@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/andrewmcmullen/Developer/MemCare/dropboxChooserSDK/build/intermediates/bundles/debug/res/values-ru/values-ru.xml -->
+    <!-- From: file:/Users/Noel/Desktop/SeniorDesign/MemCare/dropboxChooserSDK/build/intermediates/bundles/debug/res/values-ru/values-ru.xml -->
     <eat-comment/>
     <string name="dbx_install">Установить Dropbox</string>
     <string name="dbx_install_button_cancel">Отмена</string>

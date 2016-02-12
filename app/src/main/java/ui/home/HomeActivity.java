@@ -65,6 +65,7 @@ public class HomeActivity extends AppCompatActivity {
                     public void onClick(View v){
                         //TODO: this is a temporary placement for the construction activity. I plan on moving it when it's up and running.
                         Intent intent = new Intent ("lehigh.cse.memcare.ui.anaylsis");
+                        //Intent intent = new Intent ("ui.Results.ViewPastResults");
                         startActivity(intent);
                     }
                 }

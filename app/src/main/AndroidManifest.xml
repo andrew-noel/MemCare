@@ -107,7 +107,7 @@
             </intent-filter>
         </activity>
 
-        <!-- Anayalsis -->
+        <!-- Analysis -->
         <activity
             android:name="ui.Results.Anaylsis"
             android:label="@string/title_activity_anaylsis"
