@@ -4,6 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
@@ -27,6 +30,9 @@ public class Anaylsis extends AppCompatActivity {
                 new DataPoint(4, 6)
         });
         graph.addSeries(series);
+        graph.setTitle("Patient Data");
+        //graph.getLayoutParams().height = 100
+        graph.setLayoutParams(new RelativeLayout.LayoutParams(1050,15150));
 
 
     }
