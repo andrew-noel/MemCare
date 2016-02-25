@@ -5,12 +5,12 @@ package midtier.TO;
  */
 public interface CaregiverTO {
 
-    public String get_firstname();
+    String get_firstname();
 
-    public String get_lastname();
+    String get_lastname();
 
-    public String get_username();
+    String get_username();
 
-    public String get_id();
+    String get_id();
 
 }

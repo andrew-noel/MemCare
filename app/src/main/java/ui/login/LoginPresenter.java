@@ -2,6 +2,7 @@ package ui.login;
 
 import common.CaregiverTableConstants;
 import lehigh.cse.memcare.R;
+import midtier.models.userModel;
 import midtier.services.LoginService;
 
 public class LoginPresenter {
@@ -9,9 +10,12 @@ public class LoginPresenter {
     public LoginView view;
     public LoginService service;
 
+    userModel userModel;
+
     public LoginPresenter(LoginView view, LoginService service){
         this.view = view;
         this.service = service;
+        userModel = userModel.getInstance();
     }
 
     public void onLoginClicked(){
@@ -27,6 +31,7 @@ public class LoginPresenter {
         }
         boolean loginSucceeded = service.login(username, password);
         if (loginSucceeded){
+            userModel.updateModel(username);
             view.startHomeActivity();
             return;
         }
