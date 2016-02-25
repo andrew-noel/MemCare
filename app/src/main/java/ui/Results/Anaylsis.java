@@ -31,8 +31,12 @@ public class Anaylsis extends AppCompatActivity {
         });
         graph.addSeries(series);
         graph.setTitle("Patient Data");
-        //graph.getLayoutParams().height = 100
-        graph.setLayoutParams(new RelativeLayout.LayoutParams(1050,15150));
+        graph.setTitleTextSize(80);
+        graph.getGridLabelRenderer().setHorizontalAxisTitle("X-AXIS");
+        graph.getGridLabelRenderer().setVerticalAxisTitle("Y-AXIS");
+        graph.getGridLabelRenderer().setPadding(35);
+        //graph.getGridLabelRenderer().setLabelVerticalWidth(100);
+        graph.setLayoutParams(new RelativeLayout.LayoutParams(1600,800));
 
 
     }
