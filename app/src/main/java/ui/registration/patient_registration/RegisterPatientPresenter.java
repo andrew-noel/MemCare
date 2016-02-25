@@ -3,6 +3,7 @@ package ui.registration.patient_registration;
 import common.PatientTableConstants;
 import lehigh.cse.memcare.R;
 import midtier.services.RegistrationService;
+import midtier.models.userModel;
 
 /**
  * Created by Noel on 10/14/15.
@@ -11,8 +12,10 @@ public class RegisterPatientPresenter {
 
     public RegisterPatientView view;
     public RegistrationService service;
+    public userModel userModel;
 
     public RegisterPatientPresenter(RegisterPatientView view, RegistrationService service) {
+        userModel = userModel.getInstance();
         this.service = service;
         this.view = view;
     }
@@ -22,6 +25,7 @@ public class RegisterPatientPresenter {
         String lastname;
         String age;
         String gender;
+
 
         boolean error = false;
         if ((gender = view.getGender()).isEmpty()) {
@@ -47,7 +51,7 @@ public class RegisterPatientPresenter {
         }
 
         if (error == false) {
-            if (service.insertData_registerPatient(firstname, lastname, age, "Male") == false) {
+            if (service.insertData_registerPatient(firstname, lastname, age, "Male", userModel.getUsername()) == false) {
                 view.showRegistationError();
             } else {
                 view.returnToTestActivity();

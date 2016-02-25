@@ -17,8 +17,10 @@ import java.util.Calendar;
 import java.util.List;
 
 import lehigh.cse.memcare.R;
+import midtier.DAOs.CaregiverDAO;
 import midtier.DAOs.PatientDAOInt;
 import midtier.DAOs.PatientDAO;
+import midtier.models.userModel;
 import midtier.services.testCreationService;
 import ui.construction.face_recognition_construction.FaceRecognitionConstructionActivity;
 
@@ -39,6 +41,7 @@ public class ConstructionActivity extends AppCompatActivity {
     List<String> patientNames;
 
     PatientDAOInt patientDAO;
+    CaregiverDAO caregiverDAO;
     testCreationService service;
 
     @Override
@@ -55,6 +58,7 @@ public class ConstructionActivity extends AppCompatActivity {
         button_createTest = (Button)(findViewById(R.id.button_createTest));
         button_clearDB = (Button)(findViewById(R.id.button_clearDB));
         patientDAO = new PatientDAO();
+        caregiverDAO = new CaregiverDAO();
 
         tests = getResources().getStringArray(R.array.test_type);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, tests);
@@ -79,7 +83,7 @@ public class ConstructionActivity extends AppCompatActivity {
     }
 
     private void loadPatients() {
-        patientNames = patientDAO.getListOfPatientNames();
+        patientNames = caregiverDAO.getListOfPatientNames(userModel.getInstance().getUsername());
         ArrayAdapter<String> patientAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, patientNames);
         spinner_patientList.setAdapter(patientAdapter);
     }

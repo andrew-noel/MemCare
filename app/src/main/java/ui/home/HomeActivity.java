@@ -7,8 +7,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import lehigh.cse.memcare.R;
+import midtier.DAOs.CaregiverDAO;
+import midtier.DatabaseHelper;
+import midtier.DatabaseHelperInt;
+import midtier.models.userModel;
 
 //TODO: refactor to MVP
 public class HomeActivity extends AppCompatActivity {
@@ -18,6 +23,7 @@ public class HomeActivity extends AppCompatActivity {
     Button button_settings;
     Button button_give_test;
     Button button_viewPastTests;
+    CaregiverDAO caregiverDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +39,8 @@ public class HomeActivity extends AppCompatActivity {
         Logout_OnClickButtonListener();
         ViewPastTests_OnClickButtonListener();
         GiveTest_OnClickButtonListener();
+        caregiverDAO = new CaregiverDAO();
+
 
     }
 
@@ -93,8 +101,14 @@ public class HomeActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         //TODO: start intent to ConstructionActivity where you can create different kinds of tests
-                        Intent intent = new Intent("lehigh.cse.memcare.construction.ConstructionActivity");
-                        startActivity(intent);
+                        String username = userModel.getInstance().getUsername();
+                        if (!caregiverDAO.getListOfPatientNames(username).isEmpty()) {
+                            Intent intent = new Intent("lehigh.cse.memcare.construction.ConstructionActivity");
+                            startActivity(intent);
+                        }
+                        else{
+                            Toast.makeText(HomeActivity.this, "Please register patient before creating test", Toast.LENGTH_LONG).show();
+                        }
                     }
                 }
         );

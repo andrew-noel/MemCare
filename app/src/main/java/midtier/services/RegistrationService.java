@@ -20,13 +20,12 @@ public class RegistrationService extends DatabaseHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-      //  db.execSQL("create table " + CAREGIVER_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, USER_NAME TEXT, PASSWORD TEXT )");
-         db.execSQL("create table " + PATIENT_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, AGE TEXT, GENDER TEXT )");
-
-        //db.execSQL("create table " + CAREGIVER_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, USER_NAME TEXT, PASSWORD TEXT )");
+        db.execSQL("create table " + CAREGIVER_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, USER_NAME TEXT, PASSWORD TEXT )");
+         db.execSQL("create table " + PATIENT_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, AGE TEXT, GENDER TEXT, CAREGIVER TEXT )");
     }
 
     public boolean username_exists(String username){
+        db.execSQL("create table " + PATIENT_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, AGE TEXT, GENDER TEXT, CAREGIVER TEXT )");
         res = db.rawQuery("select * from " + CAREGIVER_TABLE_NAME + " where USER_NAME = '" + username + "'", null);
         return DatabaseHelper.res.getCount() != 0;
     }
@@ -47,13 +46,14 @@ public class RegistrationService extends DatabaseHelper {
         return result != -1;
     }
 
-    public boolean insertData_registerPatient(String first_name, String last_name, String age, String gender){
+    public boolean insertData_registerPatient(String first_name, String last_name, String age, String gender, String caregiver){
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(PATIENT_COLUMN_2, first_name);
         contentValues.put(PATIENT_COLUMN_3, last_name);
         contentValues.put(PATIENT_COLUMN_4, age);
         contentValues.put(PATIENT_COLUMN_5, gender);
+        contentValues.put(PATIENT_COLUMN_6, caregiver);
         long result = db.insert(PATIENT_TABLE_NAME, null, contentValues);
         return result != -1;
 

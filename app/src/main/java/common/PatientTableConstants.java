@@ -13,5 +13,5 @@ public class PatientTableConstants {
     public static final String PATIENT_COLUMN_3 = "LAST_NAME";
     public static final String PATIENT_COLUMN_4 = "AGE";
     public static final String PATIENT_COLUMN_5 = "GENDER";
-    public static final String PATIENT_COLUMN_6 = "CREATOR_NAME";
+    public static final String PATIENT_COLUMN_6 = "CAREGIVER";
 }

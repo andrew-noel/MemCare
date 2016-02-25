@@ -11,10 +11,12 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+
 import java.util.List;
 
 import lehigh.cse.memcare.R;
 import midtier.DAOs.TestDAO;
+import midtier.services.testCreationService;
 import ui.construction.face_recognition_construction.FaceRecognitionConstructionActivity;
 
 public class administer_selectTest extends AppCompatActivity {
@@ -26,12 +28,17 @@ public class administer_selectTest extends AppCompatActivity {
     TestDAO testDAO;
 
     Button button_beginTest;
+    testCreationService testCreationService;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_test);
+        testCreationService = new testCreationService(this);
+        testCreationService.dropTable();
+
+
 
         button_beginTest = (Button)findViewById(R.id.button_beginTest);
         StartTest_OnClickButtonListener();

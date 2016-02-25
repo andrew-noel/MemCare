@@ -19,9 +19,11 @@ public class userModel {
     public static userModel getInstance() {
         if (instance == null) {
             synchronized (userModel.class) {
-                dao = new CaregiverDAO();
-                if (instance == null)
+
+                if (instance == null) {
+                    dao = new CaregiverDAO();
                     instance = new userModel();
+                }
             }
         }
         return instance;

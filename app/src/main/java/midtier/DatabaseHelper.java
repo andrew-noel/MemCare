@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import static common.CaregiverTableConstants.*;
 import static common.PatientTableConstants.*;
 
-public abstract class DatabaseHelper extends SQLiteOpenHelper implements DatabaseHelperInt {
+public class DatabaseHelper extends SQLiteOpenHelper implements DatabaseHelperInt {
 
     public static SQLiteDatabase db;
     public static Cursor res;
@@ -17,24 +17,24 @@ public abstract class DatabaseHelper extends SQLiteOpenHelper implements Databas
         db = this.getWritableDatabase();
     }
 
-
+/*
     @Override
     public abstract void onCreate(SQLiteDatabase db);
-    /*
+  */
     @Override
     public void onCreate(SQLiteDatabase db) {
         //TODO: create table on first run
         db.execSQL("create table " + CAREGIVER_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, USER_NAME TEXT, PASSWORD TEXT )");
-        db.execSQL("create table " + PATIENT_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, AGE TEXT, GENDER TEXT )");
+        db.execSQL("create table " + PATIENT_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, AGE TEXT, GENDER TEXT, CAREGIVER TEXT )");
     }
-    */
+
     public void create(String tableName){
 
         if(tableName == CAREGIVER_TABLE_NAME) {
             db.execSQL("create table " + CAREGIVER_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, USER_NAME TEXT, PASSWORD TEXT )");
         }
         else if(tableName == PATIENT_TABLE_NAME) {
-            db.execSQL("create table " + PATIENT_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, AGE TEXT, GENDER TEXT )");
+            db.execSQL("create table " + PATIENT_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, AGE TEXT, GENDER TEXT, CAREGIVER TEXT )");
         }
     }
 

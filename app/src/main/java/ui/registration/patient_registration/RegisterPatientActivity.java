@@ -28,7 +28,6 @@ EditText editText_firstname, editText_lastname, editText_age;
         super.onCreate(savedInstanceState);
         service = new RegistrationService(this);
 
-        service.delete_table("Patients_table");
         setContentView(R.layout.activity_register_patient);
         editText_firstname = (EditText)(findViewById(R.id.editText_patientfirstname));
         editText_lastname = (EditText)(findViewById(R.id.editText_patientlastname));
