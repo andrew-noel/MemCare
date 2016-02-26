@@ -87,8 +87,13 @@ public class HomeActivity extends AppCompatActivity {
                     @Override
                 public void onClick(View v){
                         //TODO: this is a temporary placement for the construction activity. I plan on moving it when it's up and running.
-                        Intent intent = new Intent ("lehigh.cse.memcare.registration.selectTest");
-                        startActivity(intent);
+                        if (userModel.getInstance().hasTests()) {
+                            Intent intent = new Intent("lehigh.cse.memcare.registration.selectTest");
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(HomeActivity.this, "Please create a test first", Toast.LENGTH_LONG).show();
+
+                        }
                     }
                 }
         );

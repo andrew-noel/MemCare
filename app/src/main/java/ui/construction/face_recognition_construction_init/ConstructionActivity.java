@@ -94,7 +94,7 @@ public class ConstructionActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         //TODO: refactor to presenter, get real owner
-                        String owner = "Andrew McMullen"; //FIXME: temporary
+                        String owner = userModel.getInstance().getUsername();
                         String patient_full_name = spinner_patientList.getSelectedItem().toString();
                         String testName = editText_testName.getText().toString();
                         String testType = spinner_testType.getSelectedItem().toString();

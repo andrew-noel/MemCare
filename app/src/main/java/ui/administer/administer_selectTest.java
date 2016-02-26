@@ -15,7 +15,9 @@ import android.widget.Toast;
 import java.util.List;
 
 import lehigh.cse.memcare.R;
+import midtier.DAOs.CaregiverDAO;
 import midtier.DAOs.TestDAO;
+import midtier.models.userModel;
 import midtier.services.testCreationService;
 import ui.construction.face_recognition_construction.FaceRecognitionConstructionActivity;
 
@@ -29,14 +31,15 @@ public class administer_selectTest extends AppCompatActivity {
 
     Button button_beginTest;
     testCreationService testCreationService;
-
+    CaregiverDAO caregiverDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_test);
         testCreationService = new testCreationService(this);
-        testCreationService.dropTable();
+        caregiverDAO = new CaregiverDAO();
+        //testCreationService.dropTable();
 
 
 
@@ -78,9 +81,12 @@ public class administer_selectTest extends AppCompatActivity {
 
 
     private void loadAvailableTests() {
-        availableTests = testDAO.getListOfAvailableTestNames();
+        availableTests = caregiverDAO.getTestForUser(userModel.getInstance().getUsername());
+
+      //  availableTests = testDAO.getListOfAvailableTestNames();
         ArrayAdapter<String> testAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, availableTests);
         spinner_availableTests.setAdapter(testAdapter);
+
     }
 
     @Override

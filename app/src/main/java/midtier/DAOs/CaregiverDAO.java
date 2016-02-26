@@ -37,7 +37,7 @@ public class CaregiverDAO implements CaregiverDAOInt {
 
     public List<String> getListOfPatientNames(String username) {
 
-        //TODO: should be user specific
+
         List<String> names = new ArrayList<String>();
         String wholeName;
 
@@ -54,6 +54,28 @@ public class CaregiverDAO implements CaregiverDAOInt {
         res.close();
 
         return names;
+    }
+
+    public List<String> getTestForUser(String username){
+
+
+        List<String> tests = new ArrayList<String>();
+        String testName;
+
+        Cursor res = DatabaseHelper.query("select * from TEST_TABLE where OWNER_USERNAME = '" + username + "'");
+        if(res.moveToFirst()){
+            do{
+                testName = res.getString(3);
+
+                tests.add(testName);
+            }while(res.moveToNext());
+        }
+
+
+        res.close();
+
+        return tests;
+
     }
 
 }

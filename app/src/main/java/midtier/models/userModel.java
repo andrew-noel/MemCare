@@ -38,4 +38,5 @@ public class userModel {
         return to.get_username();
     }
 
+    public boolean hasTests() { return !dao.getTestForUser(to.get_username()).isEmpty(); }
 }
