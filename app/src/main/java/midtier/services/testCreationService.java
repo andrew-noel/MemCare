@@ -3,13 +3,13 @@ package midtier.services;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-
-import java.util.List;
+import android.util.Log;
 
 import midtier.DatabaseHelper;
 
 import static common.TestCreationConstants.*;
 import static common.QuestionsConstants.*;
+import static common.TestResultsConstants.*;
 
 /**
  * Created by andrewmcmullen on 11/1/15.
@@ -37,8 +37,14 @@ public class testCreationService extends DatabaseHelper{
                 "" + QUESTION_COLUMN_4 + ", " +
                 "" + QUESTION_COLUMN_5 + ")");
 
-
-
+        db.execSQL("create table " + RESULTS_TABLE_NAME + " " +
+                "(ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "" + RESULTS_COLUMN_1 + ", " +
+                "" + RESULTS_COLUMN_2 + ", " +
+                "" + RESULTS_COLUMN_3 + ", " +
+                "" + RESULTS_COLUMN_4 + ", " +
+                "" + RESULTS_COLUMN_5 + ", " +
+                "" + RESULTS_COLUMN_6 + ")");
 
 
     }
@@ -65,6 +71,21 @@ public class testCreationService extends DatabaseHelper{
         long result = db.insert(QUESTIONS_TABLE_NAME, null, contentValues);
 
         return result != -1;
+    }
+
+    public boolean insertData_Results(String patient_firstname, String patient_lastname, String username, String testname, String score, String date){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(RESULTS_COLUMN_1, patient_firstname);
+        Log.d("NOEL:", patient_firstname);
+        contentValues.put(RESULTS_COLUMN_2, patient_lastname);
+        contentValues.put(RESULTS_COLUMN_3, username);
+        contentValues.put(RESULTS_COLUMN_4, testname);
+        contentValues.put(RESULTS_COLUMN_5, date);
+        contentValues.put(RESULTS_COLUMN_6, score);
+        long result = db.insert(RESULTS_TABLE_NAME, null, contentValues);
+
+        return result != -1;
+
     }
 
 

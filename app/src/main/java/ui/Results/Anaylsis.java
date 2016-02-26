@@ -12,14 +12,25 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.util.HashMap;
+
+
 import lehigh.cse.memcare.R;
+import midtier.DAOs.TestDAO;
 
 public class Anaylsis extends AppCompatActivity {
+
+    TestDAO testDaO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anaylsis);
+        testDaO = new TestDAO();
+
+        Bundle b = getIntent().getExtras();
+        String patientName = b.getString("patientName");
+        //HashMap<Integer, Integer> patientData = testDaO.getScores(patientName);
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
         LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[] {
@@ -37,7 +48,6 @@ public class Anaylsis extends AppCompatActivity {
         graph.getGridLabelRenderer().setPadding(35);
         //graph.getGridLabelRenderer().setLabelVerticalWidth(100);
         graph.setLayoutParams(new RelativeLayout.LayoutParams(1600,800));
-
 
     }
 

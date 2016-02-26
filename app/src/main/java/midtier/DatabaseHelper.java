@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import static common.CaregiverTableConstants.*;
 import static common.PatientTableConstants.*;
+import static common.TestResultsConstants.*;
 
 public class DatabaseHelper extends SQLiteOpenHelper implements DatabaseHelperInt {
 
@@ -24,8 +25,9 @@ public class DatabaseHelper extends SQLiteOpenHelper implements DatabaseHelperIn
     @Override
     public void onCreate(SQLiteDatabase db) {
         //TODO: create table on first run
-        db.execSQL("create table " + CAREGIVER_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, USER_NAME TEXT, PASSWORD TEXT )");
-        db.execSQL("create table " + PATIENT_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, AGE TEXT, GENDER TEXT, CAREGIVER TEXT )");
+        //db.execSQL("create table " + CAREGIVER_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, USER_NAME TEXT, PASSWORD TEXT )");
+        //db.execSQL("create table " + PATIENT_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, AGE TEXT, GENDER TEXT, CAREGIVER TEXT )");
+        //db.execSQL("create table " + RESULTS_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, PATIENT_FIRSTNAME TEXT, PATIENT_LASTNAME TEXT, CAREGIVER_USERNAME TEXT, TEST_NAME TEXT, DATE TEXT, SCORE TEXT )");
     }
 
     public void create(String tableName){
@@ -35,6 +37,9 @@ public class DatabaseHelper extends SQLiteOpenHelper implements DatabaseHelperIn
         }
         else if(tableName == PATIENT_TABLE_NAME) {
             db.execSQL("create table " + PATIENT_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, AGE TEXT, GENDER TEXT, CAREGIVER TEXT )");
+        }
+        else if(tableName == RESULTS_TABLE_NAME){
+            db.execSQL("create table " + RESULTS_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, PATIENT_FIRSTNAME TEXT, PATIENT_LASTNAME TEXT, CAREGIVER_USERNAME TEXT, TEST_NAME TEXT, DATE TEXT, SCORE TEXT )");
         }
     }
 

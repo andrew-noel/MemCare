@@ -27,5 +27,6 @@
     <string name="title_activity_adminster_take_test">Take Test</string>
     <string name="title_activity_anaylsis">Analysis</string>
     <string name="title_activity_view_past_results">View Past Results</string>
+    <string name="title_activity_select__patient__for__results">Select_Patient_For_Results</string>
 
 </resources>

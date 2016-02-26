@@ -24,7 +24,11 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
         setContentView(R.layout.activity_register_user);
 
         service = new RegistrationService(this);
-        //service.create();
+
+        //service.delete_table("Caregivers_table");
+        //service.delete_table("Results_table");
+        //service.delete_table("Patients_table");
+
         editText_firstName = (EditText)findViewById(R.id.editText_patientfirstname);
         editText_lastName = (EditText)findViewById(R.id.editText_patientlastname);
         editText_username = (EditText)findViewById(R.id.editText_username);

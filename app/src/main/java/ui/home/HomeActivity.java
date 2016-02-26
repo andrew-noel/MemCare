@@ -24,7 +24,7 @@ public class HomeActivity extends AppCompatActivity {
     Button button_give_test;
     Button button_viewPastTests;
     CaregiverDAO caregiverDAO;
-
+    DatabaseHelper databaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +40,9 @@ public class HomeActivity extends AppCompatActivity {
         ViewPastTests_OnClickButtonListener();
         GiveTest_OnClickButtonListener();
         caregiverDAO = new CaregiverDAO();
+        databaseHelper = new DatabaseHelper(this);
+        databaseHelper.delete_table("Results_table");
+
 
 
     }
@@ -72,7 +75,7 @@ public class HomeActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v){
                         //TODO: this is a temporary placement for the construction activity. I plan on moving it when it's up and running.
-                        Intent intent = new Intent ("lehigh.cse.memcare.ui.anaylsis");
+                        Intent intent = new Intent ("lehigh.cse.memcare.ui.Select_Patient_For_Results");
                         //Intent intent = new Intent ("ui.Results.ViewPastResults");
                         startActivity(intent);
                     }

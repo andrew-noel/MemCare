@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 
 import java.util.List;
@@ -19,7 +18,6 @@ import midtier.DAOs.CaregiverDAO;
 import midtier.DAOs.TestDAO;
 import midtier.models.userModel;
 import midtier.services.testCreationService;
-import ui.construction.face_recognition_construction.FaceRecognitionConstructionActivity;
 
 public class administer_selectTest extends AppCompatActivity {
 
@@ -43,11 +41,11 @@ public class administer_selectTest extends AppCompatActivity {
 
 
 
-        button_beginTest = (Button)findViewById(R.id.button_beginTest);
+        button_beginTest = (Button)findViewById(R.id.button_seeResults);
         StartTest_OnClickButtonListener();
 
         testDAO = new TestDAO();
-        spinner_availableTests = (Spinner)(findViewById(R.id.spinner_availableTests));
+        spinner_availableTests = (Spinner)(findViewById(R.id.spinner_patients));
         loadAvailableTests();
     }
 

@@ -22,6 +22,7 @@ import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -48,6 +49,8 @@ import java.util.Set;
 
 import lehigh.cse.memcare.R;
 import midtier.DAOs.TestDAO;
+import midtier.models.userModel;
+import midtier.services.testCreationService;
 import ui.construction.face_recognition_construction.FaceRecognitionConstructionView;
 import ui.registration.patient_registration.RegisterPatientPresenter;
 
@@ -57,6 +60,7 @@ public class adminster_takeTest extends AppCompatActivity{
     TextToSpeech t1;
 
     TestDAO dao;
+    testCreationService testCreationService;
     private final int REQ_CODE_SPEECH_INPUT = 100;
 
     Uri image_path;
@@ -93,6 +97,7 @@ public class adminster_takeTest extends AppCompatActivity{
         Bundle b = getIntent().getExtras();
         testName = b.getString("testName");
         dao = new TestDAO();
+        testCreationService = new testCreationService(this);
 
         textView_header = (TextView)findViewById(R.id.textView_header);
         editText_inputName = (EditText)findViewById(R.id.editText_inputName);
@@ -288,6 +293,13 @@ public class adminster_takeTest extends AppCompatActivity{
                             } else {
                                 numWrong++;
                             }
+
+                            String patient_fname= dao.getPatientFromTestname(testName).get(0);
+                            Log.d("FNAME", patient_fname);
+                            String patient_lname= dao.getPatientFromTestname(testName).get(1);
+                            String score = "" + ((((double)numCorrect)/(numWrong+numCorrect))*100) + "";
+
+                            testCreationService.insertData_Results(patient_fname, patient_lname, userModel.getInstance().getUsername(),testName, score, dao.getCurrentDate());
 
                             showDialogMessage("Congratulations, you have completed the test.\n" +
                                     "Number Correct: " + numCorrect + "\n" +
