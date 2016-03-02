@@ -1,6 +1,6 @@
 package ui.registration.patient_registration;
 
-import common.PatientTableConstants;
+import common.table_constants;
 import lehigh.cse.memcare.R;
 import midtier.services.RegistrationService;
 import midtier.models.userModel;
@@ -62,6 +62,6 @@ public class RegisterPatientPresenter {
 
     public void onClearDBClicked() {
         view.showClearPatientDBMessage();
-        service.delete_table(PatientTableConstants.PATIENT_TABLE_NAME);
+        service.delete_table(table_constants.PATIENT_TABLE_NAME);
     }
 }

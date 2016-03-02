@@ -6,7 +6,7 @@ import android.database.Cursor;
 
 import midtier.DatabaseHelper;
 import midtier.TO.PatientTO;
-import static common.PatientTableConstants.*;
+import static common.table_constants.*;
 
 /**
  * Created by Noel on 10/16/15.

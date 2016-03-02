@@ -1,19 +1,15 @@
 package midtier.DAOs;
 
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import common.CaregiverTableIndex;
 import midtier.TO.CaregiverTO;
 import midtier.TO.CaregiverTOImpl;
 import midtier.DatabaseHelper;
 
-import static common.CaregiverTableConstants.*;
-import static common.PatientTableConstants.PATIENT_TABLE_NAME;
+import static common.table_constants.*;
 
 public class CaregiverDAO implements CaregiverDAOInt {
 
@@ -26,9 +22,9 @@ public class CaregiverDAO implements CaregiverDAOInt {
 
         Cursor res = DatabaseHelper.query("select * from " + CAREGIVER_TABLE_NAME + " where USER_NAME = '" + username + "'");
         res.moveToNext();
-        firstname = res.getString(CaregiverTableIndex.INDEX_FIRST_NAME.toValue());
-        lastname = res.getString(CaregiverTableIndex.INDEX_LAST_NAME.toValue());
-        id = res.getString(CaregiverTableIndex.INDEX_ID.toValue());
+        firstname = res.getString(1);
+        lastname = res.getString(2);
+        id = res.getString(0);
 
         caregiverDAO = new CaregiverTOImpl(firstname, lastname, username, id);
         return caregiverDAO;

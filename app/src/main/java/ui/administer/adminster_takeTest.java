@@ -1,6 +1,5 @@
 package ui.administer;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
@@ -15,7 +14,6 @@ import android.graphics.Region;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.speech.RecognizerIntent;
@@ -32,12 +30,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.dropbox.chooser.android.DbxChooser;
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.face.Face;
 import com.google.android.gms.vision.face.FaceDetector;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -45,14 +40,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Set;
 
 import lehigh.cse.memcare.R;
 import midtier.DAOs.TestDAO;
 import midtier.models.userModel;
 import midtier.services.testCreationService;
-import ui.construction.face_recognition_construction.FaceRecognitionConstructionView;
-import ui.registration.patient_registration.RegisterPatientPresenter;
 
 public class adminster_takeTest extends AppCompatActivity{
 
@@ -69,7 +61,6 @@ public class adminster_takeTest extends AppCompatActivity{
     private Canvas tempCanvas;
     private Paint myRectPaint;
 
-    int faceID;
     SparseArray<Face> faces;
     Drawable photoDrawable;
     Rect imageBounds;
@@ -92,6 +83,9 @@ public class adminster_takeTest extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Log.i("message0", "??????");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adminster_take_test);
         Bundle b = getIntent().getExtras();
@@ -112,15 +106,27 @@ public class adminster_takeTest extends AppCompatActivity{
         textView_header.setText(testName);
 
         questions = dao.getQuestionsHashTable(testName);
+
+        Log.i("message", "There you are, you little bastard");
         faceIndices = dao.getFaceIndexHashMap(testName);
+
+        Log.i("message1", "*****");
 
         imageURIs = new ArrayList<>();
         imageURIs.addAll(questions.keySet());
 
-
         imageView_faceImage.setImageURI(Uri.parse(imageURIs.get(0)));
+
+        Log.i("message3", "Boooop");
+
+
         image_path = Uri.parse(imageURIs.get(0));
+        Log.i("message3", "Boooop1");
+
         drawFaces(faceIndices.get(image_path.toString()) + 1);
+
+
+        Log.i("message3", "Boooop2");
 
         nextImage_OnClickButtonListener();
 
@@ -178,7 +184,6 @@ public class adminster_takeTest extends AppCompatActivity{
     public void drawFaces(int faceId) {
         //TODO: // pull out logic to presenter.
         if (faceId == -1) return;
-
 
         try {
                 InputStream inputStream = getContentResolver().openInputStream(image_path);

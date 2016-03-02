@@ -11,9 +11,8 @@ import java.util.StringTokenizer;
 
 import midtier.DatabaseHelper;
 
-import static common.TestCreationConstants.TEST_CREATE_TABLE_NAME;
-import static common.QuestionsConstants.QUESTIONS_TABLE_NAME;
-import static common.TestResultsConstants.*;
+import static common.table_constants.*;
+
 
 /**
  * Created by andrewmcmullen on 11/1/15.
@@ -39,8 +38,8 @@ public class TestDAO {
         Cursor res = DatabaseHelper.query("select * from " + QUESTIONS_TABLE_NAME + " where TEST_NAME = '" + testName + "'" );
         if (res.moveToFirst()){
             do{
-                String imageURI = res.getString(2);
-                String index = res.getString(4);
+                String imageURI = res.getString(3);
+                String index = res.getString(2);
                 faceIndices.put(imageURI, Integer.parseInt(index));
             }while(res.moveToNext());
         }
@@ -54,8 +53,8 @@ public class TestDAO {
         Cursor res = DatabaseHelper.query("select * from " + QUESTIONS_TABLE_NAME + " where TEST_NAME = '" + testName + "'" );
         if (res.moveToFirst()){
             do{
-                String imageURI = res.getString(2);
-                String name = res.getString(3);
+                String imageURI = res.getString(3);
+                String name = res.getString(1);
                 questions.put(imageURI, name);
             }while(res.moveToNext());
         }
@@ -95,7 +94,7 @@ public class TestDAO {
 
         Log.d("MemCare", "select * from " + RESULTS_TABLE_NAME + " where PATIENT_FIRSTNAME = '" + patientName + "'");
 
-        Cursor res = DatabaseHelper.query("select * from " + RESULTS_TABLE_NAME + " where " + RESULTS_COLUMN_1 + "= '" + patientName + "'" );
+        Cursor res = DatabaseHelper.query("select * from " + RESULTS_TABLE_NAME + " where " + R_COLUMN_PATIENT_FIRSTNAME + "= '" + patientName + "'" );
         res.moveToFirst();
         do{
             int id = Integer.parseInt(res.getString(0));
