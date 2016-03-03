@@ -3,6 +3,7 @@ package midtier.services;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import midtier.DatabaseHelper;
 
@@ -46,6 +47,7 @@ public class testCreationService extends DatabaseHelper{
 
     public boolean insertData_Results(String patient_firstname, String patient_lastname, String username, String testname, String score, String date){
         ContentValues contentValues = new ContentValues();
+        Log.d("MemCare", "First Name: " + patient_firstname + " Zee Score: " + score);
         contentValues.put(R_COLUMN_PATIENT_FIRSTNAME, patient_firstname);
         contentValues.put(R_COLUMN_PATIENT_LASTNAME, patient_lastname);
         contentValues.put(R_COLUMN_CAREGIVER, username);

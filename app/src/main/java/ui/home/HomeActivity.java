@@ -41,7 +41,7 @@ public class HomeActivity extends AppCompatActivity {
         GiveTest_OnClickButtonListener();
         caregiverDAO = new CaregiverDAO();
         databaseHelper = new DatabaseHelper(this);
-        databaseHelper.delete_table("Results_table");
+
 
 
 

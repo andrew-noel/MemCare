@@ -25,9 +25,11 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
 
         service = new RegistrationService(this);
 
-        //service.delete_table("Caregivers_table");
-        //service.delete_table("Results_table");
-        //service.delete_table("Patients_table");
+        service.delete_table("Caregivers_table");
+        service.delete_table("Results_table");
+        service.delete_table("Patients_table");
+        service.delete_table("QUESTIONS_TABLE");
+        service.delete_table("TEST_TABLE");
 
         editText_firstName = (EditText)findViewById(R.id.editText_patientfirstname);
         editText_lastName = (EditText)findViewById(R.id.editText_patientlastname);

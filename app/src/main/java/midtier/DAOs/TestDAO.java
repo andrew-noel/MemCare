@@ -98,9 +98,9 @@ public class TestDAO {
         res.moveToFirst();
         do{
             int id = Integer.parseInt(res.getString(0));
-            int score = Integer.parseInt(res.getString(6));
+            int score = (int)Double.parseDouble(res.getString(6));
             scores.put(id, score);
-
+            Log.d("Memcare", "id = " + id + " score = " + score);
         }while(res.moveToNext());
 
         res.close();

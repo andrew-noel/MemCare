@@ -12,7 +12,12 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
 
 
 import lehigh.cse.memcare.R;
@@ -30,21 +35,48 @@ public class Anaylsis extends AppCompatActivity {
 
         Bundle b = getIntent().getExtras();
         String patientName = b.getString("patientName");
-        //HashMap<Integer, Integer> patientData = testDaO.getScores(patientName);
+        HashMap<Integer, Integer> patientData = new HashMap<>();
+        patientData = testDaO.getScores(patientName);
+        Set<Integer> keys = patientData.keySet();
+        ArrayList<Integer> list = new ArrayList<>();
+        list.addAll(keys);
+        Collections.sort(list);
+        List<DataPoint> dataPointList = new ArrayList<>();
+        for(int x: list){
+            dataPointList.add(new DataPoint(x, patientData.get(x)));
+        }
+
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
+        DataPoint[] dataPoints = new DataPoint[dataPointList.size()];
+        int counter = 0;
+        for(DataPoint y: dataPointList){
+            dataPoints[counter++] = y;
+        }
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(dataPoints);
+
+        /*
         LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[] {
+
                 new DataPoint(0, 1),
                 new DataPoint(1, 5),
                 new DataPoint(2, 3),
                 new DataPoint(3, 2),
                 new DataPoint(4, 6)
         });
+        */
+
         graph.addSeries(series);
-        graph.setTitle("Patient Data");
+        graph.setTitle("Data for " + patientName);
         graph.setTitleTextSize(80);
-        graph.getGridLabelRenderer().setHorizontalAxisTitle("X-AXIS");
-        graph.getGridLabelRenderer().setVerticalAxisTitle("Y-AXIS");
+        graph.getGridLabelRenderer().setHorizontalAxisTitle("Time");
+        graph.getGridLabelRenderer().setVerticalAxisTitle("Percent Correct");
+
+        graph.getViewport().setYAxisBoundsManual(true);
+        graph.getViewport().setMinY(0);
+        graph.getViewport().setMaxY(100);
+
+        //graph.getViewport().setMaxY(100);
         graph.getGridLabelRenderer().setPadding(35);
         //graph.getGridLabelRenderer().setLabelVerticalWidth(100);
         graph.setLayoutParams(new RelativeLayout.LayoutParams(1600,800));
